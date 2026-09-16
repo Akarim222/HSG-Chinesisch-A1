@@ -1,0 +1,7497 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>HSG Chinesisch A1 · Vokabeln</title>
+<meta name="theme-color" content="#c0392b">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Chinesisch HSG">
+<style>:root {
+  --bg: #faf7f2;
+  --card: #ffffff;
+  --ink: #2b2620;
+  --muted: #8a8177;
+  --accent: #c0392b;
+  --accent-dark: #96281b;
+  --gold: #d4a017;
+  --ok: #2e7d32;
+  --bad: #c62828;
+  --border: #e8e1d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #171512;
+    --card: #201d19;
+    --ink: #ece6dd;
+    --muted: #9a9186;
+    --border: #35302a;
+  }
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, "Helvetica Neue", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 2px solid var(--accent);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+h1 { font-size: 26px; color: var(--accent); }
+h1 span { font-size: 15px; color: var(--muted); font-weight: 500; margin-left: 8px; }
+nav { display: flex; gap: 8px; }
+nav button {
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--ink);
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+}
+nav button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+main { flex: 1; width: 100%; max-width: 680px; margin: 0 auto; padding: 24px 16px 48px; }
+footer { text-align: center; color: var(--muted); font-size: 12px; padding: 12px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+.card.center { text-align: center; }
+.card.rec { border-left: 4px solid var(--gold); }
+.tag {
+  display: inline-block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.hanzi { font-size: 72px; line-height: 1.2; margin: 12px 0; }
+.sentence-text { font-size: 32px; line-height: 1.4; margin: 16px 0; }
+.pinyin { font-size: 22px; color: var(--accent); margin-bottom: 4px; }
+.meaning { font-size: 18px; color: var(--muted); margin-bottom: 16px; }
+.prompt { font-size: 17px; margin-bottom: 8px; }
+.big-emoji { font-size: 56px; margin-bottom: 8px; }
+h2 { margin-bottom: 8px; }
+p { margin-bottom: 12px; line-height: 1.5; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.ok-text { color: var(--ok); }
+
+button.primary, button.secondary, button.ghost {
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+}
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+button.primary:hover { background: var(--accent-dark); }
+button.secondary { background: var(--card); color: var(--ink); }
+button.ghost { background: none; font-size: 13px; padding: 8px 14px; color: var(--muted); }
+button.ghost.danger { color: var(--bad); }
+.row { display: flex; gap: 12px; justify-content: center; margin-top: 16px; flex-wrap: wrap; }
+.row.tools { margin-top: 8px; }
+
+.options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0 4px; }
+@media (max-width: 480px) { .options { grid-template-columns: 1fr; } }
+.option {
+  padding: 16px 12px;
+  font-size: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 0.05s;
+}
+.option:hover { border-color: var(--accent); }
+.option:active { transform: scale(0.98); }
+.option.cn { font-size: 28px; }
+.option.right { background: var(--ok); border-color: var(--ok); color: #fff; }
+.option.wrong { background: var(--bad); border-color: var(--bad); color: #fff; }
+
+.feedback { margin: 16px 0; padding: 12px; border-radius: 10px; font-size: 16px; }
+.feedback.ok { background: rgba(46,125,50,0.12); color: var(--ok); }
+.feedback.bad { background: rgba(198,40,40,0.12); color: var(--bad); }
+
+.pinyin-input {
+  width: 100%;
+  max-width: 320px;
+  padding: 14px;
+  font-size: 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin: 16px auto 12px;
+  display: block;
+  background: var(--bg);
+  color: var(--ink);
+  text-align: center;
+}
+
+.progress { height: 8px; background: var(--border); border-radius: 999px; overflow: hidden; margin-bottom: 16px; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--gold)); border-radius: 999px; transition: width 0.3s; }
+
+.stats { display: flex; gap: 12px; margin-bottom: 16px; }
+.stat {
+  flex: 1;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+}
+.stat-value { font-size: 22px; font-weight: 700; color: var(--accent); }
+.stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+.module h3 { margin-bottom: 4px; }
+.module .progress { margin: 10px 0 8px; }
+.place-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 4px;
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+}
+
+/* --- HSG-Ableger: Ergänzungen --- */
+nav button { padding: 8px 14px; }
+.unit { display: flex; align-items: center; gap: 12px; padding: 10px 4px; border-bottom: 1px solid var(--border); }
+.unit:last-child { border-bottom: none; }
+.unit .unit-title { flex: 1; min-width: 0; }
+.unit .unit-title strong { display: block; font-size: 15px; }
+.unit .unit-title span { font-size: 12px; color: var(--muted); }
+.unit .unit-num { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; background: var(--border); color: var(--ink); flex-shrink: 0; }
+.unit.open .unit-num { background: var(--accent); color: #fff; }
+.unit.done .unit-num { background: var(--ok); color: #fff; }
+.unit .mini { width: 80px; flex-shrink: 0; }
+.unit .mini .progress { margin: 0 0 4px; height: 6px; }
+.unit .mini span { font-size: 11px; color: var(--muted); }
+.unit .locked { font-size: 12px; color: var(--muted); }
+.unit button.ghost { padding: 6px 10px; }
+
+.form-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+.form-row:last-child { border-bottom: none; }
+.form-row label { font-size: 15px; flex: 1; min-width: 160px; }
+.form-row label small { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+.form-row select, .form-row input[type=text], .form-row input[type=number], .form-row input[type=date] {
+  padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--ink); font-size: 15px;
+}
+.form-row input[type=checkbox] { width: 20px; height: 20px; }
+.mode-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0 12px; }
+@media (max-width: 480px) { .mode-cards { grid-template-columns: 1fr; } }
+.mode-card { border: 2px solid var(--border); border-radius: 12px; padding: 14px; cursor: pointer; background: var(--card); text-align: left; color: var(--ink); }
+.mode-card.active { border-color: var(--accent); }
+.mode-card strong { display: block; margin-bottom: 4px; }
+.mode-card span { font-size: 13px; color: var(--muted); }
+.schedule { width: 100%; border-collapse: collapse; font-size: 14px; }
+.schedule td { padding: 6px 4px; border-bottom: 1px solid var(--border); }
+.schedule input[type=date] { padding: 4px 6px; font-size: 14px; }
+
+.search { width: 100%; padding: 12px; font-size: 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); color: var(--ink); margin-bottom: 12px; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.chip { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--ink); font-size: 13px; cursor: pointer; }
+.chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.word-row { display: grid; grid-template-columns: 70px 1fr auto; gap: 10px; align-items: center; padding: 8px 4px; border-bottom: 1px solid var(--border); cursor: pointer; }
+.word-row:hover { background: rgba(192,57,43,0.05); }
+.word-row .wr-hanzi { font-size: 24px; }
+.word-row .wr-py { color: var(--accent); font-size: 14px; }
+.word-row .wr-de { font-size: 14px; }
+.word-row .wr-en { font-size: 12px; color: var(--muted); }
+.word-row .wr-state { font-size: 11px; color: var(--muted); text-align: right; white-space: nowrap; }
+.word-row.extra .wr-hanzi { color: var(--muted); }
+.badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--border); color: var(--muted); margin-left: 6px; vertical-align: middle; }
+.badge.ok { background: rgba(46,125,50,0.15); color: var(--ok); }
+.badge.due { background: rgba(212,160,23,0.2); color: #8a6a0a; }
+.hint { font-size: 13px; color: var(--muted); margin-top: 8px; }
+.pos { font-size: 13px; color: var(--muted); font-style: italic; }
+.en { font-size: 14px; color: var(--muted); margin-bottom: 8px; }
+.note { font-size: 14px; color: var(--muted); margin: 4px auto 10px; max-width: 420px; line-height: 1.4; }
+
+/* Kurs-Karte (Übersicht) */
+.card.session { border-left: 4px solid var(--accent); }
+.session .sess-date { font-size: 22px; font-weight: 700; }
+.session .sess-meta { font-size: 13px; color: var(--muted); }
+.session .links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; font-size: 13px; }
+.session .links a { color: var(--accent); }
+
+/* Schriftzeichen */
+.char-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 8px; margin-top: 8px; }
+.char-cell { border: 1px solid var(--border); border-radius: 10px; padding: 8px 4px; text-align: center; cursor: pointer; background: #fff; }
+.char-cell .cc-hanzi { font-size: 26px; line-height: 1.2; }
+.char-cell .cc-py { font-size: 11px; color: var(--accent); }
+.char-cell .cc-de { font-size: 10px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.char-cell.mastered { border-color: var(--ok); }
+.char-cell.due { border-color: var(--gold); }
+.char-cell.locked { opacity: 0.45; }
+.char-unit-head { display: flex; align-items: center; gap: 10px; margin-top: 14px; }
+.char-unit-head strong { flex: 1; }
+.char-unit-head .muted { font-size: 12px; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>中文 <span>HSG Chinesisch A1 · Vokabeln</span></h1>
+    <nav>
+      <button data-tab="dash" class="active">Übersicht</button>
+      <button data-tab="learn">Lernen</button>
+      <button data-tab="review">Wiederholen</button>
+      <button data-tab="chars">Zeichen</button>
+      <button data-tab="list">Liste</button>
+      <button data-tab="settings">Einstellungen</button>
+    </nav>
+  </header>
+  <main id="view"></main>
+  <footer>Offizielle HSG-Vokabelliste (Einheit 0–8, 307 Wörter) + Schriftzeichenliste (90 Zeichen) · Kursplan Gruppe 3 HS26 · Fortschritt wird lokal im Browser gespeichert</footer>
+<script>
+// Zentrale Konfiguration — alle Stellschrauben der App an einem Ort.
+// Persönliche Einstellungen (Modus, Tempo, Übungsarten) liegen NICHT hier, sondern in der App
+// unter „Einstellungen" und werden pro Nutzer im Browser gespeichert.
+const CONFIG = {
+  appName: 'HSG Chinesisch A1 · Vokabeln',
+  storageKey: 'hsg-chinesisch-vokabeln-v1',
+
+  // Entscheidung nach jeder Lernrunde:
+  advanceAccuracy: 0.85, // ab dieser Genauigkeit gilt die Portion als „sitzt"
+  repeatAccuracy: 0.6,   // darunter -> Portion komplett wiederholen
+
+  masteryStreak: 2,      // so oft muss jedes Wort in einer Runde in Folge richtig sein
+  requeueGap: 2,         // falsche Wörter kommen nach so vielen anderen Aufgaben wieder dran
+  maxWrongPerItem: 3,    // nach so vielen Fehlern fliegt ein Wort aus der Runde (Runde endet garantiert)
+
+  // Ein Wort gilt als „gelernt", wenn es so oft in Folge richtig war (SRS-Wiederholungen):
+  masteredReps: 2,
+
+  // Spaced Repetition (SM-2-Variante):
+  srs: {
+    firstIntervalDays: 1,
+    secondIntervalDays: 3,
+    startEF: 2.5,
+    minEF: 1.3,
+    maxIntervalDays: 90,
+  },
+
+  // Sprachausgabe (macOS/iOS/Browser-TTS):
+  tts: { lang: 'zh-CN', rate: 0.8 },
+
+  // Standard-Einstellungen für neue Nutzer (jeder kann sie in der App ändern):
+  defaultSettings: {
+    name: '',
+    mode: 'kursplan',        // 'kursplan' = Einheiten werden nach Semesterplan frei | 'frei' = eigenes Tempo
+    portionSize: 10,         // neue Wörter pro Lernrunde
+    dailyNew: 0,             // Limit neue Wörter pro Tag (0 = unbegrenzt) — nur im Modus „frei" relevant
+    scope: 'hs26',           // 'hs26' = Einstieg + Einheit 1–8 | 'buch' = ganzes Buch (Einheit 1–12)
+    includeExtra: false,     // farbige Nicht-Zielwörter des Buchs mitlernen
+    showEnglish: false,      // englische Bedeutung zusätzlich anzeigen
+    exercises: { h2d: true, d2h: true, a2d: true, pinyin: true, h2p: true },
+    // Kursplan: ab welchem Datum welche Einheit „dran" ist (ISO-Datum, editierbar).
+    // Abgeleitet aus CONFIG.course.sessions: Eine Einheit wird am Tag nach der vorigen Kursstunde frei, damit die Vokabeln
+    // für das VOR-Unterrichts-Quiz schon vor der Stunde geübt werden können. Einheit 9–12 (FS27) bleiben Annahme.
+    schedule: {
+      0: '2026-09-14', 1: '2026-09-18', 2: '2026-09-25', 3: '2026-10-02', 4: '2026-10-09',
+      5: '2026-10-23', 6: '2026-11-13', 7: '2026-11-27', 8: '2026-12-04',
+      9: '2027-02-22', 10: '2027-03-15', 11: '2027-04-05', 12: '2027-04-26',
+    },
+  },
+};
+
+// Echter Kursverlauf (Quelle: Canvas-Kurs 27863 „Chinesisch A1, Gruppe 3", Seite „Unterrichtsstunde im Überblick (HS)"
+// + Ankündigungen, Stand 16.09.2026). 12 Doppelstunden im HS26, Semesterbreak 26.10.–08.11.
+CONFIG.course = {
+  name: 'Chinesisch A1, Gruppe 3 (1,862,1.03)',
+  lecturer: 'Michelle Maire Tan',
+  weekday: 'Donnerstag',
+  time: '10:30–12:00',
+  canvasUrl: 'https://learning.unisg.ch/courses/27863',
+  quizletUrl: 'https://quizlet.com/woxueZhongwen/folders/chinesisch-a1-einstieg-einheit-8/sets',
+  quizletCharsUrl: 'https://quizlet.com/woxueZhongwen/folders/chinesisch-a1-schriftzeichenliste/sets',
+  // Termine der Gruppe 3 (Donnerstage). „units" = Einheiten, die in dieser Stunde dran sind.
+  // Nur Stunde 1 ist auf Canvas bereits veröffentlicht (Einstieg). Die Zuordnung ab Stunde 2 ist eine ANNAHME
+  // aus der Quiz-Struktur (Einheit 4, 6 und 8 haben je zwei Quizze → je zwei Stunden) — wird angepasst, sobald
+  // die Übersichtsseiten 2–12 auf Canvas erscheinen.
+  sessions: [
+    { n: 1,  date: '2026-09-17', units: [0], confirmed: true },
+    { n: 2,  date: '2026-09-24', units: [1] },
+    { n: 3,  date: '2026-10-01', units: [2] },
+    { n: 4,  date: '2026-10-08', units: [3] },
+    { n: 5,  date: '2026-10-15', units: [4] },
+    { n: 6,  date: '2026-10-22', units: [4] },
+    { n: 7,  date: '2026-11-12', units: [5] },
+    { n: 8,  date: '2026-11-19', units: [6] },
+    { n: 9,  date: '2026-11-26', units: [6] },
+    { n: 10, date: '2026-12-03', units: [7] },
+    { n: 11, date: '2026-12-10', units: [8] },
+    { n: 12, date: '2026-12-17', units: [8] },
+  ],
+  breakLabel: 'Semesterbreak 26.10.–08.11.2026',
+  // Prüfung (Merkblatt HS26): beide Teilleistungen erst im Folgesemester (FS27), je 50 %:
+  // mündliche Einzelprüfung + schriftliche Prüfung 120 Min. digital. 90 Schriftzeichen sind zu ERKENNEN (nicht schreiben).
+  exam: 'Prüfung im FS27: mündlich (50 %) + schriftlich 120 Min. digital (50 %); 90 Schriftzeichen erkennen',
+};
+
+if (typeof module !== 'undefined' && module.exports) module.exports = CONFIG;
+
+;
+// AUTOMATISCH ERZEUGT von tools/build_data.py — nicht von Hand ändern.
+// Einheit 0–8: offizielle HSG-Kursliste (Excel). Einheit 9–12: Lehrbuch „Discover China 1", eigene Übersetzung.
+// target=false: im Buch farbig markierte Zusatzwörter (nur Einheit 9–12).
+// chars: offizielle Schriftzeichenliste (90 Zeichen zu erkennen), Einheiten-Zuordnung laut Zeichenliste.
+const VOCAB = {
+ "units": [
+  {
+   "id": 0,
+   "hanzi": "入门",
+   "title": "Einstieg",
+   "topic": "Pinyin & Aussprache, sich vorstellen, alltägliche Ausdrücke, Zahlen 0–100, Unterrichtswortschatz",
+   "grammar": "Anlaute, Auslaute, die vier Töne; Einführung in die chinesische Schrift",
+   "hs26": true,
+   "words": [
+    {
+     "id": "u0-说",
+     "hanzi": "说",
+     "pinyin": "shuō",
+     "pos": "V.",
+     "de": "sagen, sprechen",
+     "note": "",
+     "unit": 0,
+     "en": "say",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u0-读",
+     "hanzi": "读",
+     "pinyin": "dú",
+     "pos": "V.",
+     "de": "lesen",
+     "note": "",
+     "unit": 0,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u0-再见",
+     "hanzi": "再见",
+     "pinyin": "zàijiàn",
+     "pos": "Redewendung",
+     "de": "Auf Wiedersehen!",
+     "note": "1) zài: wieder  2) jiàn: sehen",
+     "unit": 0,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u0-没关系",
+     "hanzi": "没关系",
+     "pinyin": "méiguānxi",
+     "pos": "Redewendung",
+     "de": "Das macht nichts.",
+     "note": "",
+     "unit": 0,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u0-不客气",
+     "hanzi": "不客气",
+     "pinyin": "bù kèqi",
+     "pos": "Redewendung",
+     "de": "Nichts zu danken.",
+     "note": "",
+     "unit": 0,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u0-用",
+     "hanzi": "用",
+     "pinyin": "yòng",
+     "pos": "V.",
+     "de": "benutzen, gebrauchen",
+     "note": "",
+     "unit": 0,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u0-德语",
+     "hanzi": "德语",
+     "pinyin": "Déyǔ",
+     "pos": "N.",
+     "de": "Deutsch",
+     "note": "1) dé: Transliteration von \"Deutsch\"  2) yǔ: Sprache",
+     "unit": 0,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u0-汉语",
+     "hanzi": "汉语",
+     "pinyin": "Hànyǔ",
+     "pos": "N.",
+     "de": "Chinesisch",
+     "note": "1) Hàn: die grösste ethnische Gruppe in China",
+     "unit": 0,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u0-怎么",
+     "hanzi": "怎么",
+     "pinyin": "zěnme",
+     "pos": "Fragewort",
+     "de": "wie",
+     "note": "(…用汉语怎么说?  … yòng Hànyǔ zěnme shuō? = Wie sagt man … auf Chinesisch?)",
+     "unit": 0,
+     "en": "how",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u0-零",
+     "hanzi": "零",
+     "pinyin": "líng",
+     "pos": "Num.",
+     "de": "null",
+     "note": "",
+     "unit": 0,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u0-一",
+     "hanzi": "一",
+     "pinyin": "yī",
+     "pos": "Num.",
+     "de": "eins",
+     "note": "",
+     "unit": 0,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u0-二",
+     "hanzi": "二",
+     "pinyin": "èr",
+     "pos": "Num.",
+     "de": "zwei",
+     "note": "",
+     "unit": 0,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u0-三",
+     "hanzi": "三",
+     "pinyin": "sān",
+     "pos": "Num.",
+     "de": "drei",
+     "note": "",
+     "unit": 0,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u0-四",
+     "hanzi": "四",
+     "pinyin": "sì",
+     "pos": "Num.",
+     "de": "vier",
+     "note": "",
+     "unit": 0,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u0-五",
+     "hanzi": "五",
+     "pinyin": "wǔ",
+     "pos": "Num.",
+     "de": "fünf",
+     "note": "",
+     "unit": 0,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u0-六",
+     "hanzi": "六",
+     "pinyin": "liù",
+     "pos": "Num.",
+     "de": "sechs",
+     "note": "",
+     "unit": 0,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u0-七",
+     "hanzi": "七",
+     "pinyin": "qī",
+     "pos": "Num.",
+     "de": "sieben",
+     "note": "",
+     "unit": 0,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u0-八",
+     "hanzi": "八",
+     "pinyin": "bā",
+     "pos": "Num.",
+     "de": "acht",
+     "note": "",
+     "unit": 0,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u0-九",
+     "hanzi": "九",
+     "pinyin": "jiǔ",
+     "pos": "Num.",
+     "de": "neun",
+     "note": "",
+     "unit": 0,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u0-十",
+     "hanzi": "十",
+     "pinyin": "shí",
+     "pos": "Num.",
+     "de": "zehn",
+     "note": "",
+     "unit": 0,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    }
+   ]
+  },
+  {
+   "id": 1,
+   "hanzi": "你好!",
+   "title": "Begrüssung",
+   "topic": "Begrüssung, Namen und Anreden",
+   "grammar": "Einfache Satzstrukturen, Personalpronomen, Possessivpronomen",
+   "hs26": true,
+   "words": [
+    {
+     "id": "u1-你好",
+     "hanzi": "你好",
+     "pinyin": "nǐ hǎo",
+     "pos": "",
+     "de": "guten Tag, hallo",
+     "note": "",
+     "unit": 1,
+     "en": "hello",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-你",
+     "hanzi": "你",
+     "pinyin": "nǐ",
+     "pos": "Pron.",
+     "de": "du, dir, dich",
+     "note": "",
+     "unit": 1,
+     "en": "you",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-好",
+     "hanzi": "好",
+     "pinyin": "hǎo",
+     "pos": "Adj.",
+     "de": "gut (sein)",
+     "note": "",
+     "unit": 1,
+     "en": "good, OK",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-请问",
+     "hanzi": "请问",
+     "pinyin": "qǐngwèn",
+     "pos": "",
+     "de": "darf ich fragen",
+     "note": "1) qǐng: bitte  2) wèn: fragen",
+     "unit": 1,
+     "en": "may I ask, excuse me",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-请",
+     "hanzi": "请",
+     "pinyin": "qǐng",
+     "pos": "V.",
+     "de": "bitten; einladen",
+     "note": "",
+     "unit": 1,
+     "en": "please, invite",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-问",
+     "hanzi": "问",
+     "pinyin": "wèn",
+     "pos": "V.",
+     "de": "fragen",
+     "note": "",
+     "unit": 1,
+     "en": "ask",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-叫",
+     "hanzi": "叫",
+     "pinyin": "jiào",
+     "pos": "V.",
+     "de": "heissen, rufen",
+     "note": "",
+     "unit": 1,
+     "en": "be called",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-什么",
+     "hanzi": "什么",
+     "pinyin": "shénme",
+     "pos": "Pron.",
+     "de": "was (für ein)",
+     "note": "",
+     "unit": 1,
+     "en": "what",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-名字",
+     "hanzi": "名字",
+     "pinyin": "míngzi",
+     "pos": "N.",
+     "de": "Name",
+     "note": "1) míng: Vorname  2) zì: Schriftzeichen",
+     "unit": 1,
+     "en": "name",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-我",
+     "hanzi": "我",
+     "pinyin": "wǒ",
+     "pos": "Pron.",
+     "de": "ich, mir, mich",
+     "note": "",
+     "unit": 1,
+     "en": "I, me",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-呢",
+     "hanzi": "呢",
+     "pinyin": "ne",
+     "pos": "Part.",
+     "de": "(Fragepartikel)",
+     "note": "",
+     "unit": 1,
+     "en": "(used to ask questions)",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-认识",
+     "hanzi": "认识",
+     "pinyin": "rènshi",
+     "pos": "V.",
+     "de": "kennen, kennenlernen, erkennen",
+     "note": "1) rèn: identifizieren  2) shi: kennen; Kenntnisse",
+     "unit": 1,
+     "en": "know, get to know",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-很",
+     "hanzi": "很",
+     "pinyin": "hěn",
+     "pos": "Adv.",
+     "de": "sehr",
+     "note": "",
+     "unit": 1,
+     "en": "very",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-高兴",
+     "hanzi": "高兴",
+     "pinyin": "gāoxìng",
+     "pos": "Adj.",
+     "de": "erfreut (sein)",
+     "note": "1) gāo: gross, hoch  2) xìng: Interesse, Lust",
+     "unit": 1,
+     "en": "glad, happy",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-小姐",
+     "hanzi": "小姐",
+     "pinyin": "xiǎojiě",
+     "pos": "N.",
+     "de": "Fräulein",
+     "note": "1) xiǎo: klein  2) jiě: ältere Schwester",
+     "unit": 1,
+     "en": "Miss",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-对不起",
+     "hanzi": "对不起",
+     "pinyin": "duìbuqǐ",
+     "pos": "",
+     "de": "Entschuldigung",
+     "note": "",
+     "unit": 1,
+     "en": "sorry",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-姓",
+     "hanzi": "姓",
+     "pinyin": "xìng",
+     "pos": "N./V.",
+     "de": "Nachname, mit Nachnamen heissen",
+     "note": "",
+     "unit": 1,
+     "en": "surname, family name",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-中文",
+     "hanzi": "中文",
+     "pinyin": "Zhōngwén",
+     "pos": "N.",
+     "de": "Chinesisch",
+     "note": "1) wén: Schrift",
+     "unit": 1,
+     "en": "Chinese",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-是",
+     "hanzi": "是",
+     "pinyin": "shì",
+     "pos": "V.",
+     "de": "sein",
+     "note": "",
+     "unit": 1,
+     "en": "be",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-你们",
+     "hanzi": "你们",
+     "pinyin": "nǐmen",
+     "pos": "Pron.",
+     "de": "ihr, euch",
+     "note": "",
+     "unit": 1,
+     "en": "you (plural)",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-大家",
+     "hanzi": "大家",
+     "pinyin": "dàjiā",
+     "pos": "Pron.",
+     "de": "alle",
+     "note": "1) dà: gross  2) jiā: Familie, Zuhause",
+     "unit": 1,
+     "en": "everybody",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-先生",
+     "hanzi": "先生",
+     "pinyin": "xiānsheng",
+     "pos": "N.",
+     "de": "Herr",
+     "note": "",
+     "unit": 1,
+     "en": "Mr",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-女士",
+     "hanzi": "女士",
+     "pinyin": "nǚshì",
+     "pos": "N.",
+     "de": "Frau (neutral)",
+     "note": "1) nǚ: weiblich  2) shì: Suffix \"Person\", Gelehrte, Studierte",
+     "unit": 1,
+     "en": "Ms",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-太太",
+     "hanzi": "太太",
+     "pinyin": "tàitai",
+     "pos": "N.",
+     "de": "Frau (verheiratet)",
+     "note": "",
+     "unit": 1,
+     "en": "Mrs",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-同学",
+     "hanzi": "同学",
+     "pinyin": "tóngxué",
+     "pos": "N.",
+     "de": "Kommilitone/-in",
+     "note": "1) tóng: zusammen  2) xué: lernen",
+     "unit": 1,
+     "en": "schoolmate",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u1-您",
+     "hanzi": "您",
+     "pinyin": "nín",
+     "pos": "Pron.",
+     "de": "Sie, Ihnen",
+     "note": "",
+     "unit": 1,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "hanzi": "你是哪里人?",
+   "title": "Länder, Nationalitäten",
+   "topic": "Länder, Nationalitäten, Wohnort, Sprachen",
+   "grammar": "Fragepronomen (shéi, nǎ, nǎli), Adverbien (bù, yě), Modalverb (huì), Konjunktionen (hé, dànshì), zusammengesetzte Wörter",
+   "hs26": true,
+   "words": [
+    {
+     "id": "u2-早上好",
+     "hanzi": "早上好",
+     "pinyin": "zǎoshang hǎo",
+     "pos": "",
+     "de": "Guten Morgen!",
+     "note": "1) zǎoshang: Morgen (zǎo: früh; shang: oben)",
+     "unit": 2,
+     "en": "good morning",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-日本",
+     "hanzi": "日本",
+     "pinyin": "Rìběn",
+     "pos": "N.",
+     "de": "Japan",
+     "note": "",
+     "unit": 2,
+     "en": "Japan",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-人",
+     "hanzi": "人",
+     "pinyin": "rén",
+     "pos": "N.",
+     "de": "Mensch, Person",
+     "note": "",
+     "unit": 2,
+     "en": "people",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-吗",
+     "hanzi": "吗",
+     "pinyin": "ma",
+     "pos": "Part.",
+     "de": "(Fragepartikel)",
+     "note": "",
+     "unit": 2,
+     "en": "(used to ask questions)",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-不",
+     "hanzi": "不",
+     "pinyin": "bù",
+     "pos": "Adv.",
+     "de": "nicht",
+     "note": "",
+     "unit": 2,
+     "en": "not, no",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-哪里",
+     "hanzi": "哪里",
+     "pinyin": "nǎli",
+     "pos": "Pron.",
+     "de": "wo, wohin",
+     "note": "",
+     "unit": 2,
+     "en": "where",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-哪",
+     "hanzi": "哪",
+     "pinyin": "nǎ",
+     "pos": "Pron.",
+     "de": "welche/-r/-s",
+     "note": "",
+     "unit": 2,
+     "en": "which",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-中国",
+     "hanzi": "中国",
+     "pinyin": "Zhōngguó",
+     "pos": "N.",
+     "de": "China",
+     "note": "1) zhōng: mitte  2) guó: Land, Staat",
+     "unit": 2,
+     "en": "China",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-国",
+     "hanzi": "国",
+     "pinyin": "guó",
+     "pos": "N.",
+     "de": "Land, Staat, Nation",
+     "note": "",
+     "unit": 2,
+     "en": "country",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-英国",
+     "hanzi": "英国",
+     "pinyin": "Yīngguó",
+     "pos": "N.",
+     "de": "Grossbritannien",
+     "note": "1) yīng: Transliteration von \"England\";  2) guó: Land, Staat",
+     "unit": 2,
+     "en": "UK",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-住",
+     "hanzi": "住",
+     "pinyin": "zhù",
+     "pos": "V.",
+     "de": "wohnen, leben",
+     "note": "",
+     "unit": 2,
+     "en": "live",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-在",
+     "hanzi": "在",
+     "pinyin": "zài",
+     "pos": "Präp.",
+     "de": "in, an",
+     "note": "",
+     "unit": 2,
+     "en": "at, in",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-伦敦",
+     "hanzi": "伦敦",
+     "pinyin": "Lúndūn",
+     "pos": "N.",
+     "de": "London",
+     "note": "",
+     "unit": 2,
+     "en": "London",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-北京",
+     "hanzi": "北京",
+     "pinyin": "Běijīng",
+     "pos": "N.",
+     "de": "Beijing",
+     "note": "1) běi: Norden  2) jīng: Hauptstadt",
+     "unit": 2,
+     "en": "Beijing",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-他们",
+     "hanzi": "他们",
+     "pinyin": "tāmen",
+     "pos": "Pron.",
+     "de": "sie, ihnen",
+     "note": "",
+     "unit": 2,
+     "en": "they, them",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-电影",
+     "hanzi": "电影",
+     "pinyin": "diànyǐng",
+     "pos": "N.",
+     "de": "Film",
+     "note": "1) diàn: Elektrizität  2) yǐng: Schatten",
+     "unit": 2,
+     "en": "movie, film",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-明星",
+     "hanzi": "明星",
+     "pinyin": "míngxīng",
+     "pos": "N.",
+     "de": "Berühmheit, Star",
+     "note": "1) míng: hell  2) xīng: Stern",
+     "unit": 2,
+     "en": "celebrity",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-但是",
+     "hanzi": "但是",
+     "pinyin": "dànshì",
+     "pos": "Konj.",
+     "de": "aber",
+     "note": "",
+     "unit": 2,
+     "en": "but",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-美国",
+     "hanzi": "美国",
+     "pinyin": "Měiguó",
+     "pos": "N.",
+     "de": "Vereinigte Staaten von Amerika",
+     "note": "",
+     "unit": 2,
+     "en": "US",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-青岛",
+     "hanzi": "青岛",
+     "pinyin": "Qīngdǎo",
+     "pos": "N.",
+     "de": "Qingdao",
+     "note": "1) qīng: Farbton zwischen grün und blau  2) dǎo: Insel",
+     "unit": 2,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-香港",
+     "hanzi": "香港",
+     "pinyin": "Xiānggǎng",
+     "pos": "N.",
+     "de": "Hongkong",
+     "note": "1) xiāng: duftend  2) gǎng: Hafen",
+     "unit": 2,
+     "en": "Hong Kong",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-德国",
+     "hanzi": "德国",
+     "pinyin": "Déguó",
+     "pos": "N.",
+     "de": "Deutschland",
+     "note": "1) dé: Transliteration von \"Deutsch\";  2) guó: Land, Staat",
+     "unit": 2,
+     "en": "Germany",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-法国",
+     "hanzi": "法国",
+     "pinyin": "Fǎguó",
+     "pos": "N.",
+     "de": "Frankreich",
+     "note": "1) fǎ: Transliteration von \"Frankreich\";  2) guó: Land, Staat",
+     "unit": 2,
+     "en": "France",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-奥地利",
+     "hanzi": "奥地利",
+     "pinyin": "Àodìlì",
+     "pos": "N.",
+     "de": "Österreich",
+     "note": "",
+     "unit": 2,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-瑞士",
+     "hanzi": "瑞士",
+     "pinyin": "Ruìshì",
+     "pos": "N.",
+     "de": "Schweiz",
+     "note": "",
+     "unit": 2,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-意大利",
+     "hanzi": "意大利",
+     "pinyin": "Yìdàlì",
+     "pos": "N.",
+     "de": "Italien",
+     "note": "",
+     "unit": 2,
+     "en": "Italy",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-新加坡",
+     "hanzi": "新加坡",
+     "pinyin": "Xīnjiāpō",
+     "pos": "N.",
+     "de": "Singapur",
+     "note": "",
+     "unit": 2,
+     "en": "Singapore",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-圣加仑",
+     "hanzi": "圣加仑",
+     "pinyin": "Shèngjiālún",
+     "pos": "N.",
+     "de": "St. Gallen",
+     "note": "",
+     "unit": 2,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-语言",
+     "hanzi": "语言",
+     "pinyin": "yǔyán",
+     "pos": "N.",
+     "de": "Sprache",
+     "note": "1) yǔ: Sprache  2) yán: Sprache, Rede",
+     "unit": 2,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u2-会",
+     "hanzi": "会",
+     "pinyin": "huì",
+     "pos": "MV.",
+     "de": "können",
+     "note": "(我会说中文。 Wǒ huì shuō Zhōngwén.  = Ich kann Chinesisch sprechen.)",
+     "unit": 2,
+     "en": "can, be able to",
+     "target": true,
+     "src": "kurs"
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "hanzi": "你做什么工作?",
+   "title": "Familie, Beruf",
+   "topic": "Berufe, Familienmitglieder",
+   "grammar": "Adverbien (yě, dōu), Präposition & Verb (zài), Zähleinheitswort (gè)",
+   "hs26": true,
+   "words": [
+    {
+     "id": "u3-她",
+     "hanzi": "她",
+     "pinyin": "tā",
+     "pos": "Pron.",
+     "de": "sie, ihr",
+     "note": "",
+     "unit": 3,
+     "en": "she, her",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-妹妹",
+     "hanzi": "妹妹",
+     "pinyin": "mèimei",
+     "pos": "N.",
+     "de": "jüngere Schwester",
+     "note": "",
+     "unit": 3,
+     "en": "younger sister",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-这",
+     "hanzi": "这",
+     "pinyin": "zhè",
+     "pos": "Pron.",
+     "de": "diese/-r/-s",
+     "note": "",
+     "unit": 3,
+     "en": "this",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-弟弟",
+     "hanzi": "弟弟",
+     "pinyin": "dìdi",
+     "pos": "N.",
+     "de": "jüngerer Bruder",
+     "note": "",
+     "unit": 3,
+     "en": "younger brother",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-和",
+     "hanzi": "和",
+     "pinyin": "hé",
+     "pos": "Konj.",
+     "de": "und, mit",
+     "note": "",
+     "unit": 3,
+     "en": "and",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-也",
+     "hanzi": "也",
+     "pinyin": "yě",
+     "pos": "Adv.",
+     "de": "auch",
+     "note": "",
+     "unit": 3,
+     "en": "also",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-学生",
+     "hanzi": "学生",
+     "pinyin": "xuésheng",
+     "pos": "N.",
+     "de": "Schüler/-in, Student/-in",
+     "note": "1) xué: lernen  2) shēng/sheng: ein Suffix für Person",
+     "unit": 3,
+     "en": "student",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-记者",
+     "hanzi": "记者",
+     "pinyin": "jìzhě",
+     "pos": "N.",
+     "de": "Journalist/-in",
+     "note": "1) jì: notieren  2) zhě: Suffix \"Person\"",
+     "unit": 3,
+     "en": "journalist",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-爸爸",
+     "hanzi": "爸爸",
+     "pinyin": "bàba",
+     "pos": "N.",
+     "de": "Papa, Vater",
+     "note": "",
+     "unit": 3,
+     "en": "father",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-做",
+     "hanzi": "做",
+     "pinyin": "zuò",
+     "pos": "V.",
+     "de": "machen",
+     "note": "",
+     "unit": 3,
+     "en": "do",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-工作",
+     "hanzi": "工作",
+     "pinyin": "gōngzuò",
+     "pos": "V./N.",
+     "de": "arbeiten, Arbeit",
+     "note": "1) gōng: Arbeit  2) zuò: machen, tun",
+     "unit": 3,
+     "en": "work, job",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-他",
+     "hanzi": "他",
+     "pinyin": "tā",
+     "pos": "Pron.",
+     "de": "er, ihm, ihn",
+     "note": "",
+     "unit": 3,
+     "en": "he, him",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-医生",
+     "hanzi": "医生",
+     "pinyin": "yīshēng",
+     "pos": "N.",
+     "de": "Arzt/Ärztin",
+     "note": "1) yī: heilen  2) shēng: Suffix \"Person\"",
+     "unit": 3,
+     "en": "doctor",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-妈妈",
+     "hanzi": "妈妈",
+     "pinyin": "māma",
+     "pos": "N.",
+     "de": "Mama, Mutter",
+     "note": "",
+     "unit": 3,
+     "en": "mother",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-医院",
+     "hanzi": "医院",
+     "pinyin": "yīyuàn",
+     "pos": "N.",
+     "de": "Krankenhaus",
+     "note": "1) yī: heilen  2) yuàn: Anstalt, Amt",
+     "unit": 3,
+     "en": "hospital",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-都",
+     "hanzi": "都",
+     "pinyin": "dōu",
+     "pos": "Adv.",
+     "de": "alle, beide",
+     "note": "",
+     "unit": 3,
+     "en": "both, all",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-家",
+     "hanzi": "家",
+     "pinyin": "jiā",
+     "pos": "N.",
+     "de": "Familie, Zuhause",
+     "note": "",
+     "unit": 3,
+     "en": "family, home",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-的",
+     "hanzi": "的",
+     "pinyin": "de",
+     "pos": "Part.",
+     "de": "(Attributpartikel)",
+     "note": "",
+     "unit": 3,
+     "en": "(structural particle)",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-照片",
+     "hanzi": "照片",
+     "pinyin": "zhàopiàn",
+     "pos": "N.",
+     "de": "Foto",
+     "note": "1) zhào: fotografieren, beleuchten  2) piàn: Blatt, Scheibe",
+     "unit": 3,
+     "en": "photo",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-哥哥",
+     "hanzi": "哥哥",
+     "pinyin": "gēge",
+     "pos": "N.",
+     "de": "älterer Bruder",
+     "note": "",
+     "unit": 3,
+     "en": "elder brother",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-学校",
+     "hanzi": "学校",
+     "pinyin": "xuéxiào",
+     "pos": "N.",
+     "de": "Schule",
+     "note": "1) xué: lernen  2) xiào: Schule, Schulgebäude",
+     "unit": 3,
+     "en": "school",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-老师",
+     "hanzi": "老师",
+     "pinyin": "lǎoshī",
+     "pos": "N.",
+     "de": "Lehrer/-in",
+     "note": "1) lǎo: ein Präfix, das den Respekt für eine Person anzeigt  2) shī: Meister; Experte/-in",
+     "unit": 3,
+     "en": "teacher",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-姐姐",
+     "hanzi": "姐姐",
+     "pinyin": "jiějie",
+     "pos": "N.",
+     "de": "ältere Schwester",
+     "note": "",
+     "unit": 3,
+     "en": "elder sister",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-护士",
+     "hanzi": "护士",
+     "pinyin": "hùshi",
+     "pos": "N.",
+     "de": "Krankenpfleger/-in",
+     "note": "1) hù: sich kummern  2) shi: Suffix \"Person\", Gelehrte, Studierte",
+     "unit": 3,
+     "en": "nurse",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-律师",
+     "hanzi": "律师",
+     "pinyin": "lǜshī",
+     "pos": "N.",
+     "de": "Rechtsanwalt/Rechtsanwältin",
+     "note": "1) lǜ: Recht, Gesetz  2) shī: Meister; Experte/-in",
+     "unit": 3,
+     "en": "lawyer",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-警察",
+     "hanzi": "警察",
+     "pinyin": "jǐngchá",
+     "pos": "N.",
+     "de": "Polizist/-in",
+     "note": "1) jǐng: warnen  2) chá: beobachten, untersuchen",
+     "unit": 3,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-那",
+     "hanzi": "那",
+     "pinyin": "nà",
+     "pos": "Pron.",
+     "de": "jene/-r/-s",
+     "note": "",
+     "unit": 3,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-兄弟姐妹",
+     "hanzi": "兄弟姐妹",
+     "pinyin": "xiōngdì jiěmèi",
+     "pos": "N.",
+     "de": "Geschwister",
+     "note": "1) xiōng: ein altes Wort für \"älteren Bruder\"",
+     "unit": 3,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-经济",
+     "hanzi": "经济",
+     "pinyin": "jīngjì",
+     "pos": "N.",
+     "de": "Wirtschaft",
+     "note": "",
+     "unit": 3,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-个",
+     "hanzi": "个",
+     "pinyin": "gè",
+     "pos": "ZEW",
+     "de": "allgemeines ZEW",
+     "note": "",
+     "unit": 3,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u3-两",
+     "hanzi": "两",
+     "pinyin": "liǎng",
+     "pos": "Num.",
+     "de": "zwei",
+     "note": "",
+     "unit": 3,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "hanzi": "他真高!",
+   "title": "Das Aussehen von Personen",
+   "topic": "Aussehen von Personen, Favoriten",
+   "grammar": "SAA-Struktur, Adjektive und Adjektivattribute, Superlativ mit „zuì\", verbloser Satz, „yīnwèi …, suǒyǐ …\"",
+   "hs26": true,
+   "words": [
+    {
+     "id": "u4-谁",
+     "hanzi": "谁",
+     "pinyin": "shéi",
+     "pos": "Pron.",
+     "de": "wer, wem, wen",
+     "note": "",
+     "unit": 4,
+     "en": "who",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-上海",
+     "hanzi": "上海",
+     "pinyin": "Shànghǎi",
+     "pos": "N.",
+     "de": "Shanghai",
+     "note": "1) shàng: oben, steigern  2) hǎi: Meer",
+     "unit": 4,
+     "en": "Shanghai",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-现在",
+     "hanzi": "现在",
+     "pinyin": "xiànzài",
+     "pos": "N.",
+     "de": "jetzt",
+     "note": "",
+     "unit": 4,
+     "en": "now",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-多大",
+     "hanzi": "多大",
+     "pinyin": "duō dà",
+     "pos": "",
+     "de": "wie alt",
+     "note": "1) duō: viel, wie viel  2) dà: gross",
+     "unit": 4,
+     "en": "how old",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-岁",
+     "hanzi": "岁",
+     "pinyin": "suì",
+     "pos": "N.",
+     "de": "Jahre alt",
+     "note": "",
+     "unit": 4,
+     "en": "year(s) old",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-知道",
+     "hanzi": "知道",
+     "pinyin": "zhīdào",
+     "pos": "V.",
+     "de": "wissen",
+     "note": "1) zhī: kennen  2) dào: Weg; Art und Weise",
+     "unit": 4,
+     "en": "know",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-真",
+     "hanzi": "真",
+     "pinyin": "zhēn",
+     "pos": "Adv./Adj.",
+     "de": "echt, wirklich (sein)",
+     "note": "",
+     "unit": 4,
+     "en": "really, so",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-高",
+     "hanzi": "高",
+     "pinyin": "gāo",
+     "pos": "Adj.",
+     "de": "gross, hoch (sein)",
+     "note": "",
+     "unit": 4,
+     "en": "tall",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-帅",
+     "hanzi": "帅",
+     "pinyin": "shuài",
+     "pos": "Adj.",
+     "de": "gutaussehend (sein)",
+     "note": "",
+     "unit": 4,
+     "en": "handsome",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-酷",
+     "hanzi": "酷",
+     "pinyin": "kù",
+     "pos": "Adj.",
+     "de": "cool (sein)",
+     "note": "",
+     "unit": 4,
+     "en": "cool",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-最",
+     "hanzi": "最",
+     "pinyin": "zuì",
+     "pos": "Adv.",
+     "de": "(zur Superlativbildung)",
+     "note": "",
+     "unit": 4,
+     "en": "most",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-喜欢",
+     "hanzi": "喜欢",
+     "pinyin": "xǐhuan",
+     "pos": "V./MV.",
+     "de": "mögen, gerne haben",
+     "note": "1) xǐ: sich freuen  2) huān/huan: freudig, fröhlich",
+     "unit": 4,
+     "en": "like",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-篮球",
+     "hanzi": "篮球",
+     "pinyin": "lánqiú",
+     "pos": "N.",
+     "de": "Basketball",
+     "note": "1) lán: Korb  2) qiú: Ball",
+     "unit": 4,
+     "en": "basketball",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-运动员",
+     "hanzi": "运动员",
+     "pinyin": "yùndòngyuán",
+     "pos": "N.",
+     "de": "Sportler/-in",
+     "note": "1) yùndòng: Sport, Sport treiben  2) yuán: Suffix \"Person\", Mitglied, Angestellte",
+     "unit": 4,
+     "en": "athlete",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-姓名",
+     "hanzi": "姓名",
+     "pinyin": "xìngmíng",
+     "pos": "N.",
+     "de": "Name und Vorname",
+     "note": "1) xìng: Nachname  2) míng: Vorname",
+     "unit": 4,
+     "en": "full name",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-年龄",
+     "hanzi": "年龄",
+     "pinyin": "niánlíng",
+     "pos": "N.",
+     "de": "Alter",
+     "note": "1) nián: Jahr  2) líng: Alter",
+     "unit": 4,
+     "en": "age",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-出生地",
+     "hanzi": "出生地",
+     "pinyin": "chūshēngdì",
+     "pos": "N.",
+     "de": "Geburtsort",
+     "note": "1) chūshēng: geboren  2) dì: Ort",
+     "unit": 4,
+     "en": "place of birth",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-国籍",
+     "hanzi": "国籍",
+     "pinyin": "guójí",
+     "pos": "N.",
+     "de": "Nationalität",
+     "note": "1) guó: Staat  2) jí: Angehörigkeit",
+     "unit": 4,
+     "en": "nationality",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-电子邮箱",
+     "hanzi": "电子邮箱",
+     "pinyin": "diànzǐ yóuxiāng",
+     "pos": "N.",
+     "de": "E-Mail-Adresse",
+     "note": "1) diàn: Elektrizität  2) diànzǐ: elektronisch  3) yóuxiāng: Briefkasten",
+     "unit": 4,
+     "en": "email box/address",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-动物",
+     "hanzi": "动物",
+     "pinyin": "dòngwù",
+     "pos": "N.",
+     "de": "Tier",
+     "note": "1) dòng: sich bewegen; Bewegung  2) wù: Sache",
+     "unit": 4,
+     "en": "animal",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-熊猫",
+     "hanzi": "熊猫",
+     "pinyin": "xióngmāo",
+     "pos": "N.",
+     "de": "Grosser Panda",
+     "note": "1) xióng: Bär  2) māo: Katze",
+     "unit": 4,
+     "en": "panda",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-可爱",
+     "hanzi": "可爱",
+     "pinyin": "kě'ài",
+     "pos": "Adj.",
+     "de": "niedlich (sein)",
+     "note": "1) kě: können  2) ài: lieben",
+     "unit": 4,
+     "en": "cute",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-演员",
+     "hanzi": "演员",
+     "pinyin": "yǎnyuán",
+     "pos": "N.",
+     "de": "Schauspieler/-in",
+     "note": "1) yǎn: aufführen  2) yuán: Suffix \"Person\", Mitglied, Angestellte",
+     "unit": 4,
+     "en": "actor, actress",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-忙",
+     "hanzi": "忙",
+     "pinyin": "máng",
+     "pos": "Adj.",
+     "de": "beschäftigt (sein)",
+     "note": "",
+     "unit": 4,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-老",
+     "hanzi": "老",
+     "pinyin": "lǎo",
+     "pos": "Adj.",
+     "de": "alt (sein)",
+     "note": "",
+     "unit": 4,
+     "en": "old",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-年轻",
+     "hanzi": "年轻",
+     "pinyin": "niánqīng",
+     "pos": "Adj.",
+     "de": "jung (sein)",
+     "note": "1) nián: Jahr  2) qīng: leicht",
+     "unit": 4,
+     "en": "young",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-漂亮",
+     "hanzi": "漂亮",
+     "pinyin": "piàoliang",
+     "pos": "Adj.",
+     "de": "hübsch (sein)",
+     "note": "",
+     "unit": 4,
+     "en": "pretty",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-矮",
+     "hanzi": "矮",
+     "pinyin": "ǎi",
+     "pos": "Adj.",
+     "de": "klein (sein) (von Wuchs)",
+     "note": "",
+     "unit": 4,
+     "en": "short (height)",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-累",
+     "hanzi": "累",
+     "pinyin": "lèi",
+     "pos": "Adj.",
+     "de": "müde, k.o.",
+     "note": "",
+     "unit": 4,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-棒",
+     "hanzi": "棒",
+     "pinyin": "bàng",
+     "pos": "Adj.",
+     "de": "toll, super",
+     "note": "",
+     "unit": 4,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-千",
+     "hanzi": "千",
+     "pinyin": "qiān",
+     "pos": "Num.",
+     "de": "tausend",
+     "note": "",
+     "unit": 4,
+     "en": "thousand",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-熊",
+     "hanzi": "熊",
+     "pinyin": "xióng",
+     "pos": "N.",
+     "de": "Bär",
+     "note": "",
+     "unit": 4,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-猫",
+     "hanzi": "猫",
+     "pinyin": "māo",
+     "pos": "N.",
+     "de": "Katze",
+     "note": "",
+     "unit": 4,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-狗",
+     "hanzi": "狗",
+     "pinyin": "gǒu",
+     "pos": "N.",
+     "de": "Hund",
+     "note": "",
+     "unit": 4,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-因为",
+     "hanzi": "因为",
+     "pinyin": "yīnwèi",
+     "pos": "Konj.",
+     "de": "weil",
+     "note": "",
+     "unit": 4,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-所以",
+     "hanzi": "所以",
+     "pinyin": "suǒyǐ",
+     "pos": "Konj.",
+     "de": "deshalb",
+     "note": "",
+     "unit": 4,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u4-觉得",
+     "hanzi": "觉得",
+     "pinyin": "juéde",
+     "pos": "V.",
+     "de": "meinen, finden",
+     "note": "(我觉得他真棒!  Wǒ juéde tā zhēn bàng! = Ich finde ihn wirklich toll!)",
+     "unit": 4,
+     "en": "think, feel",
+     "target": true,
+     "src": "kurs"
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "hanzi": "这是我的电话号码",
+   "title": "Adressen, Kontaktnummern",
+   "topic": "Adresse, Kontaktnummer, jemanden anrufen",
+   "grammar": "Fragepronomen „duōshao\", Verb & Präposition „gěi\", Modalverb „kěyǐ\", Adjektive „xīn\", „lǎo\", „hǎo\"",
+   "hs26": true,
+   "words": [
+    {
+     "id": "u5-电话",
+     "hanzi": "电话",
+     "pinyin": "diànhuà",
+     "pos": "N.",
+     "de": "Telefon",
+     "note": "1) diàn: elektronisch  2) huà: Rede",
+     "unit": 5,
+     "en": "telephone",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-号码",
+     "hanzi": "号码",
+     "pinyin": "hàomǎ",
+     "pos": "N.",
+     "de": "Nummer, Code",
+     "note": "1) hào: Nummer; Tag; Grösse  2) mǎ: Nummer, Ziffer",
+     "unit": 5,
+     "en": "number, code",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-手机",
+     "hanzi": "手机",
+     "pinyin": "shǒujī",
+     "pos": "N.",
+     "de": "Mobiltelefon",
+     "note": "1) shǒu: Hand  2) jī: Gerät",
+     "unit": 5,
+     "en": "mobile phone",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-多少",
+     "hanzi": "多少",
+     "pinyin": "duōshao",
+     "pos": "Pron.",
+     "de": "wieviel/-e",
+     "note": "1) duō: viel; Fragewort \"wie\" vor Adjektiv  2) shǎo: wenig",
+     "unit": 5,
+     "en": "what, how many/much",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-公园",
+     "hanzi": "公园",
+     "pinyin": "gōngyuán",
+     "pos": "N.",
+     "de": "Park",
+     "note": "1) gōng: öffentlich  2) yuán: Garten, Park",
+     "unit": 5,
+     "en": "park",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-路",
+     "hanzi": "路",
+     "pinyin": "lù",
+     "pos": "N.",
+     "de": "Strasse, Weg",
+     "note": "",
+     "unit": 5,
+     "en": "road",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-号",
+     "hanzi": "号",
+     "pinyin": "hào",
+     "pos": "N./ZEW",
+     "de": "Nummer, Datum (mündlich)",
+     "note": "",
+     "unit": 5,
+     "en": "number, date (spoken)",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-新",
+     "hanzi": "新",
+     "pinyin": "xīn",
+     "pos": "Adj.",
+     "de": "neu (sein)",
+     "note": "",
+     "unit": 5,
+     "en": "new",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-地址",
+     "hanzi": "地址",
+     "pinyin": "dìzhǐ",
+     "pos": "N.",
+     "de": "Adresse",
+     "note": "1) dì: Boden, Erde, Land, Ort  2) zhǐ: Ort",
+     "unit": 5,
+     "en": "address",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-大学",
+     "hanzi": "大学",
+     "pinyin": "dàxué",
+     "pos": "N.",
+     "de": "Universität",
+     "note": "1) dà: gross; erwachsene  2) xué: lernen",
+     "unit": 5,
+     "en": "university",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-公寓",
+     "hanzi": "公寓",
+     "pinyin": "gōngyù",
+     "pos": "N.",
+     "de": "Wohnblock, Wohnhaus",
+     "note": "1) gōng: öffentlich  2) yù: Wohnung",
+     "unit": 5,
+     "en": "block of flats, apartment building",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-房间",
+     "hanzi": "房间",
+     "pinyin": "fángjiān",
+     "pos": "N.",
+     "de": "Zimmer",
+     "note": "1) fáng: Zimmer, Raum  2) jiān: Zimmer, Raum; Zähleinheitswort für Zimmer und Raum",
+     "unit": 5,
+     "en": "room",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-可以",
+     "hanzi": "可以",
+     "pinyin": "kěyǐ",
+     "pos": "MV.",
+     "de": "können, dürfen",
+     "note": "",
+     "unit": 5,
+     "en": "may, can",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-给",
+     "hanzi": "给",
+     "pinyin": "gěi",
+     "pos": "V./Präp.",
+     "de": "geben, für",
+     "note": "",
+     "unit": 5,
+     "en": "give, to",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-打电话",
+     "hanzi": "打电话",
+     "pinyin": "dǎ diànhuà",
+     "pos": "",
+     "de": "telefonieren",
+     "note": "1) dǎ: spielen, schlagen",
+     "unit": 5,
+     "en": "make a phone call",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-发件人",
+     "hanzi": "发件人",
+     "pinyin": "fājiànrén",
+     "pos": "N.",
+     "de": "Absender/-in",
+     "note": "1) fā: absenden  2) jiàn: Dokument",
+     "unit": 5,
+     "en": "sender",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-收到",
+     "hanzi": "收到",
+     "pinyin": "shōudào",
+     "pos": "V.",
+     "de": "empfangen",
+     "note": "1) shōu: erhalten, empfangen  2) dào: erreichen, ankommen",
+     "unit": 5,
+     "en": "receive",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-谢谢",
+     "hanzi": "谢谢",
+     "pinyin": "xièxie",
+     "pos": "V.",
+     "de": "danke, danken",
+     "note": "",
+     "unit": 5,
+     "en": "thank you",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-找",
+     "hanzi": "找",
+     "pinyin": "zhǎo",
+     "pos": "V.",
+     "de": "suchen",
+     "note": "",
+     "unit": 5,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-发送",
+     "hanzi": "发送",
+     "pinyin": "fāsòng",
+     "pos": "V.",
+     "de": "senden",
+     "note": "1) fā: absenden  2) sòng: schenken",
+     "unit": 5,
+     "en": "send",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-短信",
+     "hanzi": "短信",
+     "pinyin": "duǎnxìn",
+     "pos": "N.",
+     "de": "Kurznachricht (SMS)",
+     "note": "1) duǎn: kurz  2) xìn: Brief",
+     "unit": 5,
+     "en": "message",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-喂",
+     "hanzi": "喂",
+     "pinyin": "wéi/wèi",
+     "pos": "Ausrufewort",
+     "de": "hallo (Begrüssung am Telefon)",
+     "note": "",
+     "unit": 5,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u5-错",
+     "hanzi": "错",
+     "pinyin": "cuò",
+     "pos": "Adj.",
+     "de": "falsch",
+     "note": "",
+     "unit": 5,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "hanzi": "今天几号?",
+   "title": "Geburtstage, Einladungen",
+   "topic": "Daten und Wochentage, Einladung, tägliche Aktivitäten",
+   "grammar": "Fragepronomen „jǐ\", „nǎ\"; Verben „chī\", „qǐng\", „qù\"; Präposition „gēn\"; Zeitadverbiale",
+   "hs26": true,
+   "words": [
+    {
+     "id": "u6-二月",
+     "hanzi": "二月",
+     "pinyin": "Èryuè",
+     "pos": "N.",
+     "de": "Februar",
+     "note": "",
+     "unit": 6,
+     "en": "February",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-月",
+     "hanzi": "月",
+     "pinyin": "yuè",
+     "pos": "N.",
+     "de": "Monat; Mond",
+     "note": "",
+     "unit": 6,
+     "en": "month",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-生日",
+     "hanzi": "生日",
+     "pinyin": "shēngrì",
+     "pos": "N.",
+     "de": "Geburtstag",
+     "note": "1) shēng: geboren 2) rì: Tag",
+     "unit": 6,
+     "en": "birthday",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-真的",
+     "hanzi": "真的",
+     "pinyin": "zhēn de",
+     "pos": "",
+     "de": "wirklich",
+     "note": "1) zhēn: echt, wahr  2) de (Attributpartikel)",
+     "unit": 6,
+     "en": "really",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-今天",
+     "hanzi": "今天",
+     "pinyin": "jīntiān",
+     "pos": "N.",
+     "de": "heute",
+     "note": "1) jīn: jetzt; heute  2) tiān: Tag; Himmel",
+     "unit": 6,
+     "en": "today",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-几",
+     "hanzi": "几",
+     "pinyin": "jǐ",
+     "pos": "Pron.",
+     "de": "wieviel/-e",
+     "note": "",
+     "unit": 6,
+     "en": "how many",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-星期天",
+     "hanzi": "星期天",
+     "pinyin": "Xīngqītiān",
+     "pos": "N.",
+     "de": "Sonntag (mündlich)",
+     "note": "",
+     "unit": 6,
+     "en": "Sunday (spoken)",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-星期",
+     "hanzi": "星期",
+     "pinyin": "xīngqī",
+     "pos": "N.",
+     "de": "Woche",
+     "note": "",
+     "unit": 6,
+     "en": "week",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-我们",
+     "hanzi": "我们",
+     "pinyin": "wǒmen",
+     "pos": "Pron.",
+     "de": "wir, uns",
+     "note": "",
+     "unit": 6,
+     "en": "we, us",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-吃饭",
+     "hanzi": "吃饭",
+     "pinyin": "chīfàn",
+     "pos": "V. + O.",
+     "de": "Mahlzeit einnehmen",
+     "note": "1) chī: essen  2) fàn: gekochter Reis; Essen; Mahlzeit",
+     "unit": 6,
+     "en": "have a meal",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-吃",
+     "hanzi": "吃",
+     "pinyin": "chī",
+     "pos": "V.",
+     "de": "essen",
+     "note": "",
+     "unit": 6,
+     "en": "eat",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-去",
+     "hanzi": "去",
+     "pinyin": "qù",
+     "pos": "V.",
+     "de": "gehen",
+     "note": "",
+     "unit": 6,
+     "en": "go",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-厨房",
+     "hanzi": "厨房",
+     "pinyin": "chúfáng",
+     "pos": "N.",
+     "de": "Küche",
+     "note": "1) chú: Küche  2) fáng: Zimmer, Raum",
+     "unit": 6,
+     "en": "kitchen",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-怎么样",
+     "hanzi": "怎么样",
+     "pinyin": "zěnmeyàng",
+     "pos": "Pron.",
+     "de": "wie (ist/wäre)...?",
+     "note": "",
+     "unit": 6,
+     "en": "how about",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-那里",
+     "hanzi": "那里",
+     "pinyin": "nàli",
+     "pos": "Pron.",
+     "de": "dort",
+     "note": "",
+     "unit": 6,
+     "en": "there",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-中餐",
+     "hanzi": "中餐",
+     "pinyin": "Zhōngcān",
+     "pos": "N.",
+     "de": "chinesische Küche",
+     "note": "1) Zhōng: chinesisch  2) cān: Küche, Speise",
+     "unit": 6,
+     "en": "Chinese food",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-餐",
+     "hanzi": "餐",
+     "pinyin": "cān",
+     "pos": "N.",
+     "de": "Küche, Speise",
+     "note": "",
+     "unit": 6,
+     "en": "cuisine, meal",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-好吃",
+     "hanzi": "好吃",
+     "pinyin": "hǎochī",
+     "pos": "Adj.",
+     "de": "köstlich, lecker (sein)",
+     "note": "",
+     "unit": 6,
+     "en": "tasty",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-没问题",
+     "hanzi": "没问题",
+     "pinyin": "méi wèntí",
+     "pos": "",
+     "de": "kein Problem",
+     "note": "1) méi: nicht haben  2) wèntí: Frage",
+     "unit": 6,
+     "en": "no problem",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-六月",
+     "hanzi": "六月",
+     "pinyin": "Liùyuè",
+     "pos": "N.",
+     "de": "Juni",
+     "note": "",
+     "unit": 6,
+     "en": "June",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-日",
+     "hanzi": "日",
+     "pinyin": "rì",
+     "pos": "N.",
+     "de": "Datum (schriftlich)",
+     "note": "",
+     "unit": 6,
+     "en": "date (written)",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-星期一",
+     "hanzi": "星期一",
+     "pinyin": "Xīngqīyī",
+     "pos": "N.",
+     "de": "Montag",
+     "note": "",
+     "unit": 6,
+     "en": "Monday",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-星期二",
+     "hanzi": "星期二",
+     "pinyin": "Xīngqī'èr",
+     "pos": "N.",
+     "de": "Dienstag",
+     "note": "",
+     "unit": 6,
+     "en": "Tuesday",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-星期三",
+     "hanzi": "星期三",
+     "pinyin": "Xīngqīsān",
+     "pos": "N.",
+     "de": "Mittwoch",
+     "note": "",
+     "unit": 6,
+     "en": "Wednesday",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-星期四",
+     "hanzi": "星期四",
+     "pinyin": "Xīngqīsì",
+     "pos": "N.",
+     "de": "Donnerstag",
+     "note": "",
+     "unit": 6,
+     "en": "Thursday",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-星期五",
+     "hanzi": "星期五",
+     "pinyin": "Xīngqīwǔ",
+     "pos": "N.",
+     "de": "Freitag",
+     "note": "",
+     "unit": 6,
+     "en": "Friday",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-星期六",
+     "hanzi": "星期六",
+     "pinyin": "Xīngqīliù",
+     "pos": "N.",
+     "de": "Samstag",
+     "note": "",
+     "unit": 6,
+     "en": "Saturday",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-星期日",
+     "hanzi": "星期日",
+     "pinyin": "Xīngqīrì",
+     "pos": "N.",
+     "de": "Sonntag (schriftlich)",
+     "note": "1) rì: Sonne; Tag",
+     "unit": 6,
+     "en": "Sunday (written)",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-打",
+     "hanzi": "打",
+     "pinyin": "dǎ",
+     "pos": "V.",
+     "de": "spielen (Ballspiel mit der Hand)",
+     "note": "",
+     "unit": 6,
+     "en": "play (ball game with hands)",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-跟",
+     "hanzi": "跟",
+     "pinyin": "gēn",
+     "pos": "Präp.",
+     "de": "mit",
+     "note": "",
+     "unit": 6,
+     "en": "with",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-见面",
+     "hanzi": "见面",
+     "pinyin": "jiànmiàn",
+     "pos": "V. + O.",
+     "de": "(sich) treffen",
+     "note": "1) jiàn: sehen  2) miàn: Gesicht",
+     "unit": 6,
+     "en": "meet up",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-看",
+     "hanzi": "看",
+     "pinyin": "kàn",
+     "pos": "V.",
+     "de": "sehen, schauen, lesen",
+     "note": "",
+     "unit": 6,
+     "en": "read, see",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-书",
+     "hanzi": "书",
+     "pinyin": "shū",
+     "pos": "N.",
+     "de": "Buch",
+     "note": "",
+     "unit": 6,
+     "en": "book",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-上班",
+     "hanzi": "上班",
+     "pinyin": "shàngbān",
+     "pos": "V. + O.",
+     "de": "zur Arbeit gehen",
+     "note": "1) shàng: hinaufgehen; oben  2) bān: Arbeitsschicht; Klasse",
+     "unit": 6,
+     "en": "go to work",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-学",
+     "hanzi": "学",
+     "pinyin": "xué",
+     "pos": "V.",
+     "de": "lernen, studieren",
+     "note": "",
+     "unit": 6,
+     "en": "study, learn",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-派对",
+     "hanzi": "派对",
+     "pinyin": "pàiduì",
+     "pos": "N.",
+     "de": "Party",
+     "note": "",
+     "unit": 6,
+     "en": "party",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-饭店",
+     "hanzi": "饭店",
+     "pinyin": "fàndiàn",
+     "pos": "N.",
+     "de": "Restaurant",
+     "note": "1) fàn: gekochter Reis; Essen; Mahlzeit  2) diàn: Geschäft, Laden",
+     "unit": 6,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-一月",
+     "hanzi": "一月",
+     "pinyin": "Yīyuè",
+     "pos": "N.",
+     "de": "Januar",
+     "note": "",
+     "unit": 6,
+     "en": "January",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-五月",
+     "hanzi": "五月",
+     "pinyin": "Wǔyuè",
+     "pos": "N.",
+     "de": "Mai",
+     "note": "",
+     "unit": 6,
+     "en": "May",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-七月",
+     "hanzi": "七月",
+     "pinyin": "Qīyuè",
+     "pos": "N.",
+     "de": "Juli",
+     "note": "",
+     "unit": 6,
+     "en": "July",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-年",
+     "hanzi": "年",
+     "pinyin": "nián",
+     "pos": "N.",
+     "de": "Jahr",
+     "note": "",
+     "unit": 6,
+     "en": "year",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-去年",
+     "hanzi": "去年",
+     "pinyin": "qùnián",
+     "pos": "N.",
+     "de": "letztes Jahr",
+     "note": "1) qù: gehen; weggehen  2) nián: Jahr",
+     "unit": 6,
+     "en": "last year",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-今年",
+     "hanzi": "今年",
+     "pinyin": "jīnnián",
+     "pos": "N.",
+     "de": "dieses Jahr",
+     "note": "1) jīn: jetzt",
+     "unit": 6,
+     "en": "this year",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-明年",
+     "hanzi": "明年",
+     "pinyin": "míngnián",
+     "pos": "N.",
+     "de": "nächstes Jahr",
+     "note": "",
+     "unit": 6,
+     "en": "next year",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-昨天",
+     "hanzi": "昨天",
+     "pinyin": "zuótiān",
+     "pos": "N.",
+     "de": "gestern",
+     "note": "",
+     "unit": 6,
+     "en": "yesterday",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-汉堡/汉堡包",
+     "hanzi": "汉堡/汉堡包",
+     "pinyin": "hànbǎo/hànbǎobāo",
+     "pos": "N.",
+     "de": "Hamburger",
+     "note": "1) Hànbǎo: Hamburg  2) bāo: Brot",
+     "unit": 6,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-下个",
+     "hanzi": "下个",
+     "pinyin": "xiàge/xià gè",
+     "pos": "",
+     "de": "nächste, kommende",
+     "note": "1) xià: hinuntergehen; unten  2) gè: ZEW",
+     "unit": 6,
+     "en": "next",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-快乐",
+     "hanzi": "快乐",
+     "pinyin": "kuàilè",
+     "pos": "Adj.",
+     "de": "freudig, glücklich",
+     "note": "",
+     "unit": 6,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u6-休息",
+     "hanzi": "休息",
+     "pinyin": "xiūxi",
+     "pos": "V.",
+     "de": "Pause machen, ausruhen",
+     "note": "1) xiū: sich ausruhen  2) xi: aufhören; Atem",
+     "unit": 6,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "hanzi": "八点见!",
+   "title": "Zeit, Verabredungen",
+   "topic": "Zeit, Verabredungen",
+   "grammar": "Fragepronomen „jǐ\", Präposition „gěi\", Modalverb „yào\", Adverb „yīqǐ\", Verben in Serie (VP1 + VP2)",
+   "hs26": true,
+   "words": [
+    {
+     "id": "u7-这个",
+     "hanzi": "这个",
+     "pinyin": "zhège/zhè gè",
+     "pos": "Pron. + ZEW",
+     "de": "diese/-r/-s",
+     "note": "",
+     "unit": 7,
+     "en": "this",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-周末",
+     "hanzi": "周末",
+     "pinyin": "zhōumò",
+     "pos": "N.",
+     "de": "Wochenende",
+     "note": "1) zhōu: Woche  2) mò: Ende",
+     "unit": 7,
+     "en": "weekend",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-有",
+     "hanzi": "有",
+     "pinyin": "yǒu",
+     "pos": "V.",
+     "de": "haben",
+     "note": "",
+     "unit": 7,
+     "en": "have",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-时间",
+     "hanzi": "时间",
+     "pinyin": "shíjiān",
+     "pos": "N.",
+     "de": "Zeit",
+     "note": "",
+     "unit": 7,
+     "en": "time",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-要",
+     "hanzi": "要",
+     "pinyin": "yào",
+     "pos": "MV.",
+     "de": "wollen, werden, müssen",
+     "note": "",
+     "unit": 7,
+     "en": "want",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-爷爷",
+     "hanzi": "爷爷",
+     "pinyin": "yéye",
+     "pos": "N.",
+     "de": "Grossvater (väterlicherseits)",
+     "note": "",
+     "unit": 7,
+     "en": "grandfather",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-计划",
+     "hanzi": "计划",
+     "pinyin": "jìhuà",
+     "pos": "N./V.",
+     "de": "Plan, plannen",
+     "note": "1) jì: planen, zählen  2) huà: zeichnen",
+     "unit": 7,
+     "en": "plan",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-没有",
+     "hanzi": "没有",
+     "pinyin": "méiyǒu",
+     "pos": "V.",
+     "de": "nicht haben",
+     "note": "1) méi: nicht  2) yǒu: haben",
+     "unit": 7,
+     "en": "not have",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-一起",
+     "hanzi": "一起",
+     "pinyin": "yīqǐ",
+     "pos": "Adv.",
+     "de": "zusammen",
+     "note": "1) yī: eins, einzeln  2) qǐ: aufstehen",
+     "unit": 7,
+     "en": "together",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-几点",
+     "hanzi": "几点",
+     "pinyin": "jǐ diǎn",
+     "pos": "",
+     "de": "um wieviel Uhr?",
+     "note": "1) jǐ: wie viel  2) diǎn: Uhrzeit; Punkt",
+     "unit": 7,
+     "en": "what time",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-点",
+     "hanzi": "点",
+     "pinyin": "diǎn",
+     "pos": "ZEW",
+     "de": "Uhr (Zeit + Stunde)",
+     "note": "",
+     "unit": 7,
+     "en": "o'clock",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-半",
+     "hanzi": "半",
+     "pinyin": "bàn",
+     "pos": "Num.",
+     "de": "halb",
+     "note": "",
+     "unit": 7,
+     "en": "half (an hour)",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-开始",
+     "hanzi": "开始",
+     "pinyin": "kāishǐ",
+     "pos": "V.",
+     "de": "beginnen, anfangen",
+     "note": "1) kāi: öffnen  2) shǐ: beginnen",
+     "unit": 7,
+     "en": "start",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-电影院",
+     "hanzi": "电影院",
+     "pinyin": "diànyǐngyuàn",
+     "pos": "N.",
+     "de": "Kino",
+     "note": "1) diànyǐng: Film  2) yuàn: Anstalt, Amt",
+     "unit": 7,
+     "en": "cinema",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-门口",
+     "hanzi": "门口",
+     "pinyin": "ménkǒu",
+     "pos": "N.",
+     "de": "Eingang",
+     "note": "1) mén: Tür  2) kǒu: Mund",
+     "unit": 7,
+     "en": "entrance, doorway",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-见",
+     "hanzi": "见",
+     "pinyin": "jiàn",
+     "pos": "V.",
+     "de": "sehen, treffen",
+     "note": "",
+     "unit": 7,
+     "en": "see, meet",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-太",
+     "hanzi": "太",
+     "pinyin": "tài",
+     "pos": "Adv.",
+     "de": "(all-)zu",
+     "note": "",
+     "unit": 7,
+     "en": "very, too",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-了",
+     "hanzi": "了",
+     "pinyin": "le",
+     "pos": "Part.",
+     "de": "(Partikel: abgeschlossene Handlung / Veränderung)",
+     "note": "",
+     "unit": 7,
+     "en": "(particle: completed action / change)",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-朋友",
+     "hanzi": "朋友",
+     "pinyin": "péngyou",
+     "pos": "N.",
+     "de": "Freund/-in",
+     "note": "",
+     "unit": 7,
+     "en": "friend",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-明天",
+     "hanzi": "明天",
+     "pinyin": "míngtiān",
+     "pos": "N.",
+     "de": "morgen",
+     "note": "",
+     "unit": 7,
+     "en": "tomorrow",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-晚上",
+     "hanzi": "晚上",
+     "pinyin": "wǎnshang",
+     "pos": "N.",
+     "de": "Abend",
+     "note": "",
+     "unit": 7,
+     "en": "evening",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-事",
+     "hanzi": "事",
+     "pinyin": "shì",
+     "pos": "N.",
+     "de": "Angelegenheit, Sache",
+     "note": "",
+     "unit": 7,
+     "en": "thing, matter",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-上午",
+     "hanzi": "上午",
+     "pinyin": "shàngwǔ",
+     "pos": "N.",
+     "de": "Vormittag",
+     "note": "1) shàng: oben, hinaufgehen  2) wǔ: Mittag",
+     "unit": 7,
+     "en": "morning",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-分",
+     "hanzi": "分",
+     "pinyin": "fēn",
+     "pos": "ZEW",
+     "de": "Minute (eigentlich: Teil)",
+     "note": "",
+     "unit": 7,
+     "en": "minute",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-刻",
+     "hanzi": "刻",
+     "pinyin": "kè",
+     "pos": "ZEW",
+     "de": "Viertelstunde",
+     "note": "",
+     "unit": 7,
+     "en": "quarter (of an hour)",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-英语",
+     "hanzi": "英语",
+     "pinyin": "Yīngyǔ",
+     "pos": "N.",
+     "de": "Englisch",
+     "note": "1) yīng: Transliteration von \"England\"  2) yǔ: Sprache",
+     "unit": 7,
+     "en": "English",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-中午",
+     "hanzi": "中午",
+     "pinyin": "zhōngwǔ",
+     "pos": "N.",
+     "de": "Mittag",
+     "note": "1) zhōng: mitte  2) wǔ: Mittag",
+     "unit": 7,
+     "en": "noon",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-菜",
+     "hanzi": "菜",
+     "pinyin": "cài",
+     "pos": "N.",
+     "de": "Gericht, Essen",
+     "note": "",
+     "unit": 7,
+     "en": "food, dish",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-下午",
+     "hanzi": "下午",
+     "pinyin": "xiàwǔ",
+     "pos": "N.",
+     "de": "Nachmittag",
+     "note": "1) xià: unten; hinuntergehen; 2) wǔ: Mittag",
+     "unit": 7,
+     "en": "afternoon",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-跑步",
+     "hanzi": "跑步",
+     "pinyin": "pǎobù",
+     "pos": "V. + O.",
+     "de": "laufen",
+     "note": "1) pǎo: laufen  2) bù: Schritte",
+     "unit": 7,
+     "en": "jog",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-写",
+     "hanzi": "写",
+     "pinyin": "xiě",
+     "pos": "V.",
+     "de": "schreiben",
+     "note": "",
+     "unit": 7,
+     "en": "write",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-电子邮件",
+     "hanzi": "电子邮件",
+     "pinyin": "diànzǐ yóujiàn",
+     "pos": "N.",
+     "de": "E-Mail",
+     "note": "1) diànzǐ: elektronisch  2) yóujiàn: Post",
+     "unit": 7,
+     "en": "email",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-唱歌",
+     "hanzi": "唱歌",
+     "pinyin": "chànggē",
+     "pos": "V. + O.",
+     "de": "(ein Lied) singen",
+     "note": "1) chàng: singen  2) gē: Lied",
+     "unit": 7,
+     "en": "sing a song",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-奶奶",
+     "hanzi": "奶奶",
+     "pinyin": "nǎinai",
+     "pos": "N.",
+     "de": "Grossmutter (väterlicherseits)",
+     "note": "1) nǎi: Milch",
+     "unit": 7,
+     "en": "grandmother",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-到",
+     "hanzi": "到",
+     "pinyin": "dào",
+     "pos": "Präp./V.",
+     "de": "bis, nach, ankommen",
+     "note": "",
+     "unit": 7,
+     "en": "get to (a place), arrive",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-运动",
+     "hanzi": "运动",
+     "pinyin": "yùndòng",
+     "pos": "N.",
+     "de": "Bewegung, Sport",
+     "note": "1) yùn: sich bewegen; transportieren  2) dòng: sich bewegen; Bewegung",
+     "unit": 7,
+     "en": "sports",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-晚饭",
+     "hanzi": "晚饭",
+     "pinyin": "wǎnfàn",
+     "pos": "N.",
+     "de": "Abendessen",
+     "note": "1) wǎn: spät  2) fàn: gekochter Reis; Essen",
+     "unit": 7,
+     "en": "dinner",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-音乐",
+     "hanzi": "音乐",
+     "pinyin": "yīnyuè",
+     "pos": "N.",
+     "de": "Musik",
+     "note": "1) yīn: Ton  2) yuè: Musik",
+     "unit": 7,
+     "en": "music",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-听",
+     "hanzi": "听",
+     "pinyin": "tīng",
+     "pos": "V.",
+     "de": "hören",
+     "note": "",
+     "unit": 7,
+     "en": "listen",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-音乐会",
+     "hanzi": "音乐会",
+     "pinyin": "yīnyuèhuì",
+     "pos": "N.",
+     "de": "Konzert",
+     "note": "1) yīnyuè: Musik  2) huì: Treffen",
+     "unit": 7,
+     "en": "concert",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-生日卡",
+     "hanzi": "生日卡",
+     "pinyin": "shēngrìkǎ",
+     "pos": "N.",
+     "de": "Geburtstagskarte",
+     "note": "1) shēng: geboren 2) rì: Tag  3) kǎ: Karte",
+     "unit": 7,
+     "en": "birthday card",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-博客",
+     "hanzi": "博客",
+     "pinyin": "bókè",
+     "pos": "N.",
+     "de": "Blog",
+     "note": "",
+     "unit": 7,
+     "en": "blog",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-游泳",
+     "hanzi": "游泳",
+     "pinyin": "yóuyǒng",
+     "pos": "V. + O.",
+     "de": "schwimmen",
+     "note": "1) yóu: schwimmen, v.  2) yǒng: Schwimmen, n.",
+     "unit": 7,
+     "en": "swim",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-电视",
+     "hanzi": "电视",
+     "pinyin": "diànshì",
+     "pos": "N.",
+     "de": "Fernseher",
+     "note": "1) diàn: Elektrizität  2) shì: sehen, anschauen",
+     "unit": 7,
+     "en": "television",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-比赛",
+     "hanzi": "比赛",
+     "pinyin": "bǐsài",
+     "pos": "N.",
+     "de": "Wettkampf, Wettbewerb",
+     "note": "1) bǐ: Vergleich; vergleichen  2) sài: Wettkampf",
+     "unit": 7,
+     "en": "match, competition",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-时候",
+     "hanzi": "时候",
+     "pinyin": "shíhou",
+     "pos": "N.",
+     "de": "Zeit(punkt)",
+     "note": "",
+     "unit": 7,
+     "en": "time",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-什么时候",
+     "hanzi": "什么时候",
+     "pinyin": "shénme shíhou",
+     "pos": "",
+     "de": "wann",
+     "note": "",
+     "unit": 7,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u7-差",
+     "hanzi": "差",
+     "pinyin": "chà",
+     "pos": "Präp.",
+     "de": "(Uhrzeit) vor",
+     "note": "",
+     "unit": 7,
+     "en": "",
+     "target": true,
+     "src": "kurs"
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "hanzi": "多少钱?",
+   "title": "Kleider, Einkaufen",
+   "topic": "Kleider, Farben, Preise und Einkaufen",
+   "grammar": "Zahlen 0–999; ZEW „jiàn\", „tiáo\", „shuāng\", „kuài\"; Verdoppelung des Verbs; Entscheidungsfrage; Aspektpartikel „le\"; Modalpartikel „ba\"",
+   "hs26": true,
+   "words": [
+    {
+     "id": "u8-售货员",
+     "hanzi": "售货员",
+     "pinyin": "shòuhuòyuán",
+     "pos": "N.",
+     "de": "Verkäufer/-in",
+     "note": "1) shòu: verkaufen  2) huò: Ware  3) yuán: Mitglied, Angestellte",
+     "unit": 8,
+     "en": "shop assistant",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-买",
+     "hanzi": "买",
+     "pinyin": "mǎi",
+     "pos": "V.",
+     "de": "kaufen",
+     "note": "",
+     "unit": 8,
+     "en": "buy",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-衣服",
+     "hanzi": "衣服",
+     "pinyin": "yīfu",
+     "pos": "N.",
+     "de": "Kleider",
+     "note": "",
+     "unit": 8,
+     "en": "clothes",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-条",
+     "hanzi": "条",
+     "pinyin": "tiáo",
+     "pos": "ZEW",
+     "de": "(für längliche Gegenstände)",
+     "note": "",
+     "unit": 8,
+     "en": "(measure word for long/thin things, trousers, skirts)",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-裙子",
+     "hanzi": "裙子",
+     "pinyin": "qúnzi",
+     "pos": "N.",
+     "de": "Damenrock",
+     "note": "",
+     "unit": 8,
+     "en": "skirt",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-来",
+     "hanzi": "来",
+     "pinyin": "lái",
+     "pos": "V.",
+     "de": "kommen",
+     "note": "",
+     "unit": 8,
+     "en": "come",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-这边",
+     "hanzi": "这边",
+     "pinyin": "zhèbian",
+     "pos": "Pron.",
+     "de": "(auf) diese(r) Seite",
+     "note": "",
+     "unit": 8,
+     "en": "this way",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-红",
+     "hanzi": "红",
+     "pinyin": "hóng",
+     "pos": "Adj.",
+     "de": "rot (sein)",
+     "note": "",
+     "unit": 8,
+     "en": "red",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-蓝色",
+     "hanzi": "蓝色",
+     "pinyin": "lánsè",
+     "pos": "N.",
+     "de": "Blau",
+     "note": "1) lán: Blau  2) sè: Farbe",
+     "unit": 8,
+     "en": "blue",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-黑色",
+     "hanzi": "黑色",
+     "pinyin": "hēisè",
+     "pos": "N.",
+     "de": "Schwarz",
+     "note": "1) hēi: Schwarz  2) sè: Farbe",
+     "unit": 8,
+     "en": "black",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-好看",
+     "hanzi": "好看",
+     "pinyin": "hǎokàn",
+     "pos": "Adj.",
+     "de": "gutaussehend, hübsch (sein)",
+     "note": "1) hǎo: gut  2) kàn: sehen, anschauen",
+     "unit": 8,
+     "en": "good-looking",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-试",
+     "hanzi": "试",
+     "pinyin": "shì",
+     "pos": "V.",
+     "de": "probieren, testen",
+     "note": "",
+     "unit": 8,
+     "en": "try",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-不错",
+     "hanzi": "不错",
+     "pinyin": "bùcuò",
+     "pos": "Adj.",
+     "de": "nicht schlecht (sein)",
+     "note": "1) bù: nicht  2) cuò: falsch",
+     "unit": 8,
+     "en": "not bad",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-钱",
+     "hanzi": "钱",
+     "pinyin": "qián",
+     "pos": "N.",
+     "de": "Geld",
+     "note": "",
+     "unit": 8,
+     "en": "money",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-百",
+     "hanzi": "百",
+     "pinyin": "bǎi",
+     "pos": "Num.",
+     "de": "hundert, Hundert",
+     "note": "",
+     "unit": 8,
+     "en": "hundred",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-块",
+     "hanzi": "块",
+     "pinyin": "kuài",
+     "pos": "ZEW",
+     "de": "(für Geld)",
+     "note": "",
+     "unit": 8,
+     "en": "currency unit of China (yuan)",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-便宜",
+     "hanzi": "便宜",
+     "pinyin": "piányi",
+     "pos": "Adj.",
+     "de": "billig (sein)",
+     "note": "",
+     "unit": 8,
+     "en": "cheap",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-一点儿",
+     "hanzi": "一点儿",
+     "pinyin": "yīdiǎnr",
+     "pos": "Num. + ZEW",
+     "de": "ein bisschen, etwas",
+     "note": "1) yī: eins, einzeln  2) diǎn: Punkt",
+     "unit": 8,
+     "en": "a little",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-价钱",
+     "hanzi": "价钱",
+     "pinyin": "jiàqian",
+     "pos": "N.",
+     "de": "Preis",
+     "note": "1) jià: Preis  2) qián/qian: Geld",
+     "unit": 8,
+     "en": "price",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-贵",
+     "hanzi": "贵",
+     "pinyin": "guì",
+     "pos": "Adj.",
+     "de": "teuer (sein)",
+     "note": "",
+     "unit": 8,
+     "en": "expensive",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-吧",
+     "hanzi": "吧",
+     "pinyin": "ba",
+     "pos": "Part.",
+     "de": "(bei Vorschlägen)",
+     "note": "",
+     "unit": 8,
+     "en": "(for making suggestions)",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-书店",
+     "hanzi": "书店",
+     "pinyin": "shūdiàn",
+     "pos": "N.",
+     "de": "Buchhandlung",
+     "note": "1) shū: Buch  2) diàn: Geschäft, Laden",
+     "unit": 8,
+     "en": "bookshop",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-服装市场",
+     "hanzi": "服装市场",
+     "pinyin": "fúzhuāng shìchǎng",
+     "pos": "N.",
+     "de": "Kleidermarkt",
+     "note": "1) fúzhuāng: Kleidung  2) shìchǎng: Markt",
+     "unit": 8,
+     "en": "clothes market",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-远",
+     "hanzi": "远",
+     "pinyin": "yuǎn",
+     "pos": "Adj.",
+     "de": "weit, fern (sein)",
+     "note": "",
+     "unit": 8,
+     "en": "far away",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-裤子",
+     "hanzi": "裤子",
+     "pinyin": "kùzi",
+     "pos": "N.",
+     "de": "Hose",
+     "note": "",
+     "unit": 8,
+     "en": "trousers",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-T恤",
+     "hanzi": "T恤",
+     "pinyin": "tīxù",
+     "pos": "N.",
+     "de": "T-Shirt",
+     "note": "",
+     "unit": 8,
+     "en": "T-shirt",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-白色",
+     "hanzi": "白色",
+     "pinyin": "báisè",
+     "pos": "N.",
+     "de": "Weiss",
+     "note": "1) bái: weiss  2) sè: Farbe",
+     "unit": 8,
+     "en": "white",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-有名",
+     "hanzi": "有名",
+     "pinyin": "yǒumíng",
+     "pos": "Adj.",
+     "de": "berühmt (sein)",
+     "note": "1) yǒu: haben  2) míng: Name",
+     "unit": 8,
+     "en": "famous",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-购物中心",
+     "hanzi": "购物中心",
+     "pinyin": "gòuwù zhōngxīn",
+     "pos": "N.",
+     "de": "Shoppingzentrum",
+     "note": "1) gòuwù: einkaufen  2) zhōngxīn: Zentrum (zhōng: Mitte; xīn: Herz)",
+     "unit": 8,
+     "en": "shopping centre",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-上个",
+     "hanzi": "上个",
+     "pinyin": "shàngge/shàng gè",
+     "pos": "",
+     "de": "vergangene, letzte",
+     "note": "",
+     "unit": 8,
+     "en": "last",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-这里",
+     "hanzi": "这里",
+     "pinyin": "zhèli",
+     "pos": "Pron.",
+     "de": "hier",
+     "note": "",
+     "unit": 8,
+     "en": "here",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-双",
+     "hanzi": "双",
+     "pinyin": "shuāng",
+     "pos": "ZEW",
+     "de": "Paar",
+     "note": "",
+     "unit": 8,
+     "en": "pair",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-鞋",
+     "hanzi": "鞋",
+     "pinyin": "xié",
+     "pos": "N.",
+     "de": "Schuhe",
+     "note": "",
+     "unit": 8,
+     "en": "shoes",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-件",
+     "hanzi": "件",
+     "pinyin": "jiàn",
+     "pos": "ZEW",
+     "de": "(für Kleidungsstücke)",
+     "note": "",
+     "unit": 8,
+     "en": "item, piece",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-大衣",
+     "hanzi": "大衣",
+     "pinyin": "dàyī",
+     "pos": "N.",
+     "de": "Mantel",
+     "note": "1) dà: gross  2) yī: Kleider",
+     "unit": 8,
+     "en": "coat",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-每",
+     "hanzi": "每",
+     "pinyin": "měi",
+     "pos": "Pron.",
+     "de": "jede/-r/-s",
+     "note": "",
+     "unit": 8,
+     "en": "every, each",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-很多",
+     "hanzi": "很多",
+     "pinyin": "hěn duō",
+     "pos": "",
+     "de": "sehr viele",
+     "note": "",
+     "unit": 8,
+     "en": "a lot of",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-超市",
+     "hanzi": "超市",
+     "pinyin": "chāoshì",
+     "pos": "N.",
+     "de": "Supermarkt",
+     "note": "",
+     "unit": 8,
+     "en": "supermarket",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-东西",
+     "hanzi": "东西",
+     "pinyin": "dōngxi",
+     "pos": "N.",
+     "de": "Sache, Ding",
+     "note": "1) dōng: Osten  2) xī/xi: Westen",
+     "unit": 8,
+     "en": "thing",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-颜色",
+     "hanzi": "颜色",
+     "pinyin": "yánsè",
+     "pos": "N.",
+     "de": "Farbe",
+     "note": "",
+     "unit": 8,
+     "en": "colour",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-绿色",
+     "hanzi": "绿色",
+     "pinyin": "lǜsè",
+     "pos": "N.",
+     "de": "Grün",
+     "note": "1) lǜ: grün  2) sè: Farbe",
+     "unit": 8,
+     "en": "green",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-黄色",
+     "hanzi": "黄色",
+     "pinyin": "huángsè",
+     "pos": "N.",
+     "de": "Gelb",
+     "note": "1) huáng: gelb  2) sè: Farbe",
+     "unit": 8,
+     "en": "yellow",
+     "target": true,
+     "src": "kurs"
+    },
+    {
+     "id": "u8-毛衣",
+     "hanzi": "毛衣",
+     "pinyin": "máoyī",
+     "pos": "N.",
+     "de": "Pullover",
+     "note": "1) máo: Wolle  2) yī: Kleider",
+     "unit": 8,
+     "en": "sweater",
+     "target": true,
+     "src": "kurs"
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "hanzi": "不远!",
+   "title": "Nicht weit!",
+   "topic": "Orte, Wegbeschreibung, Wohnungsanzeigen",
+   "grammar": "",
+   "hs26": false,
+   "words": [
+    {
+     "id": "u9-北边",
+     "hanzi": "北边",
+     "pinyin": "běibian",
+     "pos": "n.",
+     "de": "Norden, Nordseite",
+     "note": "",
+     "unit": 9,
+     "en": "north",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-出租",
+     "hanzi": "出租",
+     "pinyin": "chūzū",
+     "pos": "v.",
+     "de": "vermieten",
+     "note": "",
+     "unit": 9,
+     "en": "rent out, lease",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-对",
+     "hanzi": "对",
+     "pinyin": "duì",
+     "pos": "adj.",
+     "de": "richtig, korrekt",
+     "note": "",
+     "unit": 9,
+     "en": "right, correct",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-地铁站",
+     "hanzi": "地铁站",
+     "pinyin": "dìtiězhàn",
+     "pos": "n.",
+     "de": "U-Bahn-Station",
+     "note": "",
+     "unit": 9,
+     "en": "subway station",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-东边",
+     "hanzi": "东边",
+     "pinyin": "dōngbian",
+     "pos": "n.",
+     "de": "Osten, Ostseite",
+     "note": "",
+     "unit": 9,
+     "en": "east",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-饭馆",
+     "hanzi": "饭馆",
+     "pinyin": "fànguǎn",
+     "pos": "n.",
+     "de": "Restaurant, Gaststätte",
+     "note": "",
+     "unit": 9,
+     "en": "restaurant",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-房子",
+     "hanzi": "房子",
+     "pinyin": "fángzi",
+     "pos": "n.",
+     "de": "Haus, Wohnung",
+     "note": "",
+     "unit": 9,
+     "en": "flat, house",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-附近",
+     "hanzi": "附近",
+     "pinyin": "fùjìn",
+     "pos": "n./adj.",
+     "de": "Nähe, in der Nähe",
+     "note": "",
+     "unit": 9,
+     "en": "vicinity, nearby",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-方便",
+     "hanzi": "方便",
+     "pinyin": "fāngbiàn",
+     "pos": "adj.",
+     "de": "praktisch, bequem",
+     "note": "",
+     "unit": 9,
+     "en": "convenient",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-分钟",
+     "hanzi": "分钟",
+     "pinyin": "fēnzhōng",
+     "pos": "n.",
+     "de": "Minute (Dauer)",
+     "note": "",
+     "unit": 9,
+     "en": "minute",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-后边",
+     "hanzi": "后边",
+     "pinyin": "hòubian",
+     "pos": "n.",
+     "de": "hinten, Rückseite",
+     "note": "",
+     "unit": 9,
+     "en": "back",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-交通",
+     "hanzi": "交通",
+     "pinyin": "jiāotōng",
+     "pos": "n.",
+     "de": "Verkehr",
+     "note": "",
+     "unit": 9,
+     "en": "transportation",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-近",
+     "hanzi": "近",
+     "pinyin": "jìn",
+     "pos": "adj.",
+     "de": "nah",
+     "note": "",
+     "unit": 9,
+     "en": "near",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-联系",
+     "hanzi": "联系",
+     "pinyin": "liánxì",
+     "pos": "v./n.",
+     "de": "kontaktieren; Kontakt",
+     "note": "",
+     "unit": 9,
+     "en": "contact",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-离",
+     "hanzi": "离",
+     "pinyin": "lí",
+     "pos": "v.",
+     "de": "entfernt von",
+     "note": "",
+     "unit": 9,
+     "en": "away from",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-楼",
+     "hanzi": "楼",
+     "pinyin": "lóu",
+     "pos": "n.",
+     "de": "Gebäude; Stockwerk",
+     "note": "",
+     "unit": 9,
+     "en": "building, storey",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-路人",
+     "hanzi": "路人",
+     "pinyin": "lùrén",
+     "pos": "n.",
+     "de": "Passant(in)",
+     "note": "",
+     "unit": 9,
+     "en": "passerby",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-南边",
+     "hanzi": "南边",
+     "pinyin": "nánbian",
+     "pos": "n.",
+     "de": "Süden, Südseite",
+     "note": "",
+     "unit": 9,
+     "en": "south",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-南京",
+     "hanzi": "南京",
+     "pinyin": "Nánjīng",
+     "pos": "n.",
+     "de": "Nanjing",
+     "note": "",
+     "unit": 9,
+     "en": "Nanjing",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-哪儿",
+     "hanzi": "哪儿",
+     "pinyin": "nǎr",
+     "pos": "pron.",
+     "de": "wo (umgangssprachlich)",
+     "note": "",
+     "unit": 9,
+     "en": "where",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-平方米",
+     "hanzi": "平方米",
+     "pinyin": "píngfāngmǐ",
+     "pos": "measure word",
+     "de": "Quadratmeter",
+     "note": "",
+     "unit": 9,
+     "en": "square metre",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-前边",
+     "hanzi": "前边",
+     "pinyin": "qiánbian",
+     "pos": "n.",
+     "de": "vorne, Vorderseite",
+     "note": "",
+     "unit": 9,
+     "en": "front",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-宿舍",
+     "hanzi": "宿舍",
+     "pinyin": "sùshè",
+     "pos": "n.",
+     "de": "Wohnheim",
+     "note": "",
+     "unit": 9,
+     "en": "dormitory",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-往",
+     "hanzi": "往",
+     "pinyin": "wǎng",
+     "pos": "prep.",
+     "de": "nach, in Richtung",
+     "note": "",
+     "unit": 9,
+     "en": "towards",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-先生",
+     "hanzi": "先生",
+     "pinyin": "xiānsheng",
+     "pos": "n.",
+     "de": "Herr (Anrede)",
+     "note": "",
+     "unit": 9,
+     "en": "Mr",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-西边",
+     "hanzi": "西边",
+     "pinyin": "xībian",
+     "pos": "n.",
+     "de": "Westen, Westseite",
+     "note": "",
+     "unit": 9,
+     "en": "west",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-银行",
+     "hanzi": "银行",
+     "pinyin": "yínháng",
+     "pos": "n.",
+     "de": "Bank (Geldinstitut)",
+     "note": "",
+     "unit": 9,
+     "en": "bank",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-邮局",
+     "hanzi": "邮局",
+     "pinyin": "yóujú",
+     "pos": "n.",
+     "de": "Post(amt)",
+     "note": "",
+     "unit": 9,
+     "en": "post office",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-这儿",
+     "hanzi": "这儿",
+     "pinyin": "zhèr",
+     "pos": "pron.",
+     "de": "hier (umgangssprachlich)",
+     "note": "",
+     "unit": 9,
+     "en": "here",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-左右",
+     "hanzi": "左右",
+     "pinyin": "zuǒyòu",
+     "pos": "n.",
+     "de": "ungefähr, etwa",
+     "note": "",
+     "unit": 9,
+     "en": "about",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-怎么",
+     "hanzi": "怎么",
+     "pinyin": "zěnme",
+     "pos": "pron.",
+     "de": "wie",
+     "note": "",
+     "unit": 9,
+     "en": "how",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-走",
+     "hanzi": "走",
+     "pinyin": "zǒu",
+     "pos": "v.",
+     "de": "gehen, laufen",
+     "note": "",
+     "unit": 9,
+     "en": "walk, go",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u9-健身房",
+     "hanzi": "健身房",
+     "pinyin": "jiànshēnfáng",
+     "pos": "n.",
+     "de": "Fitnessstudio",
+     "note": "",
+     "unit": 9,
+     "en": "gymnasium",
+     "target": false,
+     "src": "buch"
+    },
+    {
+     "id": "u9-警察局",
+     "hanzi": "警察局",
+     "pinyin": "jǐngchájú",
+     "pos": "n.",
+     "de": "Polizeiwache",
+     "note": "",
+     "unit": 9,
+     "en": "police station",
+     "target": false,
+     "src": "buch"
+    },
+    {
+     "id": "u9-咖啡店",
+     "hanzi": "咖啡店",
+     "pinyin": "kāfēidiàn",
+     "pos": "n.",
+     "de": "Café",
+     "note": "",
+     "unit": 9,
+     "en": "café",
+     "target": false,
+     "src": "buch"
+    },
+    {
+     "id": "u9-旅馆",
+     "hanzi": "旅馆",
+     "pinyin": "lǚguǎn",
+     "pos": "n.",
+     "de": "Hotel",
+     "note": "",
+     "unit": 9,
+     "en": "hotel",
+     "target": false,
+     "src": "buch"
+    },
+    {
+     "id": "u9-商店",
+     "hanzi": "商店",
+     "pinyin": "shāngdiàn",
+     "pos": "n.",
+     "de": "Geschäft, Laden",
+     "note": "",
+     "unit": 9,
+     "en": "shop",
+     "target": false,
+     "src": "buch"
+    },
+    {
+     "id": "u9-洗手间",
+     "hanzi": "洗手间",
+     "pinyin": "xǐshǒujiān",
+     "pos": "n.",
+     "de": "Toilette",
+     "note": "",
+     "unit": 9,
+     "en": "toilet, washroom",
+     "target": false,
+     "src": "buch"
+    },
+    {
+     "id": "u9-药店",
+     "hanzi": "药店",
+     "pinyin": "yàodiàn",
+     "pos": "n.",
+     "de": "Apotheke",
+     "note": "",
+     "unit": 9,
+     "en": "pharmacy",
+     "target": false,
+     "src": "buch"
+    }
+   ]
+  },
+  {
+   "id": 10,
+   "hanzi": "坐火车吧",
+   "title": "Nehmen wir den Zug",
+   "topic": "Verkehrsmittel, Reisepläne",
+   "grammar": "",
+   "hs26": false,
+   "words": [
+    {
+     "id": "u10-船",
+     "hanzi": "船",
+     "pinyin": "chuán",
+     "pos": "n.",
+     "de": "Schiff, Boot",
+     "note": "",
+     "unit": 10,
+     "en": "boat",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-出租车",
+     "hanzi": "出租车",
+     "pinyin": "chūzūchē",
+     "pos": "n.",
+     "de": "Taxi",
+     "note": "",
+     "unit": 10,
+     "en": "taxi",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-参观",
+     "hanzi": "参观",
+     "pinyin": "cānguān",
+     "pos": "v.",
+     "de": "besichtigen",
+     "note": "",
+     "unit": 10,
+     "en": "visit (a place)",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-餐厅",
+     "hanzi": "餐厅",
+     "pinyin": "cāntīng",
+     "pos": "n.",
+     "de": "Restaurant",
+     "note": "",
+     "unit": 10,
+     "en": "restaurant",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-第一个",
+     "hanzi": "第一个",
+     "pinyin": "dì-yī gè",
+     "pos": "",
+     "de": "der/die/das erste",
+     "note": "",
+     "unit": 10,
+     "en": "the first",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-当然",
+     "hanzi": "当然",
+     "pinyin": "dāngrán",
+     "pos": "adv.",
+     "de": "natürlich",
+     "note": "",
+     "unit": 10,
+     "en": "of course",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-桂林",
+     "hanzi": "桂林",
+     "pinyin": "Guìlín",
+     "pos": "n.",
+     "de": "Guilin",
+     "note": "",
+     "unit": 10,
+     "en": "Guilin",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-公共汽车",
+     "hanzi": "公共汽车",
+     "pinyin": "gōnggòng qìchē",
+     "pos": "n.",
+     "de": "Bus",
+     "note": "",
+     "unit": 10,
+     "en": "bus",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-火车",
+     "hanzi": "火车",
+     "pinyin": "huǒchē",
+     "pos": "n.",
+     "de": "Zug",
+     "note": "",
+     "unit": 10,
+     "en": "train",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-还是",
+     "hanzi": "还是",
+     "pinyin": "háishi",
+     "pos": "conj.",
+     "de": "oder (in Fragen)",
+     "note": "",
+     "unit": 10,
+     "en": "or (in a question)",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-假期",
+     "hanzi": "假期",
+     "pinyin": "jiàqī",
+     "pos": "n.",
+     "de": "Ferien, Urlaub",
+     "note": "",
+     "unit": 10,
+     "en": "holiday",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-景点",
+     "hanzi": "景点",
+     "pinyin": "jǐngdiǎn",
+     "pos": "n.",
+     "de": "Sehenswürdigkeit",
+     "note": "",
+     "unit": 10,
+     "en": "scenic site",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-旅行",
+     "hanzi": "旅行",
+     "pinyin": "lǚxíng",
+     "pos": "v./n.",
+     "de": "reisen; Reise",
+     "note": "",
+     "unit": 10,
+     "en": "travel",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-爬山",
+     "hanzi": "爬山",
+     "pinyin": "páshān",
+     "pos": "v.",
+     "de": "bergsteigen, wandern",
+     "note": "",
+     "unit": 10,
+     "en": "climb a mountain",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-拍照",
+     "hanzi": "拍照",
+     "pinyin": "pāizhào",
+     "pos": "v.",
+     "de": "fotografieren",
+     "note": "",
+     "unit": 10,
+     "en": "take photos",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-然后",
+     "hanzi": "然后",
+     "pinyin": "ránhòu",
+     "pos": "conj.",
+     "de": "dann, danach",
+     "note": "",
+     "unit": 10,
+     "en": "then",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-暑假",
+     "hanzi": "暑假",
+     "pinyin": "shǔjià",
+     "pos": "n.",
+     "de": "Sommerferien",
+     "note": "",
+     "unit": 10,
+     "en": "summer holiday",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-三里屯",
+     "hanzi": "三里屯",
+     "pinyin": "Sānlǐtún",
+     "pos": "n.",
+     "de": "Sanlitun (Viertel in Peking)",
+     "note": "",
+     "unit": 10,
+     "en": "Sanlitun, a place in Beijing",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-它",
+     "hanzi": "它",
+     "pinyin": "tā",
+     "pos": "pron.",
+     "de": "es",
+     "note": "",
+     "unit": 10,
+     "en": "it",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-需要",
+     "hanzi": "需要",
+     "pinyin": "xūyào",
+     "pos": "v.",
+     "de": "brauchen",
+     "note": "",
+     "unit": 10,
+     "en": "need",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-颜色",
+     "hanzi": "颜色",
+     "pinyin": "yánsè",
+     "pos": "n.",
+     "de": "Farbe",
+     "note": "",
+     "unit": 10,
+     "en": "colour",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-意大利",
+     "hanzi": "意大利",
+     "pinyin": "Yìdàlì",
+     "pos": "n.",
+     "de": "Italien",
+     "note": "",
+     "unit": 10,
+     "en": "Italy",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-游览",
+     "hanzi": "游览",
+     "pinyin": "yóulǎn",
+     "pos": "v.",
+     "de": "besichtigen, Sightseeing machen",
+     "note": "",
+     "unit": 10,
+     "en": "go sightseeing",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-一些",
+     "hanzi": "一些",
+     "pinyin": "yīxiē",
+     "pos": "quantifier",
+     "de": "einige",
+     "note": "",
+     "unit": 10,
+     "en": "some",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-坐",
+     "hanzi": "坐",
+     "pinyin": "zuò",
+     "pos": "v.",
+     "de": "fahren mit (Verkehrsmittel); sitzen",
+     "note": "",
+     "unit": 10,
+     "en": "take (a vehicle)",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u10-飞机场",
+     "hanzi": "飞机场",
+     "pinyin": "fēijīchǎng",
+     "pos": "n.",
+     "de": "Flughafen",
+     "note": "",
+     "unit": 10,
+     "en": "airport",
+     "target": false,
+     "src": "buch"
+    },
+    {
+     "id": "u10-火车站",
+     "hanzi": "火车站",
+     "pinyin": "huǒchēzhàn",
+     "pos": "n.",
+     "de": "Bahnhof",
+     "note": "",
+     "unit": 10,
+     "en": "railway station",
+     "target": false,
+     "src": "buch"
+    },
+    {
+     "id": "u10-加油站",
+     "hanzi": "加油站",
+     "pinyin": "jiāyóuzhàn",
+     "pos": "n.",
+     "de": "Tankstelle",
+     "note": "",
+     "unit": 10,
+     "en": "petrol station",
+     "target": false,
+     "src": "buch"
+    },
+    {
+     "id": "u10-骑",
+     "hanzi": "骑",
+     "pinyin": "qí",
+     "pos": "v.",
+     "de": "fahren (Fahrrad), reiten",
+     "note": "",
+     "unit": 10,
+     "en": "ride (bicycle, etc)",
+     "target": false,
+     "src": "buch"
+    },
+    {
+     "id": "u10-停车场",
+     "hanzi": "停车场",
+     "pinyin": "tíngchēchǎng",
+     "pos": "n.",
+     "de": "Parkplatz",
+     "note": "",
+     "unit": 10,
+     "en": "car park",
+     "target": false,
+     "src": "buch"
+    },
+    {
+     "id": "u10-自行车",
+     "hanzi": "自行车",
+     "pinyin": "zìxíngchē",
+     "pos": "n.",
+     "de": "Fahrrad",
+     "note": "",
+     "unit": 10,
+     "en": "bicycle",
+     "target": false,
+     "src": "buch"
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "hanzi": "我会跳舞",
+   "title": "Ich kann tanzen",
+   "topic": "Sport, Vorlieben",
+   "grammar": "",
+   "hs26": false,
+   "words": [
+    {
+     "id": "u11-蹦极",
+     "hanzi": "蹦极",
+     "pinyin": "bèngjí",
+     "pos": "v.",
+     "de": "Bungee-Springen",
+     "note": "",
+     "unit": 11,
+     "en": "bungee jump",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-比赛",
+     "hanzi": "比赛",
+     "pinyin": "bǐsài",
+     "pos": "n.",
+     "de": "Wettkampf, Spiel",
+     "note": "",
+     "unit": 11,
+     "en": "match, competition",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-冲浪",
+     "hanzi": "冲浪",
+     "pinyin": "chōnglàng",
+     "pos": "v.",
+     "de": "surfen",
+     "note": "",
+     "unit": 11,
+     "en": "surf",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-队",
+     "hanzi": "队",
+     "pinyin": "duì",
+     "pos": "n.",
+     "de": "Mannschaft, Team",
+     "note": "",
+     "unit": 11,
+     "en": "team",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-过",
+     "hanzi": "过",
+     "pinyin": "guo",
+     "pos": "",
+     "de": "(Partikel: schon einmal getan haben)",
+     "note": "",
+     "unit": 11,
+     "en": "indicator of past actions",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-滑雪",
+     "hanzi": "滑雪",
+     "pinyin": "huáxuě",
+     "pos": "v.",
+     "de": "Ski fahren",
+     "note": "",
+     "unit": 11,
+     "en": "ski",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-会",
+     "hanzi": "会",
+     "pinyin": "huì",
+     "pos": "v.",
+     "de": "können (gelernt haben)",
+     "note": "",
+     "unit": 11,
+     "en": "can, be able to",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-男",
+     "hanzi": "男",
+     "pinyin": "nán",
+     "pos": "n.",
+     "de": "männlich",
+     "note": "",
+     "unit": 11,
+     "en": "male",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-乒乓球",
+     "hanzi": "乒乓球",
+     "pinyin": "pīngpāngqiú",
+     "pos": "n.",
+     "de": "Tischtennis",
+     "note": "",
+     "unit": 11,
+     "en": "table tennis",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-潜水",
+     "hanzi": "潜水",
+     "pinyin": "qiánshuǐ",
+     "pos": "v.",
+     "de": "tauchen",
+     "note": "",
+     "unit": 11,
+     "en": "dive",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-球",
+     "hanzi": "球",
+     "pinyin": "qiú",
+     "pos": "n.",
+     "de": "Ball, Ballspiel",
+     "note": "",
+     "unit": 11,
+     "en": "ball, ball game",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-其他",
+     "hanzi": "其他",
+     "pinyin": "qítā",
+     "pos": "pron.",
+     "de": "andere",
+     "note": "",
+     "unit": 11,
+     "en": "others, other",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-时候",
+     "hanzi": "时候",
+     "pinyin": "shíhou",
+     "pos": "n.",
+     "de": "Zeit(punkt)",
+     "note": "",
+     "unit": 11,
+     "en": "time",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-跳舞",
+     "hanzi": "跳舞",
+     "pinyin": "tiàowǔ",
+     "pos": "v.",
+     "de": "tanzen",
+     "note": "",
+     "unit": 11,
+     "en": "dance",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-踢",
+     "hanzi": "踢",
+     "pinyin": "tī",
+     "pos": "v.",
+     "de": "kicken, spielen (mit dem Fuß)",
+     "note": "",
+     "unit": 11,
+     "en": "play (with feet), kick",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-体育场",
+     "hanzi": "体育场",
+     "pinyin": "tǐyùchǎng",
+     "pos": "n.",
+     "de": "Stadion, Sportplatz",
+     "note": "",
+     "unit": 11,
+     "en": "stadium, sports ground",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-问卷",
+     "hanzi": "问卷",
+     "pinyin": "wènjuàn",
+     "pos": "n.",
+     "de": "Fragebogen",
+     "note": "",
+     "unit": 11,
+     "en": "questionnaire",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-网球",
+     "hanzi": "网球",
+     "pinyin": "wǎngqiú",
+     "pos": "n.",
+     "de": "Tennis",
+     "note": "",
+     "unit": 11,
+     "en": "tennis",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-下个",
+     "hanzi": "下个",
+     "pinyin": "xiàge",
+     "pos": "",
+     "de": "nächste(r/s)",
+     "note": "",
+     "unit": 11,
+     "en": "next",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-休闲",
+     "hanzi": "休闲",
+     "pinyin": "xiūxián",
+     "pos": "n./v.",
+     "de": "Freizeit",
+     "note": "",
+     "unit": 11,
+     "en": "leisure, have leisure",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-想",
+     "hanzi": "想",
+     "pinyin": "xiǎng",
+     "pos": "v.",
+     "de": "denken; möchten",
+     "note": "",
+     "unit": 11,
+     "en": "think, want",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-小时",
+     "hanzi": "小时",
+     "pinyin": "xiǎoshí",
+     "pos": "n.",
+     "de": "Stunde",
+     "note": "",
+     "unit": 11,
+     "en": "hour",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-性别",
+     "hanzi": "性别",
+     "pinyin": "xìngbié",
+     "pos": "n.",
+     "de": "Geschlecht",
+     "note": "",
+     "unit": 11,
+     "en": "gender",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-希望",
+     "hanzi": "希望",
+     "pinyin": "xīwàng",
+     "pos": "v.",
+     "de": "hoffen",
+     "note": "",
+     "unit": 11,
+     "en": "hope",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-赢",
+     "hanzi": "赢",
+     "pinyin": "yíng",
+     "pos": "v.",
+     "de": "gewinnen",
+     "note": "",
+     "unit": 11,
+     "en": "win",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-游泳",
+     "hanzi": "游泳",
+     "pinyin": "yóuyǒng",
+     "pos": "v.",
+     "de": "schwimmen",
+     "note": "",
+     "unit": 11,
+     "en": "swim",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-英格兰",
+     "hanzi": "英格兰",
+     "pinyin": "Yīnggélán",
+     "pos": "n.",
+     "de": "England",
+     "note": "",
+     "unit": 11,
+     "en": "England",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-足球",
+     "hanzi": "足球",
+     "pinyin": "zúqiú",
+     "pos": "n.",
+     "de": "Fußball",
+     "note": "",
+     "unit": 11,
+     "en": "football",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u11-棒球",
+     "hanzi": "棒球",
+     "pinyin": "bàngqiú",
+     "pos": "n.",
+     "de": "Baseball",
+     "note": "",
+     "unit": 11,
+     "en": "baseball",
+     "target": false,
+     "src": "buch"
+    },
+    {
+     "id": "u11-橄榄球",
+     "hanzi": "橄榄球",
+     "pinyin": "gǎnlǎnqiú",
+     "pos": "n.",
+     "de": "Rugby",
+     "note": "",
+     "unit": 11,
+     "en": "rugby",
+     "target": false,
+     "src": "buch"
+    },
+    {
+     "id": "u11-排球",
+     "hanzi": "排球",
+     "pinyin": "páiqiú",
+     "pos": "n.",
+     "de": "Volleyball",
+     "note": "",
+     "unit": 11,
+     "en": "volleyball",
+     "target": false,
+     "src": "buch"
+    },
+    {
+     "id": "u11-曲棍球",
+     "hanzi": "曲棍球",
+     "pinyin": "qūgùnqiú",
+     "pos": "n.",
+     "de": "Hockey",
+     "note": "",
+     "unit": 11,
+     "en": "hockey",
+     "target": false,
+     "src": "buch"
+    }
+   ]
+  },
+  {
+   "id": 12,
+   "hanzi": "我们去看京剧",
+   "title": "Wir gehen in die Peking-Oper",
+   "topic": "Ferienpläne",
+   "grammar": "",
+   "hs26": false,
+   "words": [
+    {
+     "id": "u12-别",
+     "hanzi": "别",
+     "pinyin": "bié",
+     "pos": "adv.",
+     "de": "nicht … (Verbot: „tu das nicht\")",
+     "note": "",
+     "unit": 12,
+     "en": "do not",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-班",
+     "hanzi": "班",
+     "pinyin": "bān",
+     "pos": "measure word",
+     "de": "(Zähleinheitswort: Gruppe, Klasse; Flug)",
+     "note": "",
+     "unit": 12,
+     "en": "(measure word for groups/classes)",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-兵马俑",
+     "hanzi": "兵马俑",
+     "pinyin": "Bīngmǎyǒng",
+     "pos": "n.",
+     "de": "Terrakotta-Armee",
+     "note": "",
+     "unit": 12,
+     "en": "Terracotta Warriors",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-城市",
+     "hanzi": "城市",
+     "pinyin": "chéngshì",
+     "pos": "n.",
+     "de": "Stadt",
+     "note": "",
+     "unit": 12,
+     "en": "city",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-从",
+     "hanzi": "从",
+     "pinyin": "cóng",
+     "pos": "prep.",
+     "de": "von, aus (Ausgangspunkt)",
+     "note": "",
+     "unit": 12,
+     "en": "from",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-地方",
+     "hanzi": "地方",
+     "pinyin": "dìfang",
+     "pos": "n.",
+     "de": "Ort, Platz",
+     "note": "",
+     "unit": 12,
+     "en": "place",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-打算",
+     "hanzi": "打算",
+     "pinyin": "dǎsuan",
+     "pos": "v.",
+     "de": "planen, vorhaben",
+     "note": "",
+     "unit": 12,
+     "en": "plan",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-飞机",
+     "hanzi": "飞机",
+     "pinyin": "fēijī",
+     "pos": "n.",
+     "de": "Flugzeug",
+     "note": "",
+     "unit": 12,
+     "en": "aeroplane",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-回",
+     "hanzi": "回",
+     "pinyin": "huí",
+     "pos": "v.",
+     "de": "zurückkehren",
+     "note": "",
+     "unit": 12,
+     "en": "go back",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-或者",
+     "hanzi": "或者",
+     "pinyin": "huòzhě",
+     "pos": "conj.",
+     "de": "oder (in Aussagen)",
+     "note": "",
+     "unit": 12,
+     "en": "or (in a statement)",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-好玩",
+     "hanzi": "好玩",
+     "pinyin": "hǎowán",
+     "pos": "adj.",
+     "de": "lustig, spaßig",
+     "note": "",
+     "unit": 12,
+     "en": "fun",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-觉得",
+     "hanzi": "觉得",
+     "pinyin": "juéde",
+     "pos": "v.",
+     "de": "finden, meinen, fühlen",
+     "note": "",
+     "unit": 12,
+     "en": "think, feel",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-京剧",
+     "hanzi": "京剧",
+     "pinyin": "jīngjù",
+     "pos": "n.",
+     "de": "Peking-Oper",
+     "note": "",
+     "unit": 12,
+     "en": "Beijing opera",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-今年",
+     "hanzi": "今年",
+     "pinyin": "jīnnián",
+     "pos": "n.",
+     "de": "dieses Jahr",
+     "note": "",
+     "unit": 12,
+     "en": "this year",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-历史",
+     "hanzi": "历史",
+     "pinyin": "lìshǐ",
+     "pos": "n.",
+     "de": "Geschichte",
+     "note": "",
+     "unit": 12,
+     "en": "history",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-年",
+     "hanzi": "年",
+     "pinyin": "nián",
+     "pos": "n.",
+     "de": "Jahr",
+     "note": "",
+     "unit": 12,
+     "en": "year",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-那么",
+     "hanzi": "那么",
+     "pinyin": "nàme",
+     "pos": "conj.",
+     "de": "dann, also",
+     "note": "",
+     "unit": 12,
+     "en": "then, so",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-漂亮",
+     "hanzi": "漂亮",
+     "pinyin": "piàoliang",
+     "pos": "adj.",
+     "de": "hübsch, schön",
+     "note": "",
+     "unit": 12,
+     "en": "pretty",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-千",
+     "hanzi": "千",
+     "pinyin": "qiān",
+     "pos": "num.",
+     "de": "tausend",
+     "note": "",
+     "unit": 12,
+     "en": "thousand",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-说",
+     "hanzi": "说",
+     "pinyin": "shuō",
+     "pos": "v.",
+     "de": "sagen, sprechen",
+     "note": "",
+     "unit": 12,
+     "en": "say",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-香港",
+     "hanzi": "香港",
+     "pinyin": "Xiānggǎng",
+     "pos": "n.",
+     "de": "Hongkong",
+     "note": "",
+     "unit": 12,
+     "en": "Hong Kong",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-西安",
+     "hanzi": "西安",
+     "pinyin": "Xī'ān",
+     "pos": "n.",
+     "de": "Xi’an",
+     "note": "",
+     "unit": 12,
+     "en": "Xi'an",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-新加坡",
+     "hanzi": "新加坡",
+     "pinyin": "Xīnjiāpō",
+     "pos": "n.",
+     "de": "Singapur",
+     "note": "",
+     "unit": 12,
+     "en": "Singapore",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-应该",
+     "hanzi": "应该",
+     "pinyin": "yīnggāi",
+     "pos": "modal v.",
+     "de": "sollen, sollte",
+     "note": "",
+     "unit": 12,
+     "en": "should",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-以后",
+     "hanzi": "以后",
+     "pinyin": "yǐhòu",
+     "pos": "n.",
+     "de": "danach, später",
+     "note": "",
+     "unit": 12,
+     "en": "after",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-只",
+     "hanzi": "只",
+     "pinyin": "zhǐ",
+     "pos": "adv.",
+     "de": "nur",
+     "note": "",
+     "unit": 12,
+     "en": "only",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-主意",
+     "hanzi": "主意",
+     "pinyin": "zhǔyi",
+     "pos": "n.",
+     "de": "Idee",
+     "note": "",
+     "unit": 12,
+     "en": "idea",
+     "target": true,
+     "src": "buch"
+    },
+    {
+     "id": "u12-打工",
+     "hanzi": "打工",
+     "pinyin": "dǎgōng",
+     "pos": "v.",
+     "de": "jobben, Nebenjob machen",
+     "note": "",
+     "unit": 12,
+     "en": "do part-time work",
+     "target": false,
+     "src": "buch"
+    },
+    {
+     "id": "u12-广州",
+     "hanzi": "广州",
+     "pinyin": "Guǎngzhōu",
+     "pos": "n.",
+     "de": "Guangzhou (Kanton)",
+     "note": "",
+     "unit": 12,
+     "en": "Guangzhou",
+     "target": false,
+     "src": "buch"
+    },
+    {
+     "id": "u12-实习",
+     "hanzi": "实习",
+     "pinyin": "shíxí",
+     "pos": "v.",
+     "de": "Praktikum machen",
+     "note": "",
+     "unit": 12,
+     "en": "work as an intern",
+     "target": false,
+     "src": "buch"
+    },
+    {
+     "id": "u12-野营",
+     "hanzi": "野营",
+     "pinyin": "yěyíng",
+     "pos": "v.",
+     "de": "campen",
+     "note": "",
+     "unit": 12,
+     "en": "go camping",
+     "target": false,
+     "src": "buch"
+    },
+    {
+     "id": "u12-志愿者",
+     "hanzi": "志愿者",
+     "pinyin": "zhìyuànzhě",
+     "pos": "n.",
+     "de": "Freiwillige(r)",
+     "note": "",
+     "unit": 12,
+     "en": "volunteer",
+     "target": false,
+     "src": "buch"
+    }
+   ]
+  }
+ ],
+ "chars": [
+  {
+   "id": "z0-一",
+   "unit": 0,
+   "hanzi": "一",
+   "pinyin": "yī",
+   "de": "eins",
+   "new": [
+    "一"
+   ]
+  },
+  {
+   "id": "z0-二",
+   "unit": 0,
+   "hanzi": "二",
+   "pinyin": "èr",
+   "de": "zwei",
+   "new": [
+    "二"
+   ]
+  },
+  {
+   "id": "z0-三",
+   "unit": 0,
+   "hanzi": "三",
+   "pinyin": "sān",
+   "de": "drei",
+   "new": [
+    "三"
+   ]
+  },
+  {
+   "id": "z0-四",
+   "unit": 0,
+   "hanzi": "四",
+   "pinyin": "sì",
+   "de": "vier",
+   "new": [
+    "四"
+   ]
+  },
+  {
+   "id": "z0-五",
+   "unit": 0,
+   "hanzi": "五",
+   "pinyin": "wǔ",
+   "de": "fünf",
+   "new": [
+    "五"
+   ]
+  },
+  {
+   "id": "z0-六",
+   "unit": 0,
+   "hanzi": "六",
+   "pinyin": "liù",
+   "de": "sechs",
+   "new": [
+    "六"
+   ]
+  },
+  {
+   "id": "z0-七",
+   "unit": 0,
+   "hanzi": "七",
+   "pinyin": "qī",
+   "de": "sieben",
+   "new": [
+    "七"
+   ]
+  },
+  {
+   "id": "z0-八",
+   "unit": 0,
+   "hanzi": "八",
+   "pinyin": "bā",
+   "de": "acht",
+   "new": [
+    "八"
+   ]
+  },
+  {
+   "id": "z0-九",
+   "unit": 0,
+   "hanzi": "九",
+   "pinyin": "jiǔ",
+   "de": "neun",
+   "new": [
+    "九"
+   ]
+  },
+  {
+   "id": "z0-十",
+   "unit": 0,
+   "hanzi": "十",
+   "pinyin": "shí",
+   "de": "zehn",
+   "new": [
+    "十"
+   ]
+  },
+  {
+   "id": "z0-中国",
+   "unit": 0,
+   "hanzi": "中国",
+   "pinyin": "Zhōngguó",
+   "de": "(Mitte + Land) China",
+   "new": [
+    "中",
+    "国"
+   ]
+  },
+  {
+   "id": "z0-人",
+   "unit": 0,
+   "hanzi": "人",
+   "pinyin": "rén",
+   "de": "Mensch, Person",
+   "new": [
+    "人"
+   ]
+  },
+  {
+   "id": "z1-我",
+   "unit": 1,
+   "hanzi": "我",
+   "pinyin": "wǒ",
+   "de": "ich, mich, mir",
+   "new": [
+    "我"
+   ]
+  },
+  {
+   "id": "z1-他",
+   "unit": 1,
+   "hanzi": "他",
+   "pinyin": "tā",
+   "de": "er, ihn, ihm",
+   "new": [
+    "他"
+   ]
+  },
+  {
+   "id": "z1-她",
+   "unit": 1,
+   "hanzi": "她",
+   "pinyin": "tā",
+   "de": "sie, ihr",
+   "new": [
+    "她"
+   ]
+  },
+  {
+   "id": "z1-你",
+   "unit": 1,
+   "hanzi": "你",
+   "pinyin": "nǐ",
+   "de": "du, dich, dir",
+   "new": [
+    "你"
+   ]
+  },
+  {
+   "id": "z1-你们",
+   "unit": 1,
+   "hanzi": "你们",
+   "pinyin": "nǐmen",
+   "de": "ihr, euch",
+   "new": [
+    "们"
+   ]
+  },
+  {
+   "id": "z1-很",
+   "unit": 1,
+   "hanzi": "很",
+   "pinyin": "hěn",
+   "de": "sehr",
+   "new": [
+    "很"
+   ]
+  },
+  {
+   "id": "z1-好",
+   "unit": 1,
+   "hanzi": "好",
+   "pinyin": "hǎo",
+   "de": "gut",
+   "new": [
+    "好"
+   ]
+  },
+  {
+   "id": "z1-中文",
+   "unit": 1,
+   "hanzi": "中文",
+   "pinyin": "Zhōngwén",
+   "de": "(Mitte + Sprache) Chinesisch",
+   "new": [
+    "文"
+   ]
+  },
+  {
+   "id": "z1-什么",
+   "unit": 1,
+   "hanzi": "什么",
+   "pinyin": "shénme",
+   "de": "was; was für ein",
+   "new": [
+    "什",
+    "么"
+   ]
+  },
+  {
+   "id": "z1-名字",
+   "unit": 1,
+   "hanzi": "名字",
+   "pinyin": "míngzi",
+   "de": "Name",
+   "new": [
+    "名",
+    "字"
+   ]
+  },
+  {
+   "id": "z1-请",
+   "unit": 1,
+   "hanzi": "请",
+   "pinyin": "qǐng",
+   "de": "bitte; einladen, bitten",
+   "new": [
+    "请"
+   ]
+  },
+  {
+   "id": "z1-问",
+   "unit": 1,
+   "hanzi": "问",
+   "pinyin": "wèn",
+   "de": "fragen",
+   "new": [
+    "问"
+   ]
+  },
+  {
+   "id": "z1-叫",
+   "unit": 1,
+   "hanzi": "叫",
+   "pinyin": "jiào",
+   "de": "heißen",
+   "new": [
+    "叫"
+   ]
+  },
+  {
+   "id": "z2-北京",
+   "unit": 2,
+   "hanzi": "北京",
+   "pinyin": "Běijīng",
+   "de": "(Norden + Hauptstadt) Beijing",
+   "new": [
+    "北",
+    "京"
+   ]
+  },
+  {
+   "id": "z2-瑞士",
+   "unit": 2,
+   "hanzi": "瑞士",
+   "pinyin": "Ruìshì",
+   "de": "(glücksverheißend + Ritter) Schweiz",
+   "new": [
+    "瑞",
+    "士"
+   ]
+  },
+  {
+   "id": "z2-德国",
+   "unit": 2,
+   "hanzi": "德国",
+   "pinyin": "Déguó",
+   "de": "(Tugend + Land) Deutschland",
+   "new": [
+    "德"
+   ]
+  },
+  {
+   "id": "z2-英国",
+   "unit": 2,
+   "hanzi": "英国",
+   "pinyin": "Yīngguó",
+   "de": "Grossbritannien",
+   "new": [
+    "英"
+   ]
+  },
+  {
+   "id": "z2-是",
+   "unit": 2,
+   "hanzi": "是",
+   "pinyin": "shì",
+   "de": "sein",
+   "new": [
+    "是"
+   ]
+  },
+  {
+   "id": "z2-不",
+   "unit": 2,
+   "hanzi": "不",
+   "pinyin": "bù",
+   "de": "nicht",
+   "new": [
+    "不"
+   ]
+  },
+  {
+   "id": "z2-吗",
+   "unit": 2,
+   "hanzi": "吗",
+   "pinyin": "ma",
+   "de": "Fragepartikel",
+   "new": [
+    "吗"
+   ]
+  },
+  {
+   "id": "z2-住",
+   "unit": 2,
+   "hanzi": "住",
+   "pinyin": "zhù",
+   "de": "wohnen",
+   "new": [
+    "住"
+   ]
+  },
+  {
+   "id": "z2-在",
+   "unit": 2,
+   "hanzi": "在",
+   "pinyin": "zài",
+   "de": "in, an, auf",
+   "new": [
+    "在"
+   ]
+  },
+  {
+   "id": "z3-家",
+   "unit": 3,
+   "hanzi": "家",
+   "pinyin": "jiā",
+   "de": "Familie; Zuhause",
+   "new": [
+    "家"
+   ]
+  },
+  {
+   "id": "z3-字",
+   "unit": 3,
+   "hanzi": "字",
+   "pinyin": "zì",
+   "de": "Schriftzeichen",
+   "new": []
+  },
+  {
+   "id": "z3-学",
+   "unit": 3,
+   "hanzi": "学",
+   "pinyin": "xué",
+   "de": "lernen, studieren",
+   "new": [
+    "学"
+   ]
+  },
+  {
+   "id": "z3-学生",
+   "unit": 3,
+   "hanzi": "学生",
+   "pinyin": "xuésheng",
+   "de": "Schüler, Student",
+   "new": [
+    "生"
+   ]
+  },
+  {
+   "id": "z3-大学",
+   "unit": 3,
+   "hanzi": "大学",
+   "pinyin": "dàxué",
+   "de": "(groß + lernen) Universität",
+   "new": [
+    "大"
+   ]
+  },
+  {
+   "id": "z3-工作",
+   "unit": 3,
+   "hanzi": "工作",
+   "pinyin": "gōngzuò",
+   "de": "arbeiten; Arbeit",
+   "new": [
+    "工",
+    "作"
+   ]
+  },
+  {
+   "id": "z3-都",
+   "unit": 3,
+   "hanzi": "都",
+   "pinyin": "dōu",
+   "de": "beide; alle",
+   "new": [
+    "都"
+   ]
+  },
+  {
+   "id": "z3-也",
+   "unit": 3,
+   "hanzi": "也",
+   "pinyin": "yě",
+   "de": "auch",
+   "new": [
+    "也"
+   ]
+  },
+  {
+   "id": "z3-老师",
+   "unit": 3,
+   "hanzi": "老师",
+   "pinyin": "lǎoshī",
+   "de": "Lehrer/-in",
+   "new": [
+    "老",
+    "师"
+   ]
+  },
+  {
+   "id": "z3-有",
+   "unit": 3,
+   "hanzi": "有",
+   "pinyin": "yǒu",
+   "de": "haben; es gibt",
+   "new": [
+    "有"
+   ]
+  },
+  {
+   "id": "z4-上海",
+   "unit": 4,
+   "hanzi": "上海",
+   "pinyin": "Shànghǎi",
+   "de": "(steigen + Meer) Shanghai",
+   "new": [
+    "上",
+    "海"
+   ]
+  },
+  {
+   "id": "z4-高",
+   "unit": 4,
+   "hanzi": "高",
+   "pinyin": "gāo",
+   "de": "groß",
+   "new": [
+    "高"
+   ]
+  },
+  {
+   "id": "z4-可爱",
+   "unit": 4,
+   "hanzi": "可爱",
+   "pinyin": "kě'ài",
+   "de": "(können + lieben) niedlich",
+   "new": [
+    "可",
+    "爱"
+   ]
+  },
+  {
+   "id": "z4-的",
+   "unit": 4,
+   "hanzi": "的",
+   "pinyin": "de",
+   "de": "Attributpartikel",
+   "new": [
+    "的"
+   ]
+  },
+  {
+   "id": "z4-百",
+   "unit": 4,
+   "hanzi": "百",
+   "pinyin": "bǎi",
+   "de": "hundert",
+   "new": [
+    "百"
+   ]
+  },
+  {
+   "id": "z4-千",
+   "unit": 4,
+   "hanzi": "千",
+   "pinyin": "qiān",
+   "de": "tausend",
+   "new": [
+    "千"
+   ]
+  },
+  {
+   "id": "z5-这",
+   "unit": 5,
+   "hanzi": "这",
+   "pinyin": "zhè",
+   "de": "diese/r/s",
+   "new": [
+    "这"
+   ]
+  },
+  {
+   "id": "z5-谁",
+   "unit": 5,
+   "hanzi": "谁",
+   "pinyin": "shéi",
+   "de": "wer?",
+   "new": [
+    "谁"
+   ]
+  },
+  {
+   "id": "z5-路",
+   "unit": 5,
+   "hanzi": "路",
+   "pinyin": "lù",
+   "de": "Straße",
+   "new": [
+    "路"
+   ]
+  },
+  {
+   "id": "z6-月",
+   "unit": 6,
+   "hanzi": "月",
+   "pinyin": "yuè",
+   "de": "Monat; Mond",
+   "new": [
+    "月"
+   ]
+  },
+  {
+   "id": "z6-日",
+   "unit": 6,
+   "hanzi": "日",
+   "pinyin": "rì",
+   "de": "Tag; Sonne",
+   "new": [
+    "日"
+   ]
+  },
+  {
+   "id": "z6-几号",
+   "unit": 6,
+   "hanzi": "几号",
+   "pinyin": "jǐ hào",
+   "de": "(wie viel + Nummer) wann; der wievielte (Datum)",
+   "new": [
+    "几",
+    "号"
+   ]
+  },
+  {
+   "id": "z6-今天",
+   "unit": 6,
+   "hanzi": "今天",
+   "pinyin": "jīntiān",
+   "de": "heute",
+   "new": [
+    "今",
+    "天"
+   ]
+  },
+  {
+   "id": "z6-明天",
+   "unit": 6,
+   "hanzi": "明天",
+   "pinyin": "míngtiān",
+   "de": "morgen",
+   "new": [
+    "明"
+   ]
+  },
+  {
+   "id": "z6-吃饭",
+   "unit": 6,
+   "hanzi": "吃饭",
+   "pinyin": "chīfàn",
+   "de": "(essen + Reis) essen",
+   "new": [
+    "吃",
+    "饭"
+   ]
+  },
+  {
+   "id": "z6-去",
+   "unit": 6,
+   "hanzi": "去",
+   "pinyin": "qù",
+   "de": "gehen, fahren (nach, zu)",
+   "new": [
+    "去"
+   ]
+  },
+  {
+   "id": "z6-做",
+   "unit": 6,
+   "hanzi": "做",
+   "pinyin": "zuò",
+   "de": "machen, tun",
+   "new": [
+    "做"
+   ]
+  },
+  {
+   "id": "z6-看书",
+   "unit": 6,
+   "hanzi": "看书",
+   "pinyin": "kàn shū",
+   "de": "lesen (Buch)",
+   "new": [
+    "看",
+    "书"
+   ]
+  },
+  {
+   "id": "z7-点",
+   "unit": 7,
+   "hanzi": "点",
+   "pinyin": "diǎn",
+   "de": "Uhr (ZEW für die Stunde)",
+   "new": [
+    "点"
+   ]
+  },
+  {
+   "id": "z7-分",
+   "unit": 7,
+   "hanzi": "分",
+   "pinyin": "fēn",
+   "de": "Minute",
+   "new": [
+    "分"
+   ]
+  },
+  {
+   "id": "z7-半",
+   "unit": 7,
+   "hanzi": "半",
+   "pinyin": "bàn",
+   "de": "halb (Uhrzeit); Hälfte",
+   "new": [
+    "半"
+   ]
+  },
+  {
+   "id": "z7-时间",
+   "unit": 7,
+   "hanzi": "时间",
+   "pinyin": "shíjiān",
+   "de": "Zeit(dauer)",
+   "new": [
+    "时",
+    "间"
+   ]
+  },
+  {
+   "id": "z8-店",
+   "unit": 8,
+   "hanzi": "店",
+   "pinyin": "diàn",
+   "de": "Laden, Geschäft",
+   "new": [
+    "店"
+   ]
+  },
+  {
+   "id": "z8-饭店",
+   "unit": 8,
+   "hanzi": "饭店",
+   "pinyin": "fàndiàn",
+   "de": "Restaurant; Hotel",
+   "new": []
+  },
+  {
+   "id": "z8-贵",
+   "unit": 8,
+   "hanzi": "贵",
+   "pinyin": "guì",
+   "de": "teuer",
+   "new": [
+    "贵"
+   ]
+  },
+  {
+   "id": "z8-衣服",
+   "unit": 8,
+   "hanzi": "衣服",
+   "pinyin": "yīfu",
+   "de": "Kleidung",
+   "new": [
+    "衣",
+    "服"
+   ]
+  },
+  {
+   "id": "z8-白",
+   "unit": 8,
+   "hanzi": "白",
+   "pinyin": "bái",
+   "de": "weiß",
+   "new": [
+    "白"
+   ]
+  },
+  {
+   "id": "z8-红",
+   "unit": 8,
+   "hanzi": "红",
+   "pinyin": "hóng",
+   "de": "rot",
+   "new": [
+    "红"
+   ]
+  },
+  {
+   "id": "z8-没",
+   "unit": 8,
+   "hanzi": "没",
+   "pinyin": "méi",
+   "de": "nicht",
+   "new": [
+    "没"
+   ]
+  },
+  {
+   "id": "z8-买",
+   "unit": 8,
+   "hanzi": "买",
+   "pinyin": "mǎi",
+   "de": "kaufen",
+   "new": [
+    "买"
+   ]
+  },
+  {
+   "id": "z8-东西",
+   "unit": 8,
+   "hanzi": "东西",
+   "pinyin": "dōngxi",
+   "de": "(Osten + Westen) Sache, Ding",
+   "new": [
+    "东",
+    "西"
+   ]
+  },
+  {
+   "id": "z8-个",
+   "unit": 8,
+   "hanzi": "个",
+   "pinyin": "gè",
+   "de": "allgemeines ZEW und ZEW für Personen",
+   "new": [
+    "个"
+   ]
+  }
+ ]
+};
+if (typeof module !== 'undefined' && module.exports) module.exports = VOCAB;
+
+;
+// Lern-Engine: Spaced Repetition (SM-2-Variante), Runden-Bewertung, Freischaltung nach Modus.
+// Reine Funktionen ohne DOM — laufen im Browser und in Node (für Tests).
+(function (root, factory) {
+  if (typeof module !== 'undefined' && module.exports) module.exports = factory();
+  else root.Engine = factory();
+})(typeof self !== 'undefined' ? self : globalThis, function () {
+  const DAY = 86400000;
+
+  function newItemState(cfg, now) {
+    return { ef: cfg.srs.startEF, reps: 0, intervalDays: 0, due: now, correct: 0, wrong: 0, first: now };
+  }
+
+  // Eine Antwort bewerten und den nächsten Fälligkeitstermin berechnen.
+  function grade(state, wasCorrect, cfg, now) {
+    const s = Object.assign({}, state);
+    if (wasCorrect) {
+      s.reps += 1;
+      s.correct += 1;
+      if (s.reps === 1) s.intervalDays = cfg.srs.firstIntervalDays;
+      else if (s.reps === 2) s.intervalDays = cfg.srs.secondIntervalDays;
+      else s.intervalDays = Math.min(cfg.srs.maxIntervalDays, Math.round(s.intervalDays * s.ef));
+      s.ef = Math.min(3.0, s.ef + 0.05);
+    } else {
+      s.reps = 0;
+      s.wrong += 1;
+      s.intervalDays = 0; // sofort wieder fällig
+      s.ef = Math.max(cfg.srs.minEF, s.ef - 0.2);
+    }
+    s.due = now + s.intervalDays * DAY;
+    return s;
+  }
+
+  function isDue(state, now) { return !!state && state.due <= now; }
+  function isMastered(state, cfg) { return !!state && state.reps >= cfg.masteredReps; }
+
+  // Entscheidung nach einer Lernrunde.
+  function sessionVerdict(nCorrect, nTotal, cfg) {
+    const accuracy = nTotal > 0 ? nCorrect / nTotal : 0;
+    let verdict;
+    if (accuracy >= cfg.advanceAccuracy) verdict = 'advance';
+    else if (accuracy < cfg.repeatAccuracy) verdict = 'repeat';
+    else verdict = 'almost';
+    return { verdict, accuracy };
+  }
+
+  // Welche Einheiten sind für diesen Nutzer freigeschaltet?
+  // kursplan: alle Einheiten, deren Startdatum <= heute (plus manuelle Freigabe).
+  // frei: alle Einheiten im gewählten Umfang.
+  function unlockedUnits(units, settings, now) {
+    const inScope = units.filter((u) => settings.scope === 'buch' || u.hs26);
+    if (settings.mode === 'frei') return inScope.map((u) => u.id);
+    const today = isoDate(now);
+    return inScope.filter((u) => {
+      if ((settings.manualUnlock || []).includes(u.id)) return true;
+      const start = settings.schedule && settings.schedule[u.id];
+      return !start || start <= today;
+    }).map((u) => u.id);
+  }
+
+  // Wörter einer Einheit nach Nutzer-Einstellungen filtern (Zusatzwörter ja/nein).
+  function wordsForUnit(unit, settings) {
+    return unit.words.filter((w) => settings.includeExtra || w.target);
+  }
+
+  // Nächste Lern-Portion: erste freigeschaltete Einheit mit ungelernten Wörtern, davon N Stück.
+  function nextPortion(units, states, settings, cfg, now) {
+    const open = unlockedUnits(units, settings, now);
+    for (const id of open) {
+      const unit = units.find((u) => u.id === id);
+      const pending = wordsForUnit(unit, settings).filter((w) => !states[w.id]);
+      if (pending.length) return { unit, words: pending.slice(0, settings.portionSize), remaining: pending.length };
+    }
+    return null;
+  }
+
+  // Wie viele neue Wörter wurden heute schon begonnen? (für Tageslimit)
+  function newWordsToday(states, now) {
+    const today = isoDate(now);
+    return Object.values(states).filter((s) => s.first && isoDate(s.first) === today).length;
+  }
+
+  // Nächste Kursstunde (erste mit Datum >= heute) — oder null nach Semesterende.
+  function nextSession(sessions, now) {
+    const today = isoDate(now);
+    return (sessions || []).find((x) => x.date >= today) || null;
+  }
+
+  // Schriftzeichen-Einträge einer Einheit (null = alle freigeschalteten Einheiten).
+  function charsForUnits(chars, unitIds) {
+    return (chars || []).filter((c) => unitIds.includes(c.unit));
+  }
+
+  function isoDate(ts) {
+    const d = new Date(ts);
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${d.getFullYear()}-${m}-${day}`;
+  }
+
+  // Pinyin normalisieren: Tonzeichen entfernen, ü -> v, Kleinbuchstaben, Rest ignorieren.
+  const TONE_MAP = {
+    'ā': 'a', 'á': 'a', 'ǎ': 'a', 'à': 'a',
+    'ē': 'e', 'é': 'e', 'ě': 'e', 'è': 'e',
+    'ī': 'i', 'í': 'i', 'ǐ': 'i', 'ì': 'i',
+    'ō': 'o', 'ó': 'o', 'ǒ': 'o', 'ò': 'o',
+    'ū': 'u', 'ú': 'u', 'ǔ': 'u', 'ù': 'u',
+    'ǖ': 'v', 'ǘ': 'v', 'ǚ': 'v', 'ǜ': 'v', 'ü': 'v',
+  };
+  function normalizePinyin(str) {
+    let out = '';
+    for (const ch of String(str).toLowerCase().normalize('NFC')) {
+      if (TONE_MAP[ch]) out += TONE_MAP[ch];
+      else if (/[a-z]/.test(ch)) out += ch;
+    }
+    return out;
+  }
+  function pinyinMatches(input, target) {
+    const a = normalizePinyin(input);
+    return a.length > 0 && a === normalizePinyin(target);
+  }
+
+  function shuffle(arr, rand) {
+    const r = rand || Math.random;
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(r() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+  // n zufällige Elemente aus pool, deren key sich vom richtigen unterscheidet (auch untereinander eindeutig).
+  function pickDistractors(pool, correctKey, keyFn, n, rand) {
+    const seen = new Set([correctKey]);
+    const out = [];
+    for (const x of shuffle(pool, rand)) {
+      const k = keyFn(x);
+      if (seen.has(k)) continue;
+      seen.add(k);
+      out.push(x);
+      if (out.length >= n) break;
+    }
+    return out;
+  }
+
+  return {
+    DAY, newItemState, grade, isDue, isMastered, sessionVerdict,
+    unlockedUnits, wordsForUnit, nextPortion, newWordsToday, isoDate, nextSession, charsForUnits,
+    normalizePinyin, pinyinMatches, shuffle, pickDistractors,
+  };
+});
+
+;
+/* HSG Chinesisch A1 · Vokabeltrainer — UI und Ablaufsteuerung.
+   Logik (SRS, Bewertung, Freischaltung) in engine.js, Inhalte in data.js, Stellschrauben in config.js.
+   Jeder Nutzer hat eigene Einstellungen + Fortschritt im localStorage seines Browsers. */
+(function () {
+  'use strict';
+  const E = Engine;
+  const now = () => Date.now();
+  const UNITS = VOCAB.units;
+  const CHARS = VOCAB.chars || [];               // offizielle Schriftzeichenliste (90 Zeichen zu erkennen)
+  const ALL_WORDS = UNITS.flatMap((u) => u.words);
+  const WORD_BY_ID = Object.fromEntries([...ALL_WORDS, ...CHARS].map((w) => [w.id, w]));
+  const isChar = (w) => w && w.id[0] === 'z';
+
+  // ---------- Persistenz ----------
+  function freshProgress() {
+    return { onboarded: false, settings: deepClone(CONFIG.defaultSettings), states: {}, history: [], lastSession: null };
+  }
+  function deepClone(o) { return JSON.parse(JSON.stringify(o)); }
+  function load() {
+    try {
+      const raw = localStorage.getItem(CONFIG.storageKey);
+      if (!raw) return freshProgress();
+      const p = Object.assign(freshProgress(), JSON.parse(raw));
+      // neue Default-Felder nachziehen (z. B. nach App-Update)
+      p.settings = Object.assign(deepClone(CONFIG.defaultSettings), p.settings || {});
+      p.settings.exercises = Object.assign(deepClone(CONFIG.defaultSettings.exercises), p.settings.exercises || {});
+      p.settings.schedule = Object.assign(deepClone(CONFIG.defaultSettings.schedule), p.settings.schedule || {});
+      return p;
+    } catch (e) { return freshProgress(); }
+  }
+  function save() { try { localStorage.setItem(CONFIG.storageKey, JSON.stringify(P)); } catch (e) { /* privater Modus */ } }
+  let P = load();
+  const SET = () => P.settings;
+
+  // ---------- Helfer ----------
+  function unitById(id) { return UNITS.find((u) => u.id === id); }
+  function unlocked() { return E.unlockedUnits(UNITS, SET(), now()); }
+  function scopedUnits() { return UNITS.filter((u) => SET().scope === 'buch' || u.hs26); }
+  function unitWords(u) { return E.wordsForUnit(u, SET()); }
+  function unitStats(u) {
+    const words = unitWords(u);
+    const started = words.filter((w) => P.states[w.id]).length;
+    const mastered = words.filter((w) => E.isMastered(P.states[w.id], CONFIG)).length;
+    return { total: words.length, started, mastered, pending: words.length - started };
+  }
+  function dueWords() {
+    const t = now();
+    return [...ALL_WORDS, ...CHARS].filter((w) => E.isDue(P.states[w.id], t));
+  }
+  function charStats(unitId) {
+    const cs = unitId == null ? CHARS : CHARS.filter((c) => c.unit === unitId);
+    const started = cs.filter((c) => P.states[c.id]).length;
+    const mastered = cs.filter((c) => E.isMastered(P.states[c.id], CONFIG)).length;
+    const glyphs = cs.reduce((a, c) => a + c.new.length, 0);
+    return { total: cs.length, glyphs, started, mastered };
+  }
+  function fmtLong(iso) {
+    if (!iso) return '';
+    const [y, m, d] = iso.split('-').map(Number);
+    const wd = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'][new Date(y, m - 1, d).getDay()];
+    return `${wd}, ${String(d).padStart(2, '0')}.${String(m).padStart(2, '0')}.${y}`;
+  }
+  function fmtDate(iso) {
+    if (!iso) return '';
+    const [y, m, d] = iso.split('-');
+    return `${d}.${m}.${y.slice(2)}`;
+  }
+
+  // ---------- Sprachausgabe ----------
+  let zhVoice = null;
+  function pickVoice() {
+    const vs = speechSynthesis.getVoices().filter((v) => v.lang && v.lang.replace('_', '-').startsWith('zh'));
+    zhVoice = vs.find((v) => /ting|tian|mei|hui|li/i.test(v.name)) || vs[0] || null;
+  }
+  if ('speechSynthesis' in window) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+  function speak(text) {
+    if (!('speechSynthesis' in window)) return;
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = CONFIG.tts.lang;
+    u.rate = CONFIG.tts.rate;
+    if (zhVoice) u.voice = zhVoice;
+    speechSynthesis.speak(u);
+  }
+
+  // ---------- DOM-Helfer ----------
+  const $view = document.getElementById('view');
+  function h(tag, attrs, ...children) {
+    const el = document.createElement(tag);
+    if (attrs) for (const [k, v] of Object.entries(attrs)) {
+      if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
+      else if (k === 'class') el.className = v;
+      else if (k === 'html') el.innerHTML = v;
+      else if (v === true) el.setAttribute(k, '');
+      else if (v !== false && v != null) el.setAttribute(k, v);
+    }
+    for (const c of children.flat()) {
+      if (c == null || c === false) continue;
+      el.appendChild(typeof c === 'string' || typeof c === 'number' ? document.createTextNode(String(c)) : c);
+    }
+    return el;
+  }
+  function show(...els) { $view.innerHTML = ''; els.forEach((e) => e && $view.appendChild(e)); window.scrollTo(0, 0); }
+  function setTab(name) {
+    document.querySelectorAll('nav button').forEach((b) => b.classList.toggle('active', b.dataset.tab === name));
+  }
+  function meaning(w) { return w.de + (SET().showEnglish && w.en ? ` (${w.en})` : ''); }
+
+  // ---------- Aufgaben-Erzeugung ----------
+  function buildExercise(word, opts) {
+    const ex = SET().exercises;
+    let pool, variants;
+    if (isChar(word)) {
+      // Schriftzeichen: nur ERKENNEN (so wird es geprüft) — Zeichen→Deutsch, Zeichen→Pinyin, Deutsch→Zeichen.
+      pool = CHARS.filter((w) => w.id !== word.id && w.unit === word.unit);
+      if (pool.length < 6) pool = CHARS.filter((w) => w.id !== word.id);
+      variants = ['h2d', 'h2p', 'd2h'];
+    } else {
+      const unit = unitById(word.unit);
+      pool = unit.words.filter((w) => w.id !== word.id);
+      if (pool.length < 6) pool = ALL_WORDS.filter((w) => w.id !== word.id);
+      variants = ['h2d', 'd2h', 'a2d', 'pinyin', 'h2p'].filter((v) => ex[v]);
+    }
+    if (!('speechSynthesis' in window)) variants = variants.filter((v) => v !== 'a2d');
+    if (!variants.length) variants = ['h2d'];
+    if (opts && opts.simple) variants = ['h2d'];
+    const v = variants[Math.floor(Math.random() * variants.length)];
+    const distract = (n, keyFn) => E.pickDistractors(pool, keyFn(word), keyFn, n);
+    const reveal = `${word.hanzi} — ${word.pinyin} — ${meaning(word)}`;
+    if (v === 'pinyin') {
+      return { kind: v, prompt: 'Wie lautet das Pinyin? (Töne kannst du weglassen)', big: word.hanzi, typed: true,
+        check: (input) => E.pinyinMatches(input, word.pinyin), reveal };
+    }
+    if (v === 'h2p') {
+      return { kind: v, prompt: 'Wie spricht man das aus?', big: word.hanzi,
+        options: E.shuffle([word, ...distract(3, (x) => E.normalizePinyin(x.pinyin))]).map((x) => ({ label: x.pinyin, correct: x.id === word.id })),
+        reveal, revealAudio: word.hanzi };
+    }
+    if (v === 'd2h') {
+      return { kind: v, prompt: `Welches Wort bedeutet „${word.de}“?`, big: '',
+        options: E.shuffle([word, ...distract(3, (x) => x.hanzi)]).map((x) => ({ label: x.hanzi, correct: x.id === word.id, cn: true })),
+        reveal, revealAudio: word.hanzi };
+    }
+    if (v === 'a2d') {
+      return { kind: v, audio: word.hanzi, prompt: 'Hör zu: Was bedeutet das?', big: '🔊',
+        options: E.shuffle([word, ...distract(3, (x) => x.de)]).map((x) => ({ label: meaning(x), correct: x.id === word.id })),
+        reveal };
+    }
+    return { kind: 'h2d', prompt: 'Was bedeutet dieses Wort?', big: word.hanzi,
+      options: E.shuffle([word, ...distract(3, (x) => x.de)]).map((x) => ({ label: meaning(x), correct: x.id === word.id })),
+      reveal, revealAudio: word.hanzi };
+  }
+
+  // ---------- Runden ----------
+  // mode: 'learn' (neue Portion mit Mastery-Logik) | 'practice' (ganze Einheit üben) | 'review' (fällige Wörter)
+  let S = null;
+
+  function startLearn(unitId) {
+    const s = SET();
+    let portion;
+    if (unitId != null) {
+      const u = unitById(unitId);
+      const pending = unitWords(u).filter((w) => !P.states[w.id]);
+      portion = pending.length ? { unit: u, words: pending.slice(0, s.portionSize), remaining: pending.length } : null;
+      if (!portion) { startPractice(unitId); return; }
+    } else {
+      portion = E.nextPortion(UNITS, P.states, s, CONFIG, now());
+    }
+    if (!portion) { renderNothingNew(); return; }
+    if (s.mode === 'frei' && s.dailyNew > 0) {
+      const today = E.newWordsToday(P.states, now());
+      const left = s.dailyNew - today;
+      if (left <= 0) { renderDailyLimit(today); return; }
+      portion.words = portion.words.slice(0, left);
+    }
+    const words = portion.words;
+    S = {
+      mode: 'learn', unit: portion.unit,
+      intro: words.slice(),
+      queue: E.shuffle(words.map((w) => w.id)),
+      perItem: Object.fromEntries(words.map((w) => [w.id, { streak: 0, wrong: 0 }])),
+      nCorrect: 0, nTotal: 0,
+    };
+    renderNext();
+  }
+  function startPractice(unitId) {
+    const u = unitById(unitId);
+    const words = unitWords(u);
+    if (!words.length) { renderDashboard(); return; }
+    S = {
+      mode: 'practice', unit: u, intro: [],
+      queue: E.shuffle(words.map((w) => w.id)),
+      perItem: Object.fromEntries(words.map((w) => [w.id, { streak: 0, wrong: 0 }])),
+      nCorrect: 0, nTotal: 0,
+    };
+    renderNext();
+  }
+  // Schriftzeichen üben: eine Einheit (unitId) oder alle freigeschalteten (null). Reine Erkennungs-Aufgaben.
+  function startChars(unitId) {
+    const open = unitId == null ? unlocked() : [unitId];
+    const chars = E.charsForUnits(CHARS, open);
+    if (!chars.length) { renderChars(); return; }
+    const title = unitId == null ? 'alle offenen Einheiten' : `Einheit ${unitId}`;
+    S = {
+      mode: 'chars', unit: { id: unitId == null ? 'all' : unitId, title: `Schriftzeichen · ${title}` }, intro: [],
+      queue: E.shuffle(chars.map((w) => w.id)),
+      perItem: Object.fromEntries(chars.map((w) => [w.id, { streak: 0, wrong: 0 }])),
+      nCorrect: 0, nTotal: 0,
+    };
+    renderNext();
+  }
+  function startReview() {
+    const due = dueWords();
+    if (!due.length) { renderNoReview(); return; }
+    S = {
+      mode: 'review', intro: [],
+      queue: E.shuffle(due.map((w) => w.id)),
+      perItem: Object.fromEntries(due.map((w) => [w.id, { streak: 0, wrong: 0 }])),
+      nCorrect: 0, nTotal: 0,
+    };
+    renderNext();
+  }
+
+  function renderNext() {
+    if (S.intro.length) { renderIntro(S.intro.shift()); return; }
+    if (!S.queue.length) { endSession(); return; }
+    renderQuestion(WORD_BY_ID[S.queue.shift()]);
+  }
+
+  function renderIntro(w) {
+    setTab('learn');
+    const card = h('div', { class: 'card center' },
+      h('div', { class: 'tag' }, `Neues Wort · ${S.unit.title}`),
+      h('div', { class: 'hanzi' }, w.hanzi),
+      h('div', { class: 'pinyin' }, w.pinyin),
+      h('div', { class: 'meaning' }, w.de),
+      SET().showEnglish ? h('div', { class: 'en' }, w.en) : null,
+      w.pos ? h('div', { class: 'pos' }, w.pos) : null,
+      w.note ? h('div', { class: 'note' }, w.note) : null,
+      !w.target ? h('div', { class: 'hint' }, 'Zusatzwort (im Buch farbig, kein Zielwort der Einheit)') : null,
+      h('div', { class: 'row' },
+        h('button', { class: 'secondary', onclick: () => speak(w.hanzi) }, '🔊 Anhören'),
+        h('button', { class: 'primary', onclick: renderNext }, 'Weiter →'),
+      ),
+    );
+    show(progressBarEl(), card);
+    speak(w.hanzi);
+  }
+
+  function progressBarEl() {
+    const streakNeed = S.mode === 'review' ? 1 : CONFIG.masteryStreak;
+    const pendingRepeats = Object.values(S.perItem).reduce((a, p) => a + Math.max(0, streakNeed - 1 - p.streak), 0);
+    const total = S.nTotal + S.queue.length + S.intro.length + pendingRepeats;
+    const pct = total > 0 ? Math.min(100, Math.round((S.nTotal / total) * 100)) : 0;
+    return h('div', { class: 'progress' }, h('div', { class: 'progress-fill', style: `width:${pct}%` }));
+  }
+
+  function renderQuestion(word) {
+    setTab(S.mode === 'review' ? 'review' : (S.mode === 'chars' ? 'chars' : 'learn'));
+    const ex = buildExercise(word);
+    let answered = false;
+    const tagText = S.mode === 'review' ? 'Wiederholung' : (S.mode === 'chars' ? S.unit.title : (S.mode === 'practice' ? `Üben · ${S.unit.title}` : `Lernen · ${S.unit.title}`));
+    const feedback = h('div', { class: 'feedback' });
+    const card = h('div', { class: 'card center' },
+      h('div', { class: 'tag' }, tagText),
+      h('div', { class: 'prompt' }, ex.prompt),
+      h('div', { class: 'hanzi' }, ex.big || ''),
+    );
+    if (ex.audio) card.appendChild(h('button', { class: 'secondary', onclick: () => speak(ex.audio) }, '🔊 Nochmal abspielen'));
+
+    function finish(correct) {
+      if (answered) return;
+      answered = true;
+      S.nTotal++;
+      if (correct) S.nCorrect++;
+      recordAnswer(word, correct);
+      feedback.className = 'feedback ' + (correct ? 'ok' : 'bad');
+      feedback.textContent = (correct ? '✅ Richtig! ' : '❌ Falsch. ') + ex.reveal;
+      if (ex.revealAudio) speak(ex.revealAudio);
+      card.appendChild(feedback);
+      const btn = h('button', { class: 'primary', onclick: renderNext }, 'Weiter →');
+      card.appendChild(btn);
+      btn.focus();
+    }
+    if (ex.typed) {
+      const input = h('input', { type: 'text', class: 'pinyin-input', placeholder: 'Pinyin eingeben …', autocomplete: 'off', autocapitalize: 'off', autocorrect: 'off' });
+      input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && input.value.trim()) finish(ex.check(input.value)); });
+      card.appendChild(input);
+      card.appendChild(h('button', { class: 'primary', onclick: () => { if (input.value.trim()) finish(ex.check(input.value)); } }, 'Prüfen'));
+      setTimeout(() => input.focus(), 50);
+    } else {
+      const grid = h('div', { class: 'options' });
+      for (const o of ex.options) {
+        grid.appendChild(h('button', { class: 'option' + (o.cn ? ' cn' : ''), onclick: (ev) => {
+          if (answered) return;
+          ev.currentTarget.classList.add(o.correct ? 'right' : 'wrong');
+          finish(o.correct);
+        } }, o.label));
+      }
+      card.appendChild(grid);
+    }
+    show(progressBarEl(), card);
+    if (ex.audio) speak(ex.audio);
+  }
+
+  function recordAnswer(word, correct) {
+    const t = now();
+    if (S.mode === 'review') {
+      P.states[word.id] = E.grade(P.states[word.id] || E.newItemState(CONFIG, t), correct, CONFIG, t);
+      save();
+      return;
+    }
+    const pi = S.perItem[word.id];
+    const need = CONFIG.masteryStreak;
+    if (correct) {
+      pi.streak++;
+      if (pi.streak < need) S.queue.splice(Math.min(CONFIG.requeueGap, S.queue.length), 0, word.id);
+    } else {
+      pi.wrong++;
+      pi.streak = 0;
+      if (pi.wrong < CONFIG.maxWrongPerItem) S.queue.splice(Math.min(CONFIG.requeueGap, S.queue.length), 0, word.id);
+    }
+  }
+
+  function endSession() {
+    const t = now();
+    const { verdict, accuracy } = E.sessionVerdict(S.nCorrect, S.nTotal, CONFIG);
+    const pct = Math.round(accuracy * 100);
+    if (S.mode === 'review') {
+      const due = dueWords().length;
+      show(h('div', { class: 'card center' },
+        h('div', { class: 'big-emoji' }, '📚'),
+        h('h2', null, 'Wiederholung fertig'),
+        h('p', null, `${S.nCorrect} von ${S.nTotal} richtig (${pct} %). Falsche Wörter sind sofort wieder fällig.`),
+        h('div', { class: 'row' },
+          h('button', { class: 'secondary', onclick: renderDashboard }, 'Zur Übersicht'),
+          due ? h('button', { class: 'primary', onclick: startReview }, `Noch ${due} fällige wiederholen`) : null,
+        ),
+      ));
+      S = null;
+      return;
+    }
+    // learn / practice / chars: SRS-Bewertung pro Wort am Rundenende
+    for (const [id, pi] of Object.entries(S.perItem)) {
+      P.states[id] = E.grade(P.states[id] || E.newItemState(CONFIG, t), pi.wrong === 0, CONFIG, t);
+    }
+    if (S.mode === 'chars') {
+      const unitId = S.unit.id === 'all' ? null : S.unit.id;
+      P.lastSession = { mode: 'chars', unit: S.unit.id, title: S.unit.title, accuracy, verdict, n: Object.keys(S.perItem).length, ts: t };
+      P.history.push(P.lastSession);
+      save();
+      const cs = charStats(unitId);
+      const all = charStats(null);
+      S = null;
+      show(h('div', { class: 'card center' },
+        h('div', { class: 'big-emoji' }, verdict === 'advance' ? '🎉' : (verdict === 'almost' ? '🟡' : '🔴')),
+        h('h2', null, verdict === 'advance' ? 'Zeichen sitzen!' : (verdict === 'almost' ? 'Fast' : 'Noch wackelig')),
+        h('p', null, `${pct} % richtig. ${cs.mastered} von ${cs.total} Einträgen sicher — insgesamt ${all.mastered} von ${all.total} (Ziel: alle 90 Zeichen erkennen).`),
+        h('div', { class: 'row' },
+          h('button', { class: 'secondary', onclick: renderChars }, 'Zeichen-Übersicht'),
+          h('button', { class: 'primary', onclick: () => startChars(unitId) }, verdict === 'repeat' ? 'Nochmal üben' : 'Noch eine Runde'),
+        ),
+      ));
+      return;
+    }
+    P.lastSession = { mode: S.mode, unit: S.unit.id, title: S.unit.title, accuracy, verdict, n: Object.keys(S.perItem).length, ts: t };
+    P.history.push(P.lastSession);
+    if (P.history.length > 500) P.history = P.history.slice(-500);
+    save();
+
+    const st = unitStats(S.unit);
+    const unitId = S.unit.id;
+    const mode = S.mode;
+    const msgs = {
+      advance: ['🎉', 'Sitzt!', `${pct} % — stark. ${mode === 'learn' ? 'Diese Portion ist drin.' : 'Die Einheit sitzt gut.'}`],
+      almost: ['🟡', 'Fast', `${pct} % — knapp unter ${Math.round(CONFIG.advanceAccuracy * 100)} %. Die wackligen Wörter kommen morgen in der Wiederholung wieder.`],
+      repeat: ['🔴', 'Noch wackelig', `${pct} % — die Portion noch einmal üben, bevor du weitermachst.`],
+    };
+    const [emoji, title, text] = msgs[verdict];
+    S = null;
+    const morePending = st.pending > 0;
+    show(h('div', { class: 'card center' },
+      h('div', { class: 'big-emoji' }, emoji),
+      h('h2', null, title),
+      h('p', null, text),
+      h('p', { class: 'muted small' }, `${unitById(unitId).title}: ${st.started} von ${st.total} Wörtern begonnen, ${st.mastered} sicher.`),
+      h('div', { class: 'row' },
+        h('button', { class: 'secondary', onclick: renderDashboard }, 'Übersicht'),
+        verdict === 'repeat'
+          ? h('button', { class: 'primary', onclick: () => startPractice(unitId) }, 'Nochmal üben')
+          : (morePending
+            ? h('button', { class: 'primary', onclick: () => startLearn(unitId) }, `Nächste ${Math.min(SET().portionSize, st.pending)} Wörter`)
+            : h('button', { class: 'primary', onclick: () => startLearn() }, 'Weiter lernen')),
+      ),
+    ));
+  }
+
+  function renderNothingNew() {
+    setTab('learn');
+    const s = SET();
+    const due = dueWords().length;
+    const open = unlocked();
+    const nextLocked = scopedUnits().find((u) => !open.includes(u.id));
+    const inScopeNotStarted = scopedUnits().some((u) => unitStats(u).pending > 0);
+    let text;
+    if (s.mode === 'kursplan' && nextLocked) {
+      text = `Alle bisher freigeschalteten Einheiten sind begonnen. „${nextLocked.title}“ ist laut Kursplan ab ${fmtDate(s.schedule[nextLocked.id])} dran — du kannst sie in der Übersicht vorziehen oder in den Einstellungen auf „Eigenes Tempo“ wechseln.`;
+    } else if (!inScopeNotStarted) {
+      text = 'Alle Wörter im gewählten Umfang sind begonnen. Jetzt zählt Wiederholen — oder du erweiterst in den Einstellungen den Umfang (ganzes Buch / Zusatzwörter).';
+    } else {
+      text = 'Gerade keine neuen Wörter verfügbar.';
+    }
+    show(h('div', { class: 'card center' },
+      h('div', { class: 'big-emoji' }, '✅'),
+      h('h2', null, 'Nichts Neues offen'),
+      h('p', null, text),
+      h('div', { class: 'row' },
+        h('button', { class: 'secondary', onclick: renderDashboard }, 'Übersicht'),
+        due ? h('button', { class: 'primary', onclick: startReview }, `${due} Wiederholungen`) : null,
+      ),
+    ));
+  }
+  function renderDailyLimit(n) {
+    setTab('learn');
+    show(h('div', { class: 'card center' },
+      h('div', { class: 'big-emoji' }, '⏸️'),
+      h('h2', null, 'Tageslimit erreicht'),
+      h('p', null, `Du hast heute schon ${n} neue Wörter begonnen (Limit: ${SET().dailyNew}). Wiederholen geht immer — oder Limit in den Einstellungen ändern.`),
+      h('div', { class: 'row' },
+        h('button', { class: 'secondary', onclick: renderDashboard }, 'Übersicht'),
+        h('button', { class: 'primary', onclick: startReview }, 'Wiederholen'),
+      ),
+    ));
+  }
+  function renderNoReview() {
+    setTab('review');
+    const next = Object.values(P.states).filter((s) => s.due > now()).sort((a, b) => a.due - b.due)[0];
+    show(h('div', { class: 'card center' },
+      h('div', { class: 'big-emoji' }, '🌤️'),
+      h('h2', null, 'Nichts fällig'),
+      h('p', null, next ? `Nächste Wiederholung am ${fmtDate(E.isoDate(next.due))}. Du kannst stattdessen eine Einheit üben oder neue Wörter lernen.` : 'Noch nichts gelernt — starte mit „Lernen“.'),
+      h('div', { class: 'row' },
+        h('button', { class: 'secondary', onclick: renderDashboard }, 'Übersicht'),
+        h('button', { class: 'primary', onclick: () => startLearn() }, 'Lernen'),
+      ),
+    ));
+  }
+
+  // ---------- Übersicht ----------
+  function recommendation() {
+    const due = dueWords().length;
+    const s = SET();
+    if (due >= 8) return { text: `${due} Wiederholungen sind fällig — die zuerst, sonst verfällt Gelerntes.`, action: ['Wiederholen', startReview] };
+    const portion = E.nextPortion(UNITS, P.states, s, CONFIG, now());
+    if (P.lastSession && P.lastSession.verdict === 'repeat' && P.lastSession.ts > now() - E.DAY) {
+      return { text: `Letzte Runde „${P.lastSession.title}“: ${Math.round(P.lastSession.accuracy * 100)} % — erst festigen, dann Neues.`, action: ['Nochmal üben', () => startPractice(P.lastSession.unit)] };
+    }
+    if (portion) {
+      const n = Math.min(portion.words.length, s.portionSize);
+      return { text: `Bereit für ${n} neue Wörter aus „${portion.unit.title}“ (${portion.remaining} noch offen).` + (due ? ` Außerdem ${due} fällig.` : ''), action: ['Lernen', () => startLearn()] };
+    }
+    if (due) return { text: `Keine neuen Wörter offen, aber ${due} fällige Wiederholungen.`, action: ['Wiederholen', startReview] };
+    return { text: 'Alles begonnen und nichts fällig. 干得好 — gut gemacht! Übe eine Einheit oder erweitere den Umfang.', action: null };
+  }
+
+  function renderDashboard() {
+    setTab('dash');
+    if (!P.onboarded) { renderOnboarding(); return; }
+    const s = SET();
+    const rec = recommendation();
+    const due = dueWords().length;
+    const units = scopedUnits();
+    const open = unlocked();
+    const totals = units.reduce((a, u) => { const st = unitStats(u); a.total += st.total; a.started += st.started; a.mastered += st.mastered; return a; }, { total: 0, started: 0, mastered: 0 });
+
+    const recCard = h('div', { class: 'card rec' },
+      h('div', { class: 'tag' }, (s.name ? `${s.name} · ` : '') + (s.mode === 'kursplan' ? 'Modus: nach Kursplan' : 'Modus: eigenes Tempo')),
+      h('p', null, rec.text),
+      rec.action ? h('button', { class: 'primary', onclick: rec.action[1] }, rec.action[0]) : null,
+    );
+    const cst = charStats(null);
+    const stats = h('div', { class: 'stats' },
+      statEl(`${totals.started} / ${totals.total}`, 'Wörter begonnen'),
+      statEl(String(totals.mastered), 'Wörter sicher'),
+      statEl(`${cst.mastered} / ${cst.total}`, 'Zeichen sicher'),
+      statEl(String(due), 'fällig'),
+    );
+    const sessionCard = courseCard();
+    const list = h('div', { class: 'card' }, h('h3', null, s.scope === 'buch' ? 'Einheiten (Kursliste + Lehrbuch)' : 'Einheiten HS26 (Kursliste)'), h('p', { class: 'muted small' }, 'Tippe auf „Lernen“ für neue Wörter oder „Üben“ für die ganze Einheit.'));
+    for (const u of units) {
+      const st = unitStats(u);
+      const isOpen = open.includes(u.id);
+      const done = st.total > 0 && st.mastered === st.total;
+      const pct = st.total ? Math.round((st.started / st.total) * 100) : 0;
+      const row = h('div', { class: 'unit' + (done ? ' done' : (isOpen ? ' open' : '')) },
+        h('div', { class: 'unit-num' }, String(u.id)),
+        h('div', { class: 'unit-title' }, h('strong', null, `Einheit ${u.id}: ${u.title}`), h('span', { title: u.grammar || '' }, `${u.hanzi} · ${u.topic}`)),
+      );
+      if (isOpen) {
+        row.appendChild(h('div', { class: 'mini' }, h('div', { class: 'progress' }, h('div', { class: 'progress-fill', style: `width:${pct}%` })), h('span', null, `${st.started}/${st.total} · ${st.mastered} sicher`)));
+        row.appendChild(st.pending > 0
+          ? h('button', { class: 'ghost', onclick: () => startLearn(u.id) }, 'Lernen')
+          : h('button', { class: 'ghost', onclick: () => startPractice(u.id) }, 'Üben'));
+      } else {
+        row.appendChild(h('div', { class: 'locked' }, `ab ${fmtDate(s.schedule[u.id]) || '—'}`));
+        row.appendChild(h('button', { class: 'ghost', onclick: () => { s.manualUnlock = [...(s.manualUnlock || []), u.id]; save(); renderDashboard(); } }, 'Vorziehen'));
+      }
+      list.appendChild(row);
+    }
+    show(recCard, stats, sessionCard, list);
+  }
+  // Kurs-Karte: nächste Stunde der Gruppe, was dran ist, Links zu Canvas/Quizlet.
+  function courseCard() {
+    const c = CONFIG.course;
+    if (!c || !c.sessions) return null;
+    const next = E.nextSession(c.sessions, now());
+    const body = [];
+    if (next) {
+      const names = next.units.map((id) => { const u = unitById(id); return u ? `Einheit ${id} „${u.title}“` : `Einheit ${id}`; }).join(' + ');
+      body.push(h('div', { class: 'sess-date' }, `${fmtLong(next.date)} · ${c.time}`));
+      body.push(h('div', { class: 'sess-meta' }, `Stunde ${next.n} von ${c.sessions.length} · ${names}${next.confirmed ? '' : ' (Zuordnung laut Quiz-Struktur, Canvas noch ohne Übersicht)'}`));
+      const dueUnitChars = charStats(next.units[0]);
+      body.push(h('p', { class: 'small', style: 'margin:8px 0 0' }, `Tipp: Vokabeln der Einheit vor der Stunde durchgehen (VOR-Unterrichts-Quiz auf Canvas), danach Schriftzeichen der Einheit (${dueUnitChars.total} Einträge, ${dueUnitChars.mastered} sicher).`));
+    } else {
+      body.push(h('div', { class: 'sess-date' }, 'Semester HS26 abgeschlossen'));
+      body.push(h('div', { class: 'sess-meta' }, c.exam));
+    }
+    return h('div', { class: 'card session' },
+      h('div', { class: 'tag' }, `${c.name} · ${c.weekday}s ${c.time}`),
+      ...body,
+      h('div', { class: 'links' },
+        h('a', { href: c.canvasUrl, target: '_blank', rel: 'noopener' }, 'Canvas-Kurs ↗'),
+        h('a', { href: c.quizletUrl, target: '_blank', rel: 'noopener' }, 'Quizlet Vokabeln ↗'),
+        h('a', { href: c.quizletCharsUrl, target: '_blank', rel: 'noopener' }, 'Quizlet Zeichen ↗'),
+      ),
+    );
+  }
+  function statEl(value, label) {
+    return h('div', { class: 'stat' }, h('div', { class: 'stat-value' }, value), h('div', { class: 'stat-label' }, label));
+  }
+
+  // ---------- Onboarding (erster Start) ----------
+  function renderOnboarding() {
+    const s = SET();
+    let mode = s.mode;
+    const nameInput = h('input', { type: 'text', placeholder: 'z. B. Max', value: s.name || '' });
+    const cards = h('div', { class: 'mode-cards' });
+    function paint() {
+      cards.innerHTML = '';
+      cards.appendChild(h('button', { class: 'mode-card' + (mode === 'kursplan' ? ' active' : ''), onclick: () => { mode = 'kursplan'; paint(); } },
+        h('strong', null, '📅 Nach Kursplan'),
+        h('span', null, 'Die Einheiten werden Schritt für Schritt freigeschaltet, so wie sie im Kurs drankommen. Termine sind anpassbar.')));
+      cards.appendChild(h('button', { class: 'mode-card' + (mode === 'frei' ? ' active' : ''), onclick: () => { mode = 'frei'; paint(); } },
+        h('strong', null, '🚀 Eigenes Tempo'),
+        h('span', null, 'Alle Einheiten sofort offen. Du bestimmst, wie schnell du vorgehst (optional mit Tageslimit).')));
+    }
+    paint();
+    show(h('div', { class: 'card' },
+      h('div', { class: 'tag' }, 'Willkommen'),
+      h('h2', null, 'HSG Chinesisch A1 · Vokabeln'),
+      h('p', null, 'Die offizielle HSG-Vokabelliste Chinesisch A1 (Einheit 0–8, 307 Wörter) und die prüfungsrelevante Schriftzeichenliste (90 Zeichen zu erkennen), optional erweiterbar um Einheit 9–12 aus dem Lehrbuch. Kursplan = Gruppe 3, donnerstags 10:30. Fortschritt bleibt auf diesem Gerät.'),
+      h('div', { class: 'form-row' }, h('label', null, 'Dein Name (optional)', h('small', null, 'nur für die Anzeige und den Export-Dateinamen')), nameInput),
+      h('p', { style: 'margin-top:12px' }, h('strong', null, 'Wie willst du lernen?')),
+      cards,
+      h('p', { class: 'hint' }, 'Alles später unter „Einstellungen“ änderbar.'),
+      h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => {
+        s.name = nameInput.value.trim();
+        s.mode = mode;
+        P.onboarded = true;
+        save();
+        renderDashboard();
+      } }, 'Loslegen')),
+    ));
+  }
+
+  // ---------- Schriftzeichen ----------
+  function renderChars() {
+    setTab('chars');
+    if (!P.onboarded) { renderDashboard(); return; }
+    const s = SET();
+    const open = unlocked();
+    const t = now();
+    const all = charStats(null);
+    const openChars = E.charsForUnits(CHARS, open);
+    const dueChars = openChars.filter((c) => E.isDue(P.states[c.id], t)).length;
+    const head = h('div', { class: 'card' },
+      h('div', { class: 'tag' }, 'Offizielle Schriftzeichenliste · prüfungsrelevant'),
+      h('h2', null, `${all.mastered} von ${all.total} Einträgen sicher`),
+      h('p', { class: 'muted small' }, `${all.glyphs} Zeichen musst du in der Prüfung erkennen (nicht schreiben). Die Liste ist nach den Kurs-Einheiten gegliedert — die Zuordnung folgt der Zeichenliste und kann von der Vokabelliste abweichen. Tippen = anhören.`),
+      h('div', { class: 'row' },
+        openChars.length ? h('button', { class: 'primary', onclick: () => startChars(null) }, `Alle offenen üben (${openChars.length})`) : null,
+        dueChars ? h('button', { class: 'secondary', onclick: startReview }, `${dueChars} fällig`) : null,
+      ),
+    );
+    const list = h('div', { class: 'card' });
+    for (const u of UNITS.filter((x) => x.hs26)) {
+      const cs = CHARS.filter((c) => c.unit === u.id);
+      if (!cs.length) continue;
+      const st = charStats(u.id);
+      const isOpen = open.includes(u.id);
+      list.appendChild(h('div', { class: 'char-unit-head' },
+        h('strong', null, `Einheit ${u.id}: ${u.title}`),
+        h('span', { class: 'muted' }, `${st.glyphs} Zeichen · ${st.mastered}/${st.total} sicher`),
+        isOpen ? h('button', { class: 'ghost', onclick: () => startChars(u.id) }, 'Üben')
+               : h('span', { class: 'locked muted' }, `ab ${fmtDate(s.schedule[u.id]) || '—'}`),
+      ));
+      const grid = h('div', { class: 'char-grid' });
+      for (const c of cs) {
+        const stt = P.states[c.id];
+        const cls = 'char-cell' + (!isOpen ? ' locked' : (E.isMastered(stt, CONFIG) ? ' mastered' : (E.isDue(stt, t) && stt ? ' due' : '')));
+        grid.appendChild(h('div', { class: cls, title: c.de, onclick: () => speak(c.hanzi) },
+          h('div', { class: 'cc-hanzi' }, c.hanzi), h('div', { class: 'cc-py' }, c.pinyin), h('div', { class: 'cc-de' }, c.de)));
+      }
+      list.appendChild(grid);
+    }
+    show(head, list);
+  }
+
+  // ---------- Liste ----------
+  let listFilter = { q: '', unit: 'all' };
+  function renderList() {
+    setTab('list');
+    const s = SET();
+    const search = h('input', { type: 'search', class: 'search', placeholder: 'Suchen: Zeichen, Pinyin oder Deutsch …', value: listFilter.q });
+    search.addEventListener('input', () => { listFilter.q = search.value; paintRows(); });
+    const chips = h('div', { class: 'chips' });
+    const chipDefs = [['all', 'Alle'], ...scopedUnits().map((u) => [String(u.id), `E${u.id}`])];
+    for (const [val, label] of chipDefs) {
+      chips.appendChild(h('button', { class: 'chip' + (listFilter.unit === val ? ' active' : ''), onclick: () => { listFilter.unit = val; renderList(); } }, label));
+    }
+    const rows = h('div');
+    function paintRows() {
+      rows.innerHTML = '';
+      const q = E.normalizePinyin(listFilter.q);
+      const qRaw = listFilter.q.trim().toLowerCase();
+      const t = now();
+      let words = scopedUnits().flatMap((u) => u.words);
+      if (listFilter.unit !== 'all') words = words.filter((w) => String(w.unit) === listFilter.unit);
+      if (!s.includeExtra) words = words.filter((w) => w.target);
+      if (qRaw) words = words.filter((w) => w.hanzi.includes(qRaw) || (q && E.normalizePinyin(w.pinyin).includes(q)) || w.de.toLowerCase().includes(qRaw) || (w.en && w.en.toLowerCase().includes(qRaw)));
+      rows.appendChild(h('p', { class: 'muted small' }, `${words.length} Wörter`));
+      for (const w of words.slice(0, 400)) {
+        const st = P.states[w.id];
+        const badge = !st ? h('span', { class: 'badge' }, 'neu') : (E.isDue(st, t) ? h('span', { class: 'badge due' }, 'fällig') : (E.isMastered(st, CONFIG) ? h('span', { class: 'badge ok' }, 'sicher') : h('span', { class: 'badge' }, 'gelernt')));
+        rows.appendChild(h('div', { class: 'word-row' + (w.target ? '' : ' extra'), onclick: () => speak(w.hanzi) },
+          h('div', { class: 'wr-hanzi' }, w.hanzi),
+          h('div', null, h('div', { class: 'wr-py' }, w.pinyin + (w.pos ? `  ·  ${w.pos}` : '')), h('div', { class: 'wr-de' }, w.de), w.note ? h('div', { class: 'wr-en' }, w.note) : null, s.showEnglish && w.en ? h('div', { class: 'wr-en' }, w.en) : null),
+          h('div', { class: 'wr-state' }, `E${w.unit}`, badge),
+        ));
+      }
+    }
+    paintRows();
+    show(h('div', { class: 'card' }, search, chips, rows));
+  }
+
+  // ---------- Einstellungen ----------
+  function renderSettings() {
+    setTab('settings');
+    const s = SET();
+    const el = (tag, attrs) => h(tag, attrs);
+    function row(label, small, control) { return h('div', { class: 'form-row' }, h('label', null, label, small ? h('small', null, small) : null), control); }
+    function select(opts, value, onchange) {
+      const sel = h('select', { onchange: (e) => onchange(e.target.value) });
+      for (const [v, l] of opts) sel.appendChild(h('option', { value: v, selected: v === value }, l));
+      return sel;
+    }
+    function check(value, onchange) { return h('input', { type: 'checkbox', checked: !!value, onchange: (e) => onchange(e.target.checked) }); }
+    const persist = () => { save(); };
+
+    const nameInput = h('input', { type: 'text', value: s.name || '', placeholder: 'optional', onchange: (e) => { s.name = e.target.value.trim(); persist(); } });
+
+    const modeCards = h('div', { class: 'mode-cards' });
+    function paintModes() {
+      modeCards.innerHTML = '';
+      modeCards.appendChild(h('button', { class: 'mode-card' + (s.mode === 'kursplan' ? ' active' : ''), onclick: () => { s.mode = 'kursplan'; persist(); renderSettings(); } },
+        h('strong', null, '📅 Nach Kursplan'), h('span', null, 'Einheiten werden nach Datum freigeschaltet (Tabelle unten).')));
+      modeCards.appendChild(h('button', { class: 'mode-card' + (s.mode === 'frei' ? ' active' : ''), onclick: () => { s.mode = 'frei'; persist(); renderSettings(); } },
+        h('strong', null, '🚀 Eigenes Tempo'), h('span', null, 'Alle Einheiten offen, optional mit Tageslimit für neue Wörter.')));
+    }
+    paintModes();
+
+    const general = h('div', { class: 'card' },
+      h('h3', null, 'Lernmodus'),
+      modeCards,
+      row('Neue Wörter pro Lernrunde', 'Portionsgröße', select([[6, '6'], [8, '8'], [10, '10'], [12, '12'], [15, '15'], [20, '20']], s.portionSize, (v) => { s.portionSize = Number(v); persist(); })),
+      s.mode === 'frei' ? row('Tageslimit neue Wörter', '0 = unbegrenzt', select([[0, 'unbegrenzt'], [10, '10'], [20, '20'], [30, '30'], [50, '50']], s.dailyNew, (v) => { s.dailyNew = Number(v); persist(); })) : null,
+      row('Umfang', 'Kursliste = Einheit 0–8 (HS26); Einheit 9–12 stammen aus dem englischen Lehrbuch (eigene Übersetzung)', select([['hs26', 'Kursliste (E0–E8)'], ['buch', '+ Lehrbuch E9–E12']], s.scope, (v) => { s.scope = v; persist(); renderSettings(); })),
+      s.scope === 'buch' ? row('Zusatzwörter mitlernen', 'nur Einheit 9–12: im Buch farbig markierte Nicht-Zielwörter', check(s.includeExtra, (v) => { s.includeExtra = v; persist(); })) : null,
+      row('Englische Bedeutung anzeigen', 'zusätzlich zur deutschen, wo im Lehrbuch vorhanden', check(s.showEnglish, (v) => { s.showEnglish = v; persist(); })),
+      row('Name', 'für Anzeige und Export', nameInput),
+    );
+
+    const exLabels = { h2d: ['Zeichen → Deutsch', 'Multiple Choice'], d2h: ['Deutsch → Zeichen', 'Multiple Choice'], a2d: ['Hören → Deutsch', 'Sprachausgabe nötig'], h2p: ['Zeichen → Pinyin', 'Multiple Choice'], pinyin: ['Pinyin tippen', 'Töne optional'] };
+    const exCard = h('div', { class: 'card' }, h('h3', null, 'Übungsarten'), h('p', { class: 'muted small' }, 'Mindestens eine muss aktiv sein.'));
+    for (const [k, [l, sm]] of Object.entries(exLabels)) {
+      exCard.appendChild(row(l, sm, check(s.exercises[k], (v) => {
+        s.exercises[k] = v;
+        if (!Object.values(s.exercises).some(Boolean)) { s.exercises.h2d = true; renderSettings(); }
+        persist();
+      })));
+    }
+
+    let schedCard = null;
+    if (s.mode === 'kursplan') {
+      const table = h('table', { class: 'schedule' });
+      for (const u of scopedUnits()) {
+        const inp = h('input', { type: 'date', value: s.schedule[u.id] || '', onchange: (e) => { s.schedule[u.id] = e.target.value; persist(); } });
+        table.appendChild(h('tr', null, h('td', null, `Einheit ${u.id}`), h('td', { class: 'muted small' }, u.title), h('td', null, inp)));
+      }
+      schedCard = h('div', { class: 'card' },
+        h('h3', null, 'Kursplan: Einheit frei ab …'),
+        h('p', { class: 'muted small' }, 'Voreinstellung nach dem Canvas-Kursplan der Gruppe 3 (donnerstags, 12 Stunden, Semesterbreak 26.10.–08.11.): Eine Einheit wird am Tag nach der vorigen Stunde frei, damit du sie vor dem VOR-Unterrichts-Quiz lernen kannst. Ab Stunde 2 ist die Zuordnung eine Annahme — passe die Daten an, sobald Canvas die Übersichtsseiten zeigt.'),
+        table,
+        (s.manualUnlock || []).length ? h('p', { class: 'hint' }, `Manuell vorgezogen: ${s.manualUnlock.map((i) => 'E' + i).join(', ')} `, h('button', { class: 'ghost', onclick: () => { s.manualUnlock = []; persist(); renderSettings(); } }, 'zurücknehmen')) : null,
+      );
+    }
+
+    const importInput = h('input', { type: 'file', accept: 'application/json,.json', style: 'display:none', onchange: (e) => importProgress(e.target.files[0]) });
+    const dataCard = h('div', { class: 'card' },
+      h('h3', null, 'Daten'),
+      h('p', { class: 'muted small' }, 'Fortschritt liegt nur in diesem Browser. Für Gerätewechsel: exportieren und auf dem anderen Gerät importieren.'),
+      h('div', { class: 'row tools' },
+        h('button', { class: 'ghost', onclick: exportProgress }, 'Fortschritt exportieren'),
+        h('button', { class: 'ghost', onclick: () => importInput.click() }, 'Importieren'),
+        h('button', { class: 'ghost danger', onclick: resetProgress }, 'Alles zurücksetzen'),
+      ),
+      importInput,
+    );
+    show(general, exCard, schedCard, dataCard);
+  }
+
+  function exportProgress() {
+    const name = (SET().name || 'fortschritt').replace(/[^\w\-]+/g, '_');
+    const blob = new Blob([JSON.stringify(P, null, 2)], { type: 'application/json' });
+    const a = h('a', { href: URL.createObjectURL(blob), download: `hsg-chinesisch-${name}.json` });
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+  function importProgress(file) {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result);
+        if (!data || typeof data.states !== 'object') throw new Error('Format');
+        if (!confirm('Importieren und aktuellen Fortschritt ersetzen?')) return;
+        localStorage.setItem(CONFIG.storageKey, JSON.stringify(data));
+        P = load();
+        renderDashboard();
+      } catch (e) { alert('Datei konnte nicht gelesen werden (kein gültiger Export).'); }
+    };
+    reader.readAsText(file);
+  }
+  function resetProgress() {
+    if (confirm('Wirklich den gesamten Fortschritt und die Einstellungen löschen?')) {
+      P = freshProgress();
+      save();
+      renderDashboard();
+    }
+  }
+
+  // ---------- Navigation ----------
+  document.querySelectorAll('nav button').forEach((b) => {
+    b.addEventListener('click', () => {
+      if (S && !confirm('Laufende Runde abbrechen?')) return;
+      S = null;
+      const t = b.dataset.tab;
+      if (t === 'dash') renderDashboard();
+      else if (t === 'learn') (P.onboarded ? startLearn() : renderDashboard());
+      else if (t === 'review') (P.onboarded ? startReview() : renderDashboard());
+      else if (t === 'chars') renderChars();
+      else if (t === 'list') renderList();
+      else if (t === 'settings') renderSettings();
+    });
+  });
+  // Debug-/Test-Hook: Zustand aus dem Speicher neu laden (z. B. nach manuellem Import in der Konsole).
+  window.HSG = { reload() { P = load(); renderDashboard(); } };
+  renderDashboard();
+})();
+
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
+}
+</script>
+</body>
+</html>
