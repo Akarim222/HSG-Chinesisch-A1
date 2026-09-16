@@ -32,6 +32,8 @@
   }
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { overflow-x: hidden; max-width: 100%; }
+html { -webkit-text-size-adjust: 100%; touch-action: pan-y; }
 body {
   font-family: -apple-system, "Helvetica Neue", sans-serif;
   background: var(--bg);
@@ -51,7 +53,9 @@ header {
 }
 h1 { font-size: 26px; color: var(--accent); }
 h1 span { font-size: 15px; color: var(--muted); font-weight: 500; margin-left: 8px; }
-nav { display: flex; gap: 8px; }
+nav { display: flex; gap: 8px; flex-wrap: nowrap; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 2px; margin: -2px; }
+nav::-webkit-scrollbar { display: none; }
+nav button { flex: 0 0 auto; white-space: nowrap; }
 nav button {
   padding: 8px 18px;
   border: 1px solid var(--border);
@@ -62,7 +66,10 @@ nav button {
   cursor: pointer;
 }
 nav button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
-main { flex: 1; width: 100%; max-width: 680px; margin: 0 auto; padding: 24px 16px 48px; }
+main { flex: 1; width: 100%; max-width: 680px; margin: 0 auto; padding: 24px 16px 48px; overflow-wrap: anywhere; }
+@media (max-width: 480px) { header { padding: 12px 16px; } nav { width: 100%; } }
+.update-banner { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 50; background: var(--accent); color: #fff; border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.25); font-size: 14px; }
+.update-banner button { background: #fff; color: var(--accent); border: 0; border-radius: 999px; padding: 8px 14px; font-weight: 600; cursor: pointer; }
 footer { text-align: center; color: var(--muted); font-size: 12px; padding: 12px; }
 
 .card {
@@ -259,7 +266,7 @@ nav button { padding: 8px 14px; }
     </nav>
   </header>
   <main id="view"></main>
-  <footer>Offizielle HSG-Vokabelliste (Einheit 0–8, 307 Wörter) + Schriftzeichenliste (90 Zeichen) · Kursplan Gruppe 3 HS26 · Fortschritt wird lokal im Browser gespeichert</footer>
+  <footer>Offizielle HSG-Vokabelliste (Einheit 0–8, 307 Wörter) + Schriftzeichenliste (90 Zeichen) · Kursplan Gruppe 3 HS26 · Fortschritt wird lokal im Browser gespeichert · Stand 16.09.2026</footer>
 <script>
 // Zentrale Konfiguration — alle Stellschrauben der App an einem Ort.
 // Persönliche Einstellungen (Modus, Tempo, Übungsarten) liegen NICHT hier, sondern in der App
@@ -275,6 +282,7 @@ const CONFIG = {
   masteryStreak: 2,      // so oft muss jedes Wort in einer Runde in Folge richtig sein
   requeueGap: 2,         // falsche Wörter kommen nach so vielen anderen Aufgaben wieder dran
   maxWrongPerItem: 3,    // nach so vielen Fehlern fliegt ein Wort aus der Runde (Runde endet garantiert)
+  weakRoundSize: 15,     // Wörter pro Runde „Schwache üben" (quer über alle Einheiten, schlechteste zuerst)
 
   // Ein Wort gilt als „gelernt", wenn es so oft in Folge richtig war (SRS-Wiederholungen):
   masteredReps: 2,
@@ -6700,8 +6708,25 @@ if (typeof module !== 'undefined' && module.exports) module.exports = VOCAB;
     return out;
   }
 
+  // Schwache Wörter: begonnene Wörter, sortiert nach Fehlerquote/EF (schlechteste zuerst), Gleichstand zufällig.
+  // Liefert max. n Wörter — Basis für „Schwache üben" quer über alle Einheiten.
+  function weakWords(words, states, n, rand) {
+    const scored = [];
+    for (const w of shuffle(words, rand)) {
+      const s = states[w.id];
+      if (!s) continue;
+      const attempts = s.correct + s.wrong;
+      const wrongRate = attempts ? s.wrong / attempts : 0;
+      const score = wrongRate * 2 + (2.5 - s.ef) + (s.reps === 0 && attempts ? 0.5 : 0);
+      if (s.wrong === 0 && s.ef >= 2.5) continue; // nie falsch -> nicht schwach
+      scored.push({ w, score });
+    }
+    scored.sort((a, b) => b.score - a.score);
+    return scored.slice(0, n).map((x) => x.w);
+  }
+
   return {
-    DAY, newItemState, grade, isDue, isMastered, sessionVerdict,
+    DAY, newItemState, weakWords, grade, isDue, isMastered, sessionVerdict,
     unlockedUnits, wordsForUnit, nextPortion, newWordsToday, isoDate, nextSession, charsForUnits,
     normalizePinyin, pinyinMatches, shuffle, pickDistractors,
   };
@@ -6828,6 +6853,7 @@ if (typeof module !== 'undefined' && module.exports) module.exports = VOCAB;
     } else {
       const unit = unitById(word.unit);
       pool = unit.words.filter((w) => w.id !== word.id);
+      if (pool.length < 12) { const open = unlocked(); pool = ALL_WORDS.filter((w) => w.id !== word.id && (w.unit === word.unit || open.includes(w.unit))); }
       if (pool.length < 6) pool = ALL_WORDS.filter((w) => w.id !== word.id);
       variants = ['h2d', 'd2h', 'a2d', 'pinyin', 'h2p'].filter((v) => ex[v]);
     }
@@ -6919,6 +6945,19 @@ if (typeof module !== 'undefined' && module.exports) module.exports = VOCAB;
     };
     renderNext();
   }
+  // Schwache Wörter quer über alle Einheiten üben (Fehlerquote/EF), nicht linear.
+  function weakSet() { return E.weakWords([...ALL_WORDS, ...CHARS], P.states, CONFIG.weakRoundSize); }
+  function startWeak() {
+    const words = weakSet();
+    if (!words.length) { renderNoReview(); return; }
+    S = {
+      mode: 'weak', unit: { id: 'weak', title: 'Schwache Wörter' }, intro: [],
+      queue: E.shuffle(words.map((w) => w.id)),
+      perItem: Object.fromEntries(words.map((w) => [w.id, { streak: 0, wrong: 0 }])),
+      nCorrect: 0, nTotal: 0,
+    };
+    renderNext();
+  }
   function startReview() {
     const due = dueWords();
     if (!due.length) { renderNoReview(); return; }
@@ -6969,7 +7008,7 @@ if (typeof module !== 'undefined' && module.exports) module.exports = VOCAB;
     setTab(S.mode === 'review' ? 'review' : (S.mode === 'chars' ? 'chars' : 'learn'));
     const ex = buildExercise(word);
     let answered = false;
-    const tagText = S.mode === 'review' ? 'Wiederholung' : (S.mode === 'chars' ? S.unit.title : (S.mode === 'practice' ? `Üben · ${S.unit.title}` : `Lernen · ${S.unit.title}`));
+    const tagText = S.mode === 'review' ? 'Wiederholung' : (S.mode === 'chars' || S.mode === 'weak' ? S.unit.title : (S.mode === 'practice' ? `Üben · ${S.unit.title}` : `Lernen · ${S.unit.title}`));
     const feedback = h('div', { class: 'feedback' });
     const card = h('div', { class: 'card center' },
       h('div', { class: 'tag' }, tagText),
@@ -7016,8 +7055,9 @@ if (typeof module !== 'undefined' && module.exports) module.exports = VOCAB;
   function recordAnswer(word, correct) {
     const t = now();
     if (S.mode === 'review') {
-      P.states[word.id] = E.grade(P.states[word.id] || E.newItemState(CONFIG, t), correct, CONFIG, t);
-      save();
+      const pi = S.perItem[word.id];
+      if (!pi.graded) { P.states[word.id] = E.grade(P.states[word.id] || E.newItemState(CONFIG, t), correct, CONFIG, t); pi.graded = true; save(); }
+      if (!correct) { pi.wrong++; if (pi.wrong < CONFIG.maxWrongPerItem) S.queue.splice(Math.min(CONFIG.requeueGap, S.queue.length), 0, word.id); }
       return;
     }
     const pi = S.perItem[word.id];
@@ -7041,10 +7081,11 @@ if (typeof module !== 'undefined' && module.exports) module.exports = VOCAB;
       show(h('div', { class: 'card center' },
         h('div', { class: 'big-emoji' }, '📚'),
         h('h2', null, 'Wiederholung fertig'),
-        h('p', null, `${S.nCorrect} von ${S.nTotal} richtig (${pct} %). Falsche Wörter sind sofort wieder fällig.`),
+        h('p', null, `${S.nCorrect} von ${S.nTotal} richtig (${pct} %). Falsche Wörter wurden in der Runde nochmal gefragt und sind morgen wieder fällig.`),
         h('div', { class: 'row' },
           h('button', { class: 'secondary', onclick: renderDashboard }, 'Zur Übersicht'),
           due ? h('button', { class: 'primary', onclick: startReview }, `Noch ${due} fällige wiederholen`) : null,
+          weakSet().length ? h('button', { class: 'secondary', onclick: startWeak }, 'Schwache Wörter üben') : null,
         ),
       ));
       S = null;
@@ -7053,6 +7094,23 @@ if (typeof module !== 'undefined' && module.exports) module.exports = VOCAB;
     // learn / practice / chars: SRS-Bewertung pro Wort am Rundenende
     for (const [id, pi] of Object.entries(S.perItem)) {
       P.states[id] = E.grade(P.states[id] || E.newItemState(CONFIG, t), pi.wrong === 0, CONFIG, t);
+    }
+    if (S.mode === 'weak') {
+      P.lastSession = { mode: 'weak', unit: 'weak', title: S.unit.title, accuracy, verdict, n: Object.keys(S.perItem).length, ts: t };
+      P.history.push(P.lastSession);
+      save();
+      const left = weakSet().length;
+      S = null;
+      show(h('div', { class: 'card center' },
+        h('div', { class: 'big-emoji' }, verdict === 'advance' ? '💪' : (verdict === 'almost' ? '🟡' : '🔴')),
+        h('h2', null, verdict === 'advance' ? 'Schwächen abgebaut' : (verdict === 'almost' ? 'Wird besser' : 'Noch wackelig')),
+        h('p', null, `${pct} % richtig. ${left ? `${left} Wörter gelten noch als schwach.` : 'Keine schwachen Wörter mehr — stark.'}`),
+        h('div', { class: 'row' },
+          h('button', { class: 'secondary', onclick: renderDashboard }, 'Übersicht'),
+          left ? h('button', { class: 'primary', onclick: startWeak }, 'Nochmal schwache üben') : h('button', { class: 'primary', onclick: () => startLearn() }, 'Weiter lernen'),
+        ),
+      ));
+      return;
     }
     if (S.mode === 'chars') {
       const unitId = S.unit.id === 'all' ? null : S.unit.id;
@@ -7151,6 +7209,7 @@ if (typeof module !== 'undefined' && module.exports) module.exports = VOCAB;
       h('p', null, next ? `Nächste Wiederholung am ${fmtDate(E.isoDate(next.due))}. Du kannst stattdessen eine Einheit üben oder neue Wörter lernen.` : 'Noch nichts gelernt — starte mit „Lernen“.'),
       h('div', { class: 'row' },
         h('button', { class: 'secondary', onclick: renderDashboard }, 'Übersicht'),
+        weakSet().length ? h('button', { class: 'secondary', onclick: startWeak }, `Schwache Wörter üben (${weakSet().length})`) : null,
         h('button', { class: 'primary', onclick: () => startLearn() }, 'Lernen'),
       ),
     ));
@@ -7186,7 +7245,10 @@ if (typeof module !== 'undefined' && module.exports) module.exports = VOCAB;
     const recCard = h('div', { class: 'card rec' },
       h('div', { class: 'tag' }, (s.name ? `${s.name} · ` : '') + (s.mode === 'kursplan' ? 'Modus: nach Kursplan' : 'Modus: eigenes Tempo')),
       h('p', null, rec.text),
-      rec.action ? h('button', { class: 'primary', onclick: rec.action[1] }, rec.action[0]) : null,
+      h('div', { class: 'row' },
+        rec.action ? h('button', { class: 'primary', onclick: rec.action[1] }, rec.action[0]) : null,
+        weakSet().length ? h('button', { class: 'secondary', onclick: startWeak }, `Schwache üben (${weakSet().length})`) : null,
+      ),
     );
     const cst = charStats(null);
     const stats = h('div', { class: 'stats' },
@@ -7490,7 +7552,18 @@ if (typeof module !== 'undefined' && module.exports) module.exports = VOCAB;
 </script>
 <script>
 if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
+  let hadController = !!navigator.serviceWorker.controller;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!hadController) { hadController = true; return; }
+    if (document.querySelector('.update-banner')) return;
+    const b = document.createElement('div'); b.className = 'update-banner';
+    b.innerHTML = '<span>Neue Version installiert.</span>';
+    const btn = document.createElement('button'); btn.textContent = 'Jetzt laden';
+    btn.onclick = () => location.reload(); b.appendChild(btn); document.body.appendChild(b);
+  });
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').then((reg) => {
+    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') reg.update(); });
+  }));
 }
 </script>
 </body>
